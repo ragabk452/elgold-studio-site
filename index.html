@@ -15,6 +15,12 @@
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- المكتبات مستضافة محلياً (من سيرفرنا، مش CDN خارجي) + defer لتحميل غير معطِّل -->
+  <script src="assets/js/vendor/gsap.min.js" defer></script>
+  <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="assets/js/vendor/lenis.min.js" defer></script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
 
@@ -524,10 +530,5 @@
 
   <!-- نافذة تفاصيل المشروع (Case Study) — يملؤها main.js -->
   <div id="workModal" class="wmodal" aria-hidden="true" role="dialog" aria-modal="true"></div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-  <script src="js/main.js"></script>
 </body>
 </html>
