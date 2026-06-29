@@ -184,8 +184,7 @@
     var loader = document.getElementById('loader');
     if (hasGsap && !reduce) {
       // نخفي عناصر الهيرو في حالة البداية لحد ما شاشة الاسم تتقلب وتكشفه (نمنع الوميض)
-      gsap.set('.hero__name-ar', { opacity: 0, y: 44, filter: 'blur(22px)' });
-      gsap.set('.hero__name-en', { opacity: 0, y: 18, letterSpacing: '.42em' });
+      gsap.set('.hero__lockup-img', { opacity: 0, clipPath: 'inset(0 0 0 100%)' });
       gsap.set('.hero__divider', { opacity: 0, scaleX: 0 });
       gsap.set('.hero__role', { opacity: 0, y: 14, letterSpacing: '.5em' });
       gsap.set('.hero__cta .btn', { opacity: 0, y: 18 });
@@ -211,9 +210,8 @@
     if (hero) hero.classList.add('is-revealed');   // خلفية المعرض المموّهة تظهر
     if (!hasGsap || reduce) return;
     gsap.timeline()
-      .to('.hero__name-ar', { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.35, ease: 'power3.out' })
-      .to('.hero__name-en', { opacity: 1, y: 0, letterSpacing: '.16em', duration: 1.05, ease: 'power3.out' }, '-=.95')
-      .to('.hero__divider', { scaleX: 1, opacity: 1, duration: .6, ease: 'power2.out' }, '-=.55')
+      .to('.hero__lockup-img', { opacity: 1, clipPath: 'inset(0 0 0 0%)', duration: 1.7, ease: 'power3.inOut' })
+      .to('.hero__divider', { scaleX: 1, opacity: 1, duration: .6, ease: 'power2.out' }, '-=.5')
       .to('.hero__role', { y: 0, opacity: 1, letterSpacing: '.34em', duration: .7, ease: 'power3.out' }, '-=.4')
       .to('.hero__cta .btn', { y: 0, opacity: 1, duration: .6, stagger: .12, ease: 'power3.out' }, '-=.35');
   }
