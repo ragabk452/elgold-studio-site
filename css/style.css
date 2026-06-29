@@ -9,7 +9,7 @@ body {
   background: var(--background);
   color: var(--text);
   line-height: 1.8;
-  overflow-x: hidden;
+  overflow-x: clip;   /* clip بدل hidden عشان body ما يبقاش scroll-container ويعطّل سكرول اللمس */
   -webkit-font-smoothing: antialiased;
   transition: background var(--t-slow) var(--ease), color var(--t-slow) var(--ease);
 }

@@ -218,7 +218,9 @@
 
   /* ---------- سكرول ناعم + reveals ---------- */
   function initScroll() {
-    if (window.Lenis && !reduce) {
+    // Lenis للديسكتوب الواسع بس (للسنّاب + السكرول الناعم). الموبايل/التابلت = سكرول طبيعي خالص
+    // عشان اللمس يشتغل بسلاسة (Lenis كان بيمنع السكرول الطبيعي باللمس).
+    if (window.Lenis && !reduce && fine && window.innerWidth > 1024) {
       lenis = new Lenis({ duration: 1.1, smoothWheel: false, syncTouch: false });
       if (hasST) { lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(function (t) { lenis.raf(t * 1000); }); gsap.ticker.lagSmoothing(0); }
       else { (function raf(t) { lenis.raf(t); requestAnimationFrame(raf); })(); }
