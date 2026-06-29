@@ -50,7 +50,7 @@
 
   /* ===== Layout ===== */
   --max: 1440px; --content: 1280px; --reading: 720px;
-  --pad: 32px; --nav-h: 84px;
+  --pad: clamp(18px, 4.5vw, 32px); --nav-h: 84px;   /* مسافة جانبية مرنة لكل المقاسات */
 
   /* ===== Motion ===== */
   --t-fast: .25s; --t-normal: .45s; --t-slow: .8s; --t-premium: 1.2s;

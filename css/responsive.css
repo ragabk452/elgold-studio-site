@@ -2,9 +2,12 @@
    ELGOLD STUDIO — Responsive
    ========================================================= */
 
-/* تابلت */
+/* تابلت + موبايل (≤1024): تدفّق طبيعي بدل التغطية عشان كل المحتوى يظهر + سكرول طبيعي سلس */
 @media (max-width: 1024px) {
-  :root { --pad: 24px; }
+  .page { position: static; min-height: 0; }
+  .hero, .trusted, .services, .work, .process, .techstack, .why, .about, .testi, .faq, .cta, .contact {
+    border-radius: 0; box-shadow: none;
+  }
   .hero__grid { grid-template-columns: 1fr; gap: var(--s-48); }
   .hero__visual { max-width: 460px; margin-inline: auto; order: -1; width: 100%; }
   .cards { grid-template-columns: repeat(2, 1fr); }
@@ -20,14 +23,7 @@
 
 /* موبايل */
 @media (max-width: 720px) {
-  :root { --pad: 20px; --nav-h: 72px; }
-
-  /* مهم جداً: على الموبايل الأقسام تتدفّق طبيعي (مش sticky/تغطية) عشان كل المحتوى
-     يظهر كامل — نظام التغطية كان بيخفي الجزء السفلي من الأقسام الطويلة على الموبايل. */
-  .page { position: static; min-height: 0; }
-  .services, .work, .why, .process, .techstack, .testi, .cta, .contact, .faq, .about, .hero, .trusted {
-    border-radius: 0; box-shadow: none;
-  }
+  :root { --nav-h: 72px; }
 
   .nav__links, .nav__right .btn { display: none; }
   .burger { display: flex; }
@@ -58,9 +54,23 @@
   .wm__close { top: 12px; inset-inline-end: 12px; }
 }
 
-/* شاشات صغيرة جداً */
+/* شاشات صغيرة (≤380) — تقليل أحجام عشان ما يبقاش مزحوم */
 @media (max-width: 380px) {
+  .brand { font-size: 1.05rem; letter-spacing: 0; }
+  .hero__stats { gap: var(--s-20); }
   .hero__stats .n { font-size: 1.5rem; }
+  .svc-chip { font-size: .82rem; padding: 8px 12px; }
+  .testi-card { flex-basis: 260px; width: 260px; }
+  .wm__metrics { grid-template-columns: 1fr 1fr; }
+  .menu a { font-size: 1.7rem; }
+}
+
+/* الوضع الأفقي للموبايل (ارتفاع قصير) — تقليل المسافات الرأسية */
+@media (orientation: landscape) and (max-height: 540px) {
+  .hero { min-height: auto; padding-top: calc(var(--nav-h) + var(--s-24)); padding-bottom: var(--s-48); }
+  .services, .work, .why, .process, .techstack, .contact, .cta, .faq, .testi, .about { padding: var(--s-48) 0; }
+  .sec-head { margin-bottom: var(--s-32); }
+  .menu { gap: var(--s-12); overflow-y: auto; }
 }
 
 /* =========================================================

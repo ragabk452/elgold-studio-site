@@ -231,7 +231,7 @@
 
     // تعتيم الصفحة وهي بتتغطّى (عمق) — للديسكتوب فقط.
     // على الموبايل بنسيبه: القسم المغطّى مستخبي أصلاً، وإلغاؤه بيوفّر شغل كل لحظة سكرول = سلاسة أعلى.
-    if (fine) {
+    if (fine && window.innerWidth > 1024) {
       var pages = gsap.utils.toArray('.page');
       pages.forEach(function (pg, i) {
         if (i < pages.length - 1) {
@@ -288,14 +288,16 @@
       lenis.scrollTo(offsets[n], { duration: 0.8, force: true });
       clearTimeout(lockT); lockT = setTimeout(function () { locked = false; }, 820);
     }
+    // السنّاب للديسكتوب الواسع بس (مؤشر دقيق + عرض > 1024). التابلت/الموبايل = سكرول طبيعي.
+    function snapActive() { return fine && window.innerWidth > 1024; }
     window.addEventListener('wheel', function (e) {
-      if (modalOpen) return;            // النافذة مفتوحة → سيب السكرول الطبيعي جواها
+      if (modalOpen || !snapActive()) return;
       if (Math.abs(e.deltaY) < 6) return;
       e.preventDefault();
       go(e.deltaY > 0 ? 1 : -1);
     }, { passive: false });
     window.addEventListener('keydown', function (e) {
-      if (modalOpen) return;
+      if (modalOpen || !snapActive()) return;
       var tag = (e.target && e.target.tagName) || '';
       if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
       if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(1); }
