@@ -1,0 +1,82 @@
+/* =========================================================
+   ELGOLD STUDIO — Design Tokens
+   كل القيم متغيّرات (Navy + Cream) — قابلة للتغيير من مكان واحد
+   ========================================================= */
+:root {
+  /* ===== Brand: Navy + Cream ===== */
+  --navy-900: #070C20;
+  --navy-800: #0A1330;   /* الخلفية الأساسية */
+  --navy-700: #0E1A44;   /* surface */
+  --navy-600: #13235C;
+  --navy-500: #1B2F74;
+  --blue-glow: #2A47C0;  /* توهّج من عيلة الكحلي */
+  --accent2:   #6C8BFF;  /* أزرق فاتح مساعد (للتدرّجات والتمييز) */
+  --cream:     #F4EEDF;
+  --cream-2:   #E8E0CC;
+
+  /* ===== Semantic (من البريف) ===== */
+  --background: var(--navy-800);
+  --surface:    var(--navy-700);
+  --card:       rgba(244, 238, 223, 0.04);
+  --glass:      rgba(244, 238, 223, 0.06);
+  --border:     rgba(244, 238, 223, 0.12);
+  --primary:    var(--cream);
+  --secondary:  var(--navy-500);
+  --accent:     var(--cream);
+  --text:       var(--cream);
+  --muted:      rgba(244, 238, 223, 0.62);
+  --ink:        var(--navy-900);   /* نص فوق الكريمي */
+  --success:    #5BD6A0;
+  --warning:    #E6B566;
+  --danger:     #E2796B;
+  --glow:       rgba(42, 71, 192, 0.45);
+  --gradient-start: var(--navy-800);
+  --gradient-end:   var(--navy-600);
+  --light-bg:   var(--cream);
+
+  /* ===== Fonts ===== */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-ar:      'Falasteen', 'Cairo', 'Tajawal', sans-serif;
+  --font:         var(--font-body);
+
+  /* ===== Spacing scale (بس دول) ===== */
+  --s-4: 4px;   --s-8: 8px;   --s-12: 12px; --s-16: 16px; --s-20: 20px;
+  --s-24: 24px; --s-32: 32px; --s-40: 40px; --s-48: 48px; --s-64: 64px;
+  --s-80: 80px; --s-96: 96px; --s-120: 120px; --s-160: 160px;
+
+  /* ===== Radius ===== */
+  --r-sm: 10px; --r-md: 18px; --r-lg: 28px; --r-hero: 36px; --r-pill: 999px;
+
+  /* ===== Layout ===== */
+  --max: 1440px; --content: 1280px; --reading: 720px;
+  --pad: 32px; --nav-h: 84px;
+
+  /* ===== Motion ===== */
+  --t-fast: .25s; --t-normal: .45s; --t-slow: .8s; --t-premium: 1.2s;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  --ease-soft: cubic-bezier(.4, 0, .2, 1);
+}
+
+/* العربي: خط فلسطين (يحتاج ملف الخط لاحقاً) + اتجاه */
+html[lang="ar"] { --font: var(--font-ar); --font-display: var(--font-ar); }
+
+/* خط فلسطين — لما تحط الملف في assets/fonts/ هيشتغل تلقائياً، لحد كده fallback */
+@font-face {
+  font-family: 'Falasteen';
+  src: url('../assets/fonts/Falasteen.woff2') format('woff2'),
+       url('../assets/fonts/Falasteen.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* الأقسام الفاتحة (كريمي) */
+.theme-light {
+  --background: var(--cream);
+  --surface: #FBF7EC;
+  --text: var(--navy-900);
+  --muted: rgba(10, 19, 48, 0.62);
+  --border: rgba(10, 19, 48, 0.12);
+  --card: rgba(10, 19, 48, 0.03);
+  --primary: var(--navy-800);
+}

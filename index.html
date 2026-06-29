@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0A1330" />
+  <title>ELGOLD STUDIO — Premium Digital Products</title>
+  <meta name="description" content="ELGOLD STUDIO designs and builds premium digital products for brands that refuse to look ordinary." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230A1330'/><text x='50' y='70' font-size='58' text-anchor='middle' fill='%23F4EEDF' font-family='Georgia,serif' font-weight='bold'>E</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- اللودر -->
+  <div id="loader" class="loader">
+    <div class="loader__logo">
+      <span class="loader__g">G</span>
+      <span class="loader__name">ELGOLD <em>STUDIO</em></span>
+    </div>
+    <div class="loader__bar"><i></i></div>
+  </div>
+
+  <!-- الخلفية الحيّة -->
+  <div class="bg" aria-hidden="true">
+    <div class="bg__aurora"></div>
+    <div class="bg__grid"></div>
+    <div class="bg__blob bg__blob--1"></div>
+    <div class="bg__blob bg__blob--2"></div>
+    <div class="bg__noise"></div>
+  </div>
+  <div class="spotlight" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- النافبار -->
+  <nav id="nav" class="nav">
+    <div class="nav__inner">
+      <a href="#hero" class="brand magnetic"><b>ELGOLD</b> <span>STUDIO</span></a>
+      <ul class="nav__links">
+        <li><a href="#work" data-i18n="nav.work">Work</a></li>
+        <li><a href="#services" data-i18n="nav.services">Services</a></li>
+        <li><a href="#process" data-i18n="nav.process">Process</a></li>
+        <li><a href="#about" data-i18n="nav.about">Studio</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="nav__right">
+        <button id="lang" class="lang magnetic" data-i18n="lang">ع</button>
+        <a href="#contact" class="btn btn--primary magnetic" data-i18n="nav.cta">Start a project</a>
+        <button id="burger" class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- قائمة الموبايل -->
+  <div id="menu" class="menu">
+    <a href="#work" data-i18n="nav.work">Work</a>
+    <a href="#services" data-i18n="nav.services">Services</a>
+    <a href="#process" data-i18n="nav.process">Process</a>
+    <a href="#about" data-i18n="nav.about">Studio</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+  </div>
+
+  <!-- الصفحات (Cover scroll — كل صفحة تغطّي اللي قبلها) -->
+  <main class="stack">
+
+  <!-- صفحة 1: الهيرو -->
+  <section id="hero" class="page hero">
+    <div class="container hero__grid">
+      <div class="hero__text">
+        <div class="hero__eyebrow eyebrow" data-i18n="hero.eyebrow">ELGOLD STUDIO — Premium digital products</div>
+        <h1 class="hero__title">
+          <span class="line" data-i18n="hero.t1">We build digital</span>
+          <span class="line" data-i18n="hero.t2">products that feel</span>
+          <span class="line"><em class="hl" data-i18n="hero.t3">like the future.</em></span>
+        </h1>
+        <p class="hero__sub" data-i18n="hero.sub">Design and engineering for brands that refuse to look ordinary.</p>
+        <div class="hero__cta">
+          <a href="#contact" class="btn btn--primary btn--lg magnetic" data-i18n="hero.cta1">Start a project</a>
+          <a href="#work" class="btn btn--ghost btn--lg magnetic" data-i18n="hero.cta2">View our work</a>
+        </div>
+        <div class="hero__stats">
+          <div class="stat"><div class="n" data-i18n="hero.s1n">18+</div><div class="l" data-i18n="hero.s1l">Projects delivered</div></div>
+          <div class="stat"><div class="n" data-i18n="hero.s2n">15+</div><div class="l" data-i18n="hero.s2l">Happy clients</div></div>
+          <div class="stat"><div class="n" data-i18n="hero.s3n">4+</div><div class="l" data-i18n="hero.s3l">Years experience</div></div>
+        </div>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="glass-card">
+          <div class="glass-card__grid"></div>
+          <div class="orb-ring"></div>
+          <div class="orb-ring orb-ring--2"></div>
+          <div class="orb"></div>
+          <span class="spark spark--1"></span>
+          <span class="spark spark--2"></span>
+          <span class="spark spark--3"></span>
+          <span class="spark spark--4"></span>
+        </div>
+        <div class="chip chip--1"><i></i><span data-i18n="chip.1">Available for work</span></div>
+        <div class="chip chip--2"><span data-i18n="chip.2">Design</span></div>
+        <div class="chip chip--3"><span data-i18n="chip.3">Engineering</span></div>
+      </div>
+    </div>
+
+    <div class="scroll-hint"><span data-i18n="hero.scroll">Scroll</span><i></i></div>
+  </section>
+
+  <!-- صفحة 2: Trusted By (تزحف فوق الهيرو وتغطّيها) -->
+  <section id="trusted" class="page trusted theme-light">
+    <div class="container trusted__inner">
+      <span class="eyebrow" data-reveal data-i18n="trusted.eyebrow">Trusted by</span>
+      <h2 class="trusted__title">
+        <span class="line" data-reveal data-i18n="trusted.t1">Ambitious teams</span>
+        <span class="line" data-reveal data-i18n="trusted.t2">build with ELGOLD.</span>
+      </h2>
+      <p class="trusted__sub" data-reveal data-i18n="trusted.sub">Brands and founders who wanted more than ordinary.</p>
+      <div class="marquee" data-reveal aria-hidden="true">
+        <div class="marquee__row">
+          <span>AI Agency OS</span><b>•</b><span>Anamil Yasin</span><b>•</b><span>Nexa Digital</span><b>•</b><span>Modern Engineering</span><b>•</b><span>Khamsat</span><b>•</b>
+          <span>AI Agency OS</span><b>•</b><span>Anamil Yasin</span><b>•</b><span>Nexa Digital</span><b>•</b><span>Modern Engineering</span><b>•</b><span>Khamsat</span><b>•</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- صفحة 3: Services (تغطّي Trusted) -->
+  <section id="services" class="page services">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow" data-reveal data-i18n="services.eyebrow">What we do</span>
+        <h2 class="sec-title" data-reveal data-i18n="services.title">Services built for premium brands</h2>
+        <p class="sec-sub" data-reveal data-i18n="services.sub">Everything your product needs — from identity to launch.</p>
+      </div>
+      <div class="cards">
+        <article class="card tilt" data-reveal data-cursor>
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M12 3l2.4 6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4z"/></svg></div>
+          <h3 data-i18n="services.s1t">Brand Identity</h3>
+          <p data-i18n="services.s1d">Logos, visual systems and brand guidelines.</p>
+        </article>
+        <article class="card tilt" data-reveal data-cursor>
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>
+          <h3 data-i18n="services.s2t">Web Development</h3>
+          <p data-i18n="services.s2d">Fast, secure, SEO‑ready sites on a modern stack.</p>
+        </article>
+        <article class="card tilt" data-reveal data-cursor>
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/></svg></div>
+          <h3 data-i18n="services.s3t">SaaS Development</h3>
+          <p data-i18n="services.s3d">Multi‑tenant SaaS platforms &amp; dashboards.</p>
+        </article>
+        <article class="card tilt" data-reveal data-cursor>
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="4" width="10" height="10" rx="2"/><rect x="10" y="10" width="10" height="10" rx="2"/></svg></div>
+          <h3 data-i18n="services.s4t">UI / UX Design</h3>
+          <p data-i18n="services.s4d">Interfaces that blend beauty with conversion.</p>
+        </article>
+        <article class="card tilt" data-reveal data-cursor>
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10M7 12h6"/><path d="M21 12a9 9 0 1 1-3.5-7.1L21 5"/></svg></div>
+          <h3 data-i18n="services.s5t">Social Media Design</h3>
+          <p data-i18n="services.s5d">Marketing visuals that grow your brand.</p>
+        </article>
+        <article class="card tilt" data-reveal data-cursor>
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+          <h3 data-i18n="services.s6t">CRM Systems</h3>
+          <p data-i18n="services.s6d">Custom CRM &amp; systems that automate work.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- صفحة 4: Featured Projects (تغطّي Services) -->
+  <section id="work" class="page work theme-light">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow" data-reveal data-i18n="work.eyebrow">Selected work</span>
+        <h2 class="sec-title" data-reveal data-i18n="work.title">Featured projects</h2>
+        <p class="sec-sub" data-reveal data-i18n="work.sub">A few products we designed and engineered.</p>
+      </div>
+      <div class="work-grid">
+        <article class="work-card" data-reveal data-cursor>
+          <a class="work-card__link" href="https://ai-agency-os-one.vercel.app" target="_blank" rel="noopener" data-project="aios" aria-label="AI Agency OS — view project"></a>
+          <div class="work-card__media work-card__media--1">
+            <img class="work-card__img" src="assets/work/aios-2.jpg" alt="AI Agency OS" loading="lazy">
+            <span class="work-card__tag" data-i18n="work.p1tag">Multi‑tenant SaaS</span>
+            <span class="work-card__view" data-i18n="work.view">View project →</span>
+          </div>
+          <div class="work-card__body">
+            <h3 data-i18n="work.p1t">AI Agency OS</h3>
+            <p data-i18n="work.p1d">SaaS for agencies — clients, projects, invoicing & AI.</p>
+            <div class="work-card__tags"><span>SaaS</span><span>Next.js</span><span>Realtime</span></div>
+          </div>
+        </article>
+        <article class="work-card" data-reveal data-cursor>
+          <a class="work-card__link" href="https://yasin-app.vercel.app" target="_blank" rel="noopener" data-project="yasin" aria-label="Anamil Yasin — view project"></a>
+          <div class="work-card__media work-card__media--2">
+            <img class="work-card__img" src="assets/work/yasin-1.jpg" alt="Anamil Yasin" loading="lazy">
+            <span class="work-card__tag" data-i18n="work.p2tag">Live store</span>
+            <span class="work-card__view" data-i18n="work.view">View project →</span>
+          </div>
+          <div class="work-card__body">
+            <h3 data-i18n="work.p2t">Anamil Yasin</h3>
+            <p data-i18n="work.p2d">Premium handcrafted store with a full dashboard.</p>
+            <div class="work-card__tags"><span>E‑commerce</span><span>Dashboard</span></div>
+          </div>
+        </article>
+        <article class="work-card" data-reveal data-cursor>
+          <a class="work-card__link" href="https://nexa-digital.vercel.app" target="_blank" rel="noopener" data-project="nexa" aria-label="Nexa Digital — view project"></a>
+          <div class="work-card__media work-card__media--3">
+            <img class="work-card__img" src="assets/work/nexa-1.jpg" alt="Nexa Digital" loading="lazy">
+            <span class="work-card__tag" data-i18n="work.p3tag">Live site</span>
+            <span class="work-card__view" data-i18n="work.view">View project →</span>
+          </div>
+          <div class="work-card__body">
+            <h3 data-i18n="work.p3t">Nexa Digital</h3>
+            <p data-i18n="work.p3d">Agency site with smooth motion & social proof.</p>
+            <div class="work-card__tags"><span>Business</span><span>Motion</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- صفحة 5: Workflow (تغطّي Projects) -->
+  <section id="process" class="page process">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow" data-reveal data-i18n="process.eyebrow">How we work</span>
+        <h2 class="sec-title" data-reveal data-i18n="process.title">A clear path from idea to launch</h2>
+        <p class="sec-sub" data-reveal data-i18n="process.sub">A calm, proven process — no chaos, no surprises.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline__line"><span class="timeline__fill"></span></div>
+        <div class="step" data-reveal>
+          <div class="step__node">01</div>
+          <div class="step__body"><h3 data-i18n="process.s1t">Discover</h3><p data-i18n="process.s1d">We learn your goals, users and brand.</p></div>
+        </div>
+        <div class="step" data-reveal>
+          <div class="step__node">02</div>
+          <div class="step__body"><h3 data-i18n="process.s2t">Plan</h3><p data-i18n="process.s2d">Scope, timeline and a clear roadmap.</p></div>
+        </div>
+        <div class="step" data-reveal>
+          <div class="step__node">03</div>
+          <div class="step__body"><h3 data-i18n="process.s3t">Design</h3><p data-i18n="process.s3d">Premium visuals and interface design.</p></div>
+        </div>
+        <div class="step" data-reveal>
+          <div class="step__node">04</div>
+          <div class="step__body"><h3 data-i18n="process.s4t">Develop</h3><p data-i18n="process.s4d">Fast, clean engineering and testing.</p></div>
+        </div>
+        <div class="step" data-reveal>
+          <div class="step__node">05</div>
+          <div class="step__body"><h3 data-i18n="process.s5t">Launch</h3><p data-i18n="process.s5d">We ship — and stay for support.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- صفحة 6: Tech Stack (تغطّي Workflow) -->
+  <section id="stack" class="page techstack theme-light">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow" data-reveal data-i18n="stack.eyebrow">Our stack</span>
+        <h2 class="sec-title" data-reveal data-i18n="stack.title">Tools we craft with</h2>
+        <p class="sec-sub" data-reveal data-i18n="stack.sub">A modern toolkit for design and engineering.</p>
+      </div>
+    </div>
+    <div class="tech-rows" data-reveal>
+      <div class="tech-row">
+        <div class="tech-track">
+          <span class="tech-badge"><i>Fg</i>Figma</span><span class="tech-badge"><i>Ps</i>Photoshop</span><span class="tech-badge"><i>Ai</i>Illustrator</span><span class="tech-badge"><i>Ae</i>After Effects</span><span class="tech-badge"><i>Bl</i>Blender</span><span class="tech-badge"><i>Fr</i>Framer</span><span class="tech-badge"><i>Wf</i>Webflow</span><span class="tech-badge"><i>Sp</i>Spline</span>
+          <span class="tech-badge"><i>Fg</i>Figma</span><span class="tech-badge"><i>Ps</i>Photoshop</span><span class="tech-badge"><i>Ai</i>Illustrator</span><span class="tech-badge"><i>Ae</i>After Effects</span><span class="tech-badge"><i>Bl</i>Blender</span><span class="tech-badge"><i>Fr</i>Framer</span><span class="tech-badge"><i>Wf</i>Webflow</span><span class="tech-badge"><i>Sp</i>Spline</span>
+        </div>
+      </div>
+      <div class="tech-row tech-row--rev">
+        <div class="tech-track">
+          <span class="tech-badge"><i>Js</i>JavaScript</span><span class="tech-badge"><i>Ts</i>TypeScript</span><span class="tech-badge"><i>Re</i>React</span><span class="tech-badge"><i>Nx</i>Next.js</span><span class="tech-badge"><i>No</i>Node.js</span><span class="tech-badge"><i>Tw</i>Tailwind</span><span class="tech-badge"><i>Gs</i>GSAP</span><span class="tech-badge"><i>3d</i>Three.js</span>
+          <span class="tech-badge"><i>Js</i>JavaScript</span><span class="tech-badge"><i>Ts</i>TypeScript</span><span class="tech-badge"><i>Re</i>React</span><span class="tech-badge"><i>Nx</i>Next.js</span><span class="tech-badge"><i>No</i>Node.js</span><span class="tech-badge"><i>Tw</i>Tailwind</span><span class="tech-badge"><i>Gs</i>GSAP</span><span class="tech-badge"><i>3d</i>Three.js</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- صفحة 7: Why ELGOLD (تغطّي Tech Stack) -->
+  <section id="why" class="page why">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow" data-reveal data-i18n="why.eyebrow">Why ELGOLD</span>
+        <h2 class="sec-title" data-reveal data-i18n="why.title">Built different. Built to last.</h2>
+        <p class="sec-sub" data-reveal data-i18n="why.sub">A studio that treats your product like its own.</p>
+      </div>
+
+      <div class="stats-panel" data-reveal>
+        <div class="stats-row">
+          <div class="stat-big"><div class="num"><span class="count" data-to="18">0</span>+</div><div class="lbl" data-i18n="why.m1">Projects delivered</div></div>
+          <div class="stat-big"><div class="num"><span class="count" data-to="15">0</span>+</div><div class="lbl" data-i18n="why.m2">Happy clients</div></div>
+          <div class="stat-big"><div class="num"><span class="count" data-to="4">0</span>+</div><div class="lbl" data-i18n="why.m3">Years experience</div></div>
+          <div class="stat-big"><div class="num"><span class="count" data-to="198">0</span>+</div><div class="lbl" data-i18n="why.m4">Designs delivered</div></div>
+        </div>
+      </div>
+
+      <div class="why-cards">
+        <article class="card" data-reveal data-cursor>
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3 data-i18n="why.c1t">Designer + Developer in one</h3>
+          <p data-i18n="why.c1d">One mind for design and code — no gaps, no hand‑offs.</p>
+        </article>
+        <article class="card" data-reveal data-cursor>
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
+          <h3 data-i18n="why.c2t">Premium, never template</h3>
+          <p data-i18n="why.c2d">Every pixel and line crafted for your brand.</p>
+        </article>
+        <article class="card" data-reveal data-cursor>
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M12 3l8 4-8 4-8-4z"/><path d="M4 12l8 4 8-4"/></svg></div>
+          <h3 data-i18n="why.c3t">Built to scale</h3>
+          <p data-i18n="why.c3d">Clean, fast foundations that grow with you.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- صفحة: Studio / عن كريم (تغطّي Why) -->
+  <section id="about" class="page about theme-light">
+    <div class="container about__grid">
+      <div class="about__media" data-reveal>
+        <div class="about__photo"><img src="assets/founder.jpg" alt="Kareem Ragab — ELGOLD STUDIO" loading="lazy" width="840" height="840"></div>
+        <div class="about__chip"><span class="about__dot"></span><span data-i18n="about.badge">Founder · ELGOLD STUDIO</span></div>
+      </div>
+      <div class="about__content">
+        <span class="eyebrow" data-reveal data-i18n="about.eyebrow">The Studio</span>
+        <h2 class="sec-title about__title" data-reveal data-i18n="about.title">A personal studio led by Kareem Ragab</h2>
+        <p class="about__body" data-reveal data-i18n="about.body">I started in graphic design, then grew into building complete digital products. Today I help companies and startups turn their ideas into SaaS platforms, CRM systems and dashboards — high performance, clean code, and design that sells.</p>
+        <ul class="about__points">
+          <li data-reveal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="about.p1">Product thinking + a designer's eye + a developer's experience, in one person.</span></li>
+          <li data-reveal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="about.p2">Focused on conversion and performance — not just looks.</span></li>
+          <li data-reveal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="about.p3">Clear communication and delivery on the agreed deadline.</span></li>
+        </ul>
+        <a class="btn btn--primary magnetic" href="#contact" data-reveal data-i18n="about.cta">Tell me about your project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- صفحة 8: Testimonials (تغطّي Studio) -->
+  <section id="testimonials" class="page testi theme-light">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow" data-reveal data-i18n="testi.eyebrow">Testimonials</span>
+        <h2 class="sec-title" data-reveal data-i18n="testi.title">What clients say</h2>
+        <p class="sec-sub" data-reveal data-i18n="testi.sub">Real words from people we built with.</p>
+      </div>
+    </div>
+    <div class="testi-wrap" data-reveal>
+      <div class="testi-track">
+        <figure class="testi-card"><div class="testi-stars" aria-hidden="true">★★★★★</div><blockquote data-i18n="testi.q1">“Professional level, quick to understand, respectful — and delivered the same day.”</blockquote><figcaption class="testi-author"><span class="testi-avatar">AM</span><span class="testi-meta"><b>Ahmed M.</b><em>Khamsat</em></span></figcaption></figure>
+        <figure class="testi-card"><div class="testi-stars" aria-hidden="true">★★★★★</div><blockquote data-i18n="testi.q2">“Great work and fast communication — thank you for the service.”</blockquote><figcaption class="testi-author"><span class="testi-avatar">GH</span><span class="testi-meta"><b>Givara H.</b><em>Khamsat</em></span></figcaption></figure>
+        <figure class="testi-card"><div class="testi-stars" aria-hidden="true">★★★★★</div><blockquote data-i18n="testi.q3">“Kareem is a respectful, creative and hardworking professional.”</blockquote><figcaption class="testi-author"><span class="testi-avatar">ME</span><span class="testi-meta"><b>Modern Engineering</b><em>Khamsat</em></span></figcaption></figure>
+        <figure class="testi-card"><div class="testi-stars" aria-hidden="true">★★★★★</div><blockquote data-i18n="testi.q4">“Excellent service and classy dealing — fast revisions and very professional work.”</blockquote><figcaption class="testi-author"><span class="testi-avatar">SA</span><span class="testi-meta"><b>Saleh A.</b><em>Khamsat</em></span></figcaption></figure>
+        <figure class="testi-card"><div class="testi-stars" aria-hidden="true">★★★★★</div><blockquote data-i18n="testi.q5">“A respectful, patient and fast person. Worth working with again.”</blockquote><figcaption class="testi-author"><span class="testi-avatar">AA</span><span class="testi-meta"><b>Afnan A.</b><em>Khamsat</em></span></figcaption></figure>
+        <figure class="testi-card" aria-hidden="true"><div class="testi-stars">★★★★★</div><blockquote data-i18n="testi.q1">“Professional level, quick to understand, respectful — and delivered the same day.”</blockquote><figcaption class="testi-author"><span class="testi-avatar">AM</span><span class="testi-meta"><b>Ahmed M.</b><em>Khamsat</em></span></figcaption></figure>
+        <figure class="testi-card" aria-hidden="true"><div class="testi-stars">★★★★★</div><blockquote data-i18n="testi.q2">“Great work and fast communication — thank you for the service.”</blockquote><figcaption class="testi-author"><span class="testi-avatar">GH</span><span class="testi-meta"><b>Givara H.</b><em>Khamsat</em></span></figcaption></figure>
+        <figure class="testi-card" aria-hidden="true"><div class="testi-stars">★★★★★</div><blockquote data-i18n="testi.q3">“Kareem is a respectful, creative and hardworking professional.”</blockquote><figcaption class="testi-author"><span class="testi-avatar">ME</span><span class="testi-meta"><b>Modern Engineering</b><em>Khamsat</em></span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- صفحة 9: FAQ (تغطّي Testimonials) -->
+  <section id="faq" class="page faq">
+    <div class="container">
+      <div class="sec-head">
+        <span class="eyebrow" data-reveal data-i18n="faq.eyebrow">FAQ</span>
+        <h2 class="sec-title" data-reveal data-i18n="faq.title">Questions, answered</h2>
+        <p class="sec-sub" data-reveal data-i18n="faq.sub">Everything you might want to know.</p>
+      </div>
+      <div class="faq-list" data-reveal>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="faq.q1">How much does a project cost?</span><span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><p data-i18n="faq.a1">It depends on scope. We give a clear quote after a short call — no surprises.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="faq.q2">How long does it take?</span><span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><p data-i18n="faq.a2">Most projects ship in 2–6 weeks depending on size.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="faq.q3">Do you work with international clients?</span><span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><p data-i18n="faq.a3">Yes — in Arabic or English, with easy online payments.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="faq.q4">Do you offer support after launch?</span><span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><p data-i18n="faq.a4">Absolutely. We stay for updates, fixes and growth.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="faq.q5">How do we start?</span><span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><p data-i18n="faq.a5">Send us a message — we reply fast and book a quick call.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- صفحة 10: Final CTA (تغطّي FAQ) -->
+  <section id="cta" class="page cta">
+    <div class="cta__glow" aria-hidden="true"></div>
+    <div class="container cta__inner">
+      <span class="pill" data-reveal data-i18n="cta.pill">Let’s talk</span>
+      <h2 class="cta__title">
+        <span class="line" data-reveal data-i18n="cta.t1">Ready to build</span>
+        <span class="line accent2-text" data-reveal data-i18n="cta.t2">something premium?</span>
+      </h2>
+      <p class="cta__sub" data-reveal data-i18n="cta.sub">Tell us about your project — we reply within 24 hours.</p>
+      <div class="cta__btns" data-reveal>
+        <a href="#contact" class="btn btn--primary btn--lg magnetic" data-i18n="cta.btn1">Start a project</a>
+        <a href="#contact" class="btn btn--ghost btn--lg magnetic" data-i18n="cta.btn2">Book a call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- صفحة 11: Contact (تغطّي Final CTA) -->
+  <section id="contact" class="page contact theme-light">
+    <div class="container contact__grid">
+      <div class="contact__intro">
+        <span class="eyebrow" data-reveal data-i18n="contact.eyebrow">Contact</span>
+        <h2 class="sec-title" data-reveal data-i18n="contact.title">Let’s start your project</h2>
+        <p class="sec-sub" data-reveal data-i18n="contact.sub">Tell us what you need and your budget — we reply within 24 hours.</p>
+        <div class="contact__methods" data-reveal>
+          <a href="https://wa.me/201069082986" target="_blank" rel="noopener" class="contact__method">
+            <span class="cm-ico">WA</span><span><b data-i18n="contact.wa">WhatsApp</b><em dir="ltr">+20 106 908 2986</em></span>
+          </a>
+          <a href="mailto:ragabk452@gmail.com" class="contact__method">
+            <span class="cm-ico">@</span><span><b data-i18n="contact.email">Email</b><em dir="ltr">ragabk452@gmail.com</em></span>
+          </a>
+        </div>
+        <div class="contact__pay" data-reveal>
+          <span data-i18n="contact.pay">Pay securely:</span>
+          <span class="pay-b">PayPal</span><span class="pay-b">InstaPay</span><span class="pay-b">Visa</span>
+        </div>
+      </div>
+
+      <form class="contact__form" id="order-form" data-reveal novalidate>
+        <div class="field-row">
+          <input type="text" name="name" required data-i18n-ph="contact.ph_name" placeholder="Your name" />
+          <input type="email" name="email" required data-i18n-ph="contact.ph_email" placeholder="Your email" />
+        </div>
+        <div class="chips" role="group">
+          <button type="button" class="svc-chip is-active" data-i18n="contact.s1">Brand identity</button>
+          <button type="button" class="svc-chip" data-i18n="contact.s2">Website</button>
+          <button type="button" class="svc-chip" data-i18n="contact.s3">Web app</button>
+          <button type="button" class="svc-chip" data-i18n="contact.s4">Mobile app</button>
+          <button type="button" class="svc-chip" data-i18n="contact.s5">Other</button>
+        </div>
+        <div class="budget">
+          <div class="budget__head">
+            <span data-i18n="contact.budget">Your budget</span>
+            <span class="budget__val"><b id="budget-val">500</b> <em id="budget-cur">USD</em></span>
+          </div>
+          <input type="range" id="budget-range" min="50" max="5000" step="50" value="500" />
+          <div class="budget__cur">
+            <button type="button" class="cur-btn is-active" data-cur="USD">USD</button>
+            <button type="button" class="cur-btn" data-cur="EGP">EGP</button>
+          </div>
+        </div>
+        <textarea name="brief" rows="3" data-i18n-ph="contact.ph_brief" placeholder="Describe your project…"></textarea>
+        <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button type="submit" class="btn btn--primary btn--block magnetic" data-i18n="contact.submit">Send request</button>
+        <div class="pay-now">
+          <span class="pay-now__or" data-i18n="contact.payNow">— or pay directly —</span>
+          <button type="button" id="pay-paypal" class="btn pay-btn btn--block">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/></svg>
+            <span data-i18n="contact.paypal">Pay with PayPal / Card</span>
+          </button>
+          <div class="pay-now__instapay">
+            <span data-i18n="contact.instapayLbl">InstaPay (Egypt)</span>
+            <b dir="ltr">01156963207</b>
+            <button type="button" class="copy-btn" id="copy-instapay" data-i18n="contact.copy">Copy</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  </main>
+  <!-- /stack -->
+
+  <!-- الفوتر -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="#hero" class="brand"><b>ELGOLD</b> <span>STUDIO</span></a>
+        <p data-i18n="footer.tag">Digital products that sell — SaaS, CRM systems & dashboards, designed and engineered by Kareem Ragab.</p>
+        <div class="socials"><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="Behance">Be</a><a href="#" aria-label="X">X</a><a href="https://wa.me/201069082986" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a></div>
+      </div>
+      <div class="footer__col">
+        <h4 data-i18n="footer.links">Navigate</h4>
+        <a href="#work" data-i18n="nav.work">Work</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#process" data-i18n="nav.process">Process</a>
+        <a href="#faq" data-i18n="footer.faq">FAQ</a>
+      </div>
+      <div class="footer__col">
+        <h4 data-i18n="footer.services">Services</h4>
+        <a href="#contact" data-i18n="services.s1t">Brand Identity</a>
+        <a href="#contact" data-i18n="services.s2t">Web Design</a>
+        <a href="#contact" data-i18n="services.s3t">Development</a>
+        <a href="#contact" data-i18n="services.s5t">Mobile Apps</a>
+      </div>
+      <div class="footer__col footer__contact">
+        <h4 data-i18n="footer.contact">Contact</h4>
+        <a href="https://wa.me/201069082986" target="_blank" rel="noopener" dir="ltr">+20 106 908 2986</a>
+        <a href="mailto:ragabk452@gmail.com" dir="ltr">ragabk452@gmail.com</a>
+        <form class="news" id="news-form"><input type="email" required data-i18n-ph="footer.news_ph" placeholder="Your email" /><button type="submit" aria-label="subscribe">→</button></form>
+      </div>
+    </div>
+    <div class="footer__bottom container">
+      <p>© <span id="year">2026</span> ELGOLD STUDIO — <span data-i18n="footer.rights">All rights reserved</span></p>
+      <div class="pay"><span class="pay-b">VISA</span><span class="pay-b">Mastercard</span><span class="pay-b">PayPal</span><span class="pay-b">InstaPay</span></div>
+    </div>
+  </footer>
+
+  <!-- زرار واتساب عائم -->
+  <a href="https://wa.me/201069082986" target="_blank" rel="noopener" class="wa-fab" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L.5 31.5l8-2.1c2.2 1.2 4.8 1.9 7.5 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28.2c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.8 1.2 1.3-4.6-.3-.5c-1.3-2-1.9-4.3-1.9-6.7C2.4 8.5 8.5 2.4 16 2.4S29.6 8.5 29.6 16 23.5 28.7 16 28.7zm7.4-9.5c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.7.2-.2.2-.4.4-.7.1-.3 0-.5 0-.7-.1-.2-.9-2.2-1.3-3-.3-.7-.6-.6-.9-.6h-.7c-.2 0-.7.1-1 .5-.3.4-1.3 1.3-1.3 3.2s1.4 3.7 1.5 3.9c.2.2 2.7 4.2 6.6 5.9.9.4 1.6.6 2.2.8.9.3 1.7.2 2.4.1.7-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.1-.3-.2-.7-.4z"/></svg>
+  </a>
+
+  <!-- نافذة تفاصيل المشروع (Case Study) — يملؤها main.js -->
+  <div id="workModal" class="wmodal" aria-hidden="true" role="dialog" aria-modal="true"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
