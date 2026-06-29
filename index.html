@@ -10,7 +10,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/style.css" />
@@ -76,42 +76,26 @@
   <!-- الصفحات (Cover scroll — كل صفحة تغطّي اللي قبلها) -->
   <main class="stack">
 
-  <!-- صفحة 1: الهيرو -->
+  <!-- صفحة 1: الهيرو — اسم مركزي + خلفية معرض أعمال مموّهة -->
   <section id="hero" class="page hero">
-    <div class="container hero__grid">
-      <div class="hero__text">
-        <div class="hero__eyebrow eyebrow" data-i18n="hero.eyebrow">ELGOLD STUDIO — Premium digital products</div>
-        <h1 class="hero__title">
-          <span class="line" data-i18n="hero.t1">We build digital</span>
-          <span class="line" data-i18n="hero.t2">products that feel</span>
-          <span class="line"><em class="hl" data-i18n="hero.t3">like the future.</em></span>
-        </h1>
-        <p class="hero__sub" data-i18n="hero.sub">Design and engineering for brands that refuse to look ordinary.</p>
-        <div class="hero__cta">
-          <a href="#contact" class="btn btn--primary btn--lg magnetic" data-i18n="hero.cta1">Start a project</a>
-          <a href="#work" class="btn btn--ghost btn--lg magnetic" data-i18n="hero.cta2">View our work</a>
-        </div>
-        <div class="hero__stats">
-          <div class="stat"><div class="n" data-i18n="hero.s1n">18+</div><div class="l" data-i18n="hero.s1l">Projects delivered</div></div>
-          <div class="stat"><div class="n" data-i18n="hero.s2n">15+</div><div class="l" data-i18n="hero.s2l">Happy clients</div></div>
-          <div class="stat"><div class="n" data-i18n="hero.s3n">4+</div><div class="l" data-i18n="hero.s3l">Years experience</div></div>
-        </div>
-      </div>
+    <div class="hero__gallery" aria-hidden="true">
+      <img src="assets/work/t/aios-2.jpg" alt=""><img src="assets/work/t/yasin-1.jpg" alt=""><img src="assets/work/t/nexa-1.jpg" alt=""><img src="assets/work/t/aios-1.jpg" alt="">
+      <img src="assets/work/t/yasin-2.jpg" alt=""><img src="assets/work/t/nexa-2.jpg" alt=""><img src="assets/work/t/aios-3.jpg" alt=""><img src="assets/work/t/yasin-3.jpg" alt="">
+      <img src="assets/work/t/nexa-3.jpg" alt=""><img src="assets/work/t/aios-2.jpg" alt=""><img src="assets/work/t/yasin-1.jpg" alt=""><img src="assets/work/t/nexa-2.jpg" alt="">
+      <img src="assets/work/t/aios-1.jpg" alt=""><img src="assets/work/t/yasin-2.jpg" alt=""><img src="assets/work/t/nexa-1.jpg" alt=""><img src="assets/work/t/aios-3.jpg" alt="">
+    </div>
+    <div class="hero__veil" aria-hidden="true"></div>
 
-      <div class="hero__visual" aria-hidden="true">
-        <div class="glass-card">
-          <div class="glass-card__grid"></div>
-          <div class="orb-ring"></div>
-          <div class="orb-ring orb-ring--2"></div>
-          <div class="orb"></div>
-          <span class="spark spark--1"></span>
-          <span class="spark spark--2"></span>
-          <span class="spark spark--3"></span>
-          <span class="spark spark--4"></span>
-        </div>
-        <div class="chip chip--1"><i></i><span data-i18n="chip.1">Available for work</span></div>
-        <div class="chip chip--2"><span data-i18n="chip.2">Design</span></div>
-        <div class="chip chip--3"><span data-i18n="chip.3">Engineering</span></div>
+    <div class="hero__inner">
+      <h1 class="hero__lockup">
+        <span class="hero__name-ar">كريم</span>
+        <span class="hero__name-en">KAREEM</span>
+      </h1>
+      <span class="hero__divider" aria-hidden="true"></span>
+      <p class="hero__role" data-i18n="hero.role">Graphic Designer · Web Developer</p>
+      <div class="hero__cta">
+        <a href="#contact" class="btn btn--primary btn--lg magnetic" data-i18n="hero.cta1">Start a project</a>
+        <a href="#work" class="btn btn--ghost btn--lg magnetic" data-i18n="hero.cta2">View work</a>
       </div>
     </div>
 

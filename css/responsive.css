@@ -89,6 +89,7 @@
   .bg__noise { display: none; }
   .cta__glow { animation: none; }
   .glass-card::after { animation: none; }            /* conic-gradient بيعمل repaint كل فريم */
+  .hero__gallery { filter: blur(20px); gap: 12px; }  /* blur أخف على اللمس */
   .orb-ring, .orb-ring--2 { animation: none; }
 
   /* شيل backdrop-filter من العناصر المتكررة (أكبر مكسب أداء على الموبايل) */

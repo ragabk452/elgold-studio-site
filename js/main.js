@@ -20,7 +20,8 @@
       'hero.eyebrow': 'ELGOLD STUDIO — Premium digital products',
       'hero.t1': 'We build digital', 'hero.t2': 'products that feel', 'hero.t3': 'like the future.',
       'hero.sub': 'Design and engineering for brands that refuse to look ordinary.',
-      'hero.cta1': 'Start a project', 'hero.cta2': 'View our work',
+      'hero.cta1': 'Start a project', 'hero.cta2': 'View work',
+      'hero.role': 'Graphic Designer · Web Developer',
       'hero.s1n': '18+', 'hero.s1l': 'Projects delivered',
       'hero.s2n': '15+', 'hero.s2l': 'Happy clients',
       'hero.s3n': '4+', 'hero.s3l': 'Years experience',
@@ -95,7 +96,8 @@
       'hero.eyebrow': 'إلجولد ستوديو — منتجات رقمية premium',
       'hero.t1': 'بنصنع منتجات', 'hero.t2': 'رقمية بإحساس', 'hero.t3': 'المستقبل.',
       'hero.sub': 'تصميم وبرمجة للعلامات اللي رافضة تبقى عادية.',
-      'hero.cta1': 'ابدأ مشروعك', 'hero.cta2': 'شوف أعمالنا',
+      'hero.cta1': 'ابدأ مشروعك', 'hero.cta2': 'شوف الأعمال',
+      'hero.role': 'مصمم جرافيك · مطوّر ويب',
       'hero.s1n': '+18', 'hero.s1l': 'مشروع منجز',
       'hero.s2n': '+15', 'hero.s2l': 'عميل سعيد',
       'hero.s3n': '+4', 'hero.s3l': 'سنين خبرة',
@@ -182,12 +184,10 @@
     var loader = document.getElementById('loader');
     if (hasGsap && !reduce) {
       // نخفي عناصر الهيرو في حالة البداية لحد ما شاشة الاسم تتقلب وتكشفه (نمنع الوميض)
-      gsap.set('.hero__eyebrow', { opacity: 0, y: 20 });
-      gsap.set('.hero__title .line', { opacity: 0, yPercent: 110 });
-      gsap.set('.hero__sub', { opacity: 0, y: 20 });
-      gsap.set('.hero__cta .btn', { opacity: 0, y: 20 });
-      gsap.set('.hero__stats .stat', { opacity: 0, y: 16 });
-      gsap.set('.hero__visual', { opacity: 0, scale: .92 });
+      gsap.set('.hero__lockup', { opacity: 0, y: 30 });
+      gsap.set('.hero__divider', { opacity: 0, scaleX: 0 });
+      gsap.set('.hero__role', { opacity: 0, y: 14 });
+      gsap.set('.hero__cta .btn', { opacity: 0, y: 18 });
       var nameEl = document.querySelector('.loader__name');
       var travel = nameEl ? nameEl.offsetWidth + 18 : 240;   // الـ G يبدأ من اليمين ويكنس للشمال
       gsap.set('.loader__name', { clipPath: 'inset(0 0 0 100%)' });    // مخفي، يتكشف يمين←يسار مع كنس G
@@ -201,19 +201,19 @@
         // بعد ما الاسم يظهر بثانية، شاشة الاسم تتقلب لفوق وتكشف الهيرو (قلب صفحة كاملة)
         .to(loader, { yPercent: -100, duration: 1.0, ease: 'power4.inOut', onComplete: function () { if (loader) loader.style.display = 'none'; } }, '+=1')
         .add(heroReveal, '-=.45');
-    } else if (loader) { loader.style.display = 'none'; }
+    } else if (loader) { loader.style.display = 'none'; heroReveal(); }
     initScroll();
   });
 
   function heroReveal() {
+    var hero = document.getElementById('hero');
+    if (hero) hero.classList.add('is-revealed');   // خلفية المعرض المموّهة تظهر
     if (!hasGsap || reduce) return;
     gsap.timeline()
-      .to('.hero__eyebrow', { y: 0, opacity: 1, duration: .6, ease: 'power3.out' })
-      .to('.hero__title .line', { yPercent: 0, opacity: 1, duration: .9, stagger: .12, ease: 'power4.out' }, '-=.3')
-      .to('.hero__sub', { y: 0, opacity: 1, duration: .7, ease: 'power3.out' }, '-=.5')
-      .to('.hero__cta .btn', { y: 0, opacity: 1, duration: .6, stagger: .12, ease: 'power3.out' }, '-=.4')
-      .to('.hero__stats .stat', { y: 0, opacity: 1, duration: .5, stagger: .1 }, '-=.3')
-      .to('.hero__visual', { opacity: 1, scale: 1, duration: 1.1, ease: 'power3.out' }, '-=1');
+      .to('.hero__lockup', { y: 0, opacity: 1, duration: 1.0, ease: 'power3.out' })
+      .to('.hero__divider', { scaleX: 1, opacity: 1, duration: .6, ease: 'power2.out' }, '-=.4')
+      .to('.hero__role', { y: 0, opacity: 1, duration: .6, ease: 'power3.out' }, '-=.3')
+      .to('.hero__cta .btn', { y: 0, opacity: 1, duration: .6, stagger: .12, ease: 'power3.out' }, '-=.3');
   }
 
   /* ---------- سكرول ناعم + reveals ---------- */
