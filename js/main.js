@@ -468,6 +468,20 @@
     });
   }
 
+  /* ---------- تفاعل الماوس مع اسم الهيرو (parallax خفيف) ---------- */
+  if (fine && !reduce) {
+    var heroSec = document.getElementById('hero');
+    var lockEl = document.querySelector('.hero__lockup');
+    if (heroSec && lockEl) {
+      heroSec.addEventListener('mousemove', function (e) {
+        var dx = (e.clientX / window.innerWidth - .5) * 18;
+        var dy = (e.clientY / window.innerHeight - .5) * 12;
+        lockEl.style.transform = 'translate(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px)';
+      });
+      heroSec.addEventListener('mouseleave', function () { lockEl.style.transform = ''; });
+    }
+  }
+
   /* ---------- FAQ accordion (واحد مفتوح بس) ---------- */
   var faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(function (item) {
