@@ -2,12 +2,16 @@
    ELGOLD STUDIO — Responsive
    ========================================================= */
 
-/* تابلت + موبايل (≤1024): تدفّق طبيعي بدل التغطية عشان كل المحتوى يظهر + سكرول طبيعي سلس */
+/* تابلت + موبايل (≤1024): تدفّق طبيعي (كل المحتوى ظاهر + سكرول سلس) + إحساس "قلب الصفحة":
+   كل قسم بحافة مدوّرة وظل وتداخل بسيط فيبان وهو بيغطّي اللي قبله — زي تكديس الصفحات. */
 @media (max-width: 1024px) {
-  .page { position: static; min-height: 0; }
-  .hero, .trusted, .services, .work, .process, .techstack, .why, .about, .testi, .faq, .cta, .contact {
-    border-radius: 0; box-shadow: none;
+  .page { position: relative; min-height: 0; }
+  .trusted, .services, .work, .process, .techstack, .why, .about, .testi, .faq, .cta, .contact {
+    border-radius: var(--r-lg) var(--r-lg) 0 0;
+    box-shadow: 0 -18px 44px -20px rgba(0,0,0,.45);
+    margin-top: -26px;
   }
+  .hero { border-radius: 0; box-shadow: none; margin-top: 0; }
   .hero__grid { grid-template-columns: 1fr; gap: var(--s-48); }
   .hero__visual { max-width: 460px; margin-inline: auto; order: -1; width: 100%; }
   .cards { grid-template-columns: repeat(2, 1fr); }
