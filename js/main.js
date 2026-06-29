@@ -229,16 +229,18 @@
       gsap.from(el, { y: 40, opacity: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%', once: true } });
     });
 
-    // كل صفحة تعتم وتصغّر شوية وهي بتتغطّى بالصفحة اللي بعدها (عمق)
-    var pages = gsap.utils.toArray('.page');
-    pages.forEach(function (pg, i) {
-      if (i < pages.length - 1) {
-        var inner = pg.querySelector('.container') || pg;
-        // تعتيم بالشفافية فقط (الشفافية تُركّب على GPU بلا إعادة رسم — بدل scale اللي كان بيعيد رسم المحتوى كل فريم ويسبّب تقطيع)
-        gsap.to(inner, { opacity: .5, ease: 'none',
-          scrollTrigger: { trigger: pages[i + 1], start: 'top bottom', end: 'top top', scrub: true } });
-      }
-    });
+    // تعتيم الصفحة وهي بتتغطّى (عمق) — للديسكتوب فقط.
+    // على الموبايل بنسيبه: القسم المغطّى مستخبي أصلاً، وإلغاؤه بيوفّر شغل كل لحظة سكرول = سلاسة أعلى.
+    if (fine) {
+      var pages = gsap.utils.toArray('.page');
+      pages.forEach(function (pg, i) {
+        if (i < pages.length - 1) {
+          var inner = pg.querySelector('.container') || pg;
+          gsap.to(inner, { opacity: .5, ease: 'none',
+            scrollTrigger: { trigger: pages[i + 1], start: 'top bottom', end: 'top top', scrub: true } });
+        }
+      });
+    }
 
     // خط التايم‑لاين يتعبّى مع السكرول
     if (document.querySelector('.timeline__fill')) {
@@ -299,9 +301,8 @@
       if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(1); }
       else if (e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); go(-1); }
     });
-    var ty = 0;
-    window.addEventListener('touchstart', function (e) { ty = e.touches[0].clientY; }, { passive: true });
-    window.addEventListener('touchend', function (e) { if (modalOpen) return; var dy = ty - e.changedTouches[0].clientY; if (Math.abs(dy) > 45) go(dy > 0 ? 1 : -1); }, { passive: true });
+    // ملاحظة: مفيش سنّاب باللمس عمداً — الموبايل بيستخدم السكرول الطبيعي (الهاردوير) عشان يبقى سلس بلا تعليق.
+    // السنّاب (العجلة/الكيبورد) للديسكتوب بس.
   }
 
   /* ---------- نافذة تفاصيل المشروع (Case Study) ---------- */
