@@ -38,7 +38,7 @@
   .nav.menu-open .burger span:nth-child(2) { opacity: 0; }
   .nav.menu-open .burger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-  .hero { padding-top: calc(var(--nav-h) + var(--s-40)); min-height: 100svh; }
+  .hero { padding-top: calc(var(--nav-h) + var(--s-24)); padding-bottom: var(--s-40); min-height: 86svh; justify-content: center; }
   .hero__title { font-size: clamp(2.2rem, 9vw, 3.2rem); }
   .hero__cta { flex-direction: column; }
   .hero__cta .btn { width: 100%; }
