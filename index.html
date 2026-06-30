@@ -12,15 +12,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/tokens.css?v=20260630g" />
-  <link rel="stylesheet" href="css/style.css?v=20260630g" />
-  <link rel="stylesheet" href="css/responsive.css?v=20260630g" />
+  <link rel="stylesheet" href="css/tokens.css?v=20260630h" />
+  <link rel="stylesheet" href="css/style.css?v=20260630h" />
+  <link rel="stylesheet" href="css/responsive.css?v=20260630h" />
 
   <!-- المكتبات مستضافة محلياً (من سيرفرنا، مش CDN خارجي) + defer لتحميل غير معطِّل -->
   <script src="assets/js/vendor/gsap.min.js" defer></script>
   <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
   <script src="assets/js/vendor/lenis.min.js" defer></script>
-  <script src="js/main.js?v=20260630g" defer></script>
+  <script src="js/main.js?v=20260630h" defer></script>
 </head>
 <body>
 
@@ -80,8 +80,8 @@
   <section id="hero" class="page hero">
     <div class="hero__inner">
       <h1 class="hero__lockup">
-        <img class="hero__lockup-img hero__lockup-img--ar" src="assets/kareem-ar.png?v=20260630g" alt="كريم" width="1250" height="444" />
-        <img class="hero__lockup-img hero__lockup-img--en" src="assets/kareem-en.png?v=20260630g" alt="KAREEM" width="1057" height="152" />
+        <img class="hero__lockup-img hero__lockup-img--ar" src="assets/kareem-ar.png?v=20260630h" alt="كريم" width="1250" height="444" />
+        <img class="hero__lockup-img hero__lockup-img--en" src="assets/kareem-en.png?v=20260630h" alt="KAREEM" width="1057" height="152" />
       </h1>
       <span class="hero__divider" aria-hidden="true"></span>
       <p class="hero__role" data-i18n="hero.role">Graphic Designer · Web Developer</p>
@@ -163,8 +163,13 @@
         <h2 class="sec-title" data-reveal data-i18n="work.title">Featured projects</h2>
         <p class="sec-sub" data-reveal data-i18n="work.sub">A few products we designed and engineered.</p>
       </div>
+      <div class="work-filter" data-reveal>
+        <button class="wf-btn is-active" data-filter="all" data-i18n="work.fall">All</button>
+        <button class="wf-btn" data-filter="development" data-i18n="work.fdev">Development</button>
+        <button class="wf-btn" data-filter="design" data-i18n="work.fdesign">Design</button>
+      </div>
       <div class="work-grid">
-        <article class="work-card" data-reveal data-cursor>
+        <article class="work-card" data-reveal data-cursor data-wtype="development">
           <a class="work-card__link" href="https://ai-agency-os-one.vercel.app" target="_blank" rel="noopener" data-project="aios" aria-label="AI Agency OS — view project"></a>
           <div class="work-card__media work-card__media--1">
             <img class="work-card__img" src="assets/work/aios-2.jpg" alt="AI Agency OS" loading="lazy">
@@ -177,7 +182,7 @@
             <div class="work-card__tags"><span>SaaS</span><span>Next.js</span><span>Realtime</span></div>
           </div>
         </article>
-        <article class="work-card" data-reveal data-cursor>
+        <article class="work-card" data-reveal data-cursor data-wtype="development">
           <a class="work-card__link" href="https://yasin-app.vercel.app" target="_blank" rel="noopener" data-project="yasin" aria-label="Anamil Yasin — view project"></a>
           <div class="work-card__media work-card__media--2">
             <img class="work-card__img" src="assets/work/yasin-1.jpg" alt="Anamil Yasin" loading="lazy">
@@ -190,7 +195,7 @@
             <div class="work-card__tags"><span>E‑commerce</span><span>Dashboard</span></div>
           </div>
         </article>
-        <article class="work-card" data-reveal data-cursor>
+        <article class="work-card" data-reveal data-cursor data-wtype="development">
           <a class="work-card__link" href="https://nexa-digital.vercel.app" target="_blank" rel="noopener" data-project="nexa" aria-label="Nexa Digital — view project"></a>
           <div class="work-card__media work-card__media--3">
             <img class="work-card__img" src="assets/work/nexa-1.jpg" alt="Nexa Digital" loading="lazy">

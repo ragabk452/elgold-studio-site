@@ -17,6 +17,7 @@
   var hasST = hasGsap && typeof ScrollTrigger !== 'undefined';
   var lenis = null;
   var modalOpen = false;
+  var snapRemeasure = null;
 
   /* ---------- i18n (EN افتراضي + AR) ---------- */
   var T = {
@@ -44,6 +45,7 @@
       'services.s6t': 'CRM Systems', 'services.s6d': 'Custom CRM & systems that automate work.',
       'work.eyebrow': 'Selected work', 'work.title': 'Featured projects',
       'work.sub': 'Selected design & development work — tap any project to explore it.', 'work.view': 'View project →',
+      'work.fall': 'All', 'work.fdev': 'Development', 'work.fdesign': 'Design',
       'work.p1t': 'AI Agency OS', 'work.p1d': 'SaaS for agencies — clients, projects, invoicing & AI.', 'work.p1tag': 'Multi‑tenant SaaS',
       'work.p2t': 'Anamil Yasin', 'work.p2d': 'Premium handcrafted store with a full dashboard.', 'work.p2tag': 'Live store',
       'work.p3t': 'Nexa Digital', 'work.p3d': 'Agency site with smooth motion & social proof.', 'work.p3tag': 'Live site',
@@ -130,6 +132,7 @@
       'services.s6t': 'أنظمة CRM', 'services.s6d': 'أنظمة CRM وإدارة بتأتمت شغلك.',
       'work.eyebrow': 'مختارات من أعمالنا', 'work.title': 'مشاريع مختارة',
       'work.sub': 'مختارات من أعمال التصميم والتطوير — اضغط أي مشروع لتشوفه بالكامل.', 'work.view': 'عرض المشروع →',
+      'work.fall': 'الكل', 'work.fdev': 'برمجة', 'work.fdesign': 'تصميم',
       'work.p1t': 'AI Agency OS', 'work.p1d': 'منصّة SaaS للوكالات — عملاء ومشاريع وفواتير.', 'work.p1tag': 'SaaS متعدّد المستأجرين',
       'work.p2t': 'أنامل ياسين', 'work.p2d': 'متجر منتجات حرفية فاخر بلوحة تحكّم كاملة.', 'work.p2tag': 'متجر مباشر',
       'work.p3t': 'Nexa Digital', 'work.p3d': 'موقع وكالة بحركة سلسة وإثبات اجتماعي.', 'work.p3tag': 'موقع مباشر',
@@ -303,11 +306,21 @@
     var footer = document.querySelector('.footer'); if (footer) targets.push(footer);
     if (targets.length < 2) return;
 
-    // مهم: نحفظ مواضع الأقسام مرة واحدة (قبل ما الـsticky يلزق ويغيّر offsetTop وقت التشغيل)
-    var offsets = [];
-    function measure() { offsets = targets.map(function (t) { return t.offsetTop; }); }
+    // نحفظ المواضع + نحدّد الأقسام الأطول من الشاشة (محتوى كتير زي الأعمال) عشان تسكرول طبيعي جوّاها بدل ما تتقص
+    var offsets = [], tall = [];
+    function measure() {
+      var vh = window.innerHeight;
+      offsets = []; tall = [];
+      targets.forEach(function (t) {
+        offsets.push(t.offsetTop);
+        var isTall = t.offsetHeight > vh + 20;
+        tall.push(isTall);
+        t.classList.toggle('page--tall', isTall);   // .page--tall = position:relative فبيسكرول كامل
+      });
+    }
     measure();
     window.addEventListener('resize', measure);
+    snapRemeasure = measure;   // عشان نعيد القياس بعد الفلترة
 
     var locked = false, lockT;
     // القسم الحالي = آخر قسم بدايته فاتت منتصف الشاشة
@@ -324,11 +337,19 @@
       lenis.scrollTo(offsets[n], { duration: 0.8, force: true });
       clearTimeout(lockT); lockT = setTimeout(function () { locked = false; }, 820);
     }
+    // داخل قسم طويل ولسه فيه محتوى في اتجاه السكرول؟ → سيب السكرول الطبيعي (مايتسنّابش)
+    function freeScroll(down) {
+      var i = current();
+      if (!tall[i]) return false;
+      var r = targets[i].getBoundingClientRect(), vh = window.innerHeight;
+      return down ? (r.bottom > vh + 8) : (r.top < -8);
+    }
     // السنّاب للديسكتوب الواسع بس (مؤشر دقيق + عرض > 1024). التابلت/الموبايل = سكرول طبيعي.
     function snapActive() { return fine && window.innerWidth > 1024; }
     window.addEventListener('wheel', function (e) {
       if (modalOpen || !snapActive()) return;
       if (Math.abs(e.deltaY) < 6) return;
+      if (freeScroll(e.deltaY > 0)) return;   // سكرول طبيعي جوّه القسم الطويل
       e.preventDefault();
       go(e.deltaY > 0 ? 1 : -1);
     }, { passive: false });
@@ -336,8 +357,8 @@
       if (modalOpen || !snapActive()) return;
       var tag = (e.target && e.target.tagName) || '';
       if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
-      if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(1); }
-      else if (e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); go(-1); }
+      if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') { if (freeScroll(true)) return; e.preventDefault(); go(1); }
+      else if (e.key === 'ArrowUp' || e.key === 'PageUp') { if (freeScroll(false)) return; e.preventDefault(); go(-1); }
     });
     // ملاحظة: مفيش سنّاب باللمس عمداً — الموبايل بيستخدم السكرول الطبيعي (الهاردوير) عشان يبقى سلس بلا تعليق.
     // السنّاب (العجلة/الكيبورد) للديسكتوب بس.
@@ -577,6 +598,25 @@
       if (k && PROJECTS[k]) { e.preventDefault(); openProject(k); }
     });
   });
+
+  /* ---------- فلتر الأعمال (الكل / برمجة / تصميم) ---------- */
+  (function () {
+    var btns = document.querySelectorAll('.wf-btn');
+    if (!btns.length) return;
+    var cards = document.querySelectorAll('#work .work-card');
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var f = b.getAttribute('data-filter');
+        btns.forEach(function (x) { x.classList.toggle('is-active', x === b); });
+        cards.forEach(function (c) {
+          var show = (f === 'all') || (c.getAttribute('data-wtype') === f);
+          c.classList.toggle('is-hidden', !show);
+        });
+        if (snapRemeasure) snapRemeasure();          // ارتفاع القسم اتغيّر → أعِد قياس السنّاب
+        if (hasST) { try { ScrollTrigger.refresh(); } catch (e) {} }
+      });
+    });
+  })();
   if (wmodal) {
     wmodal.addEventListener('click', function (e) { if (e.target === wmodal) closeProject(); });
     window.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modalOpen) closeProject(); });

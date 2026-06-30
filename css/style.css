@@ -238,6 +238,8 @@ p { max-width: var(--reading); }
 /* ===== Cover scroll: كل صفحة تزحف فوق اللي قبلها ===== */
 .stack { position: relative; z-index: 2; }
 .page { position: sticky; top: 0; min-height: 100vh; }
+/* قسم محتواه أطول من الشاشة (زي الأعمال) → يسكرول طبيعي كامل بدل ما يتثبّت ويتقص، مع إبقاء إحساس التغطية */
+.page--tall { position: relative; min-height: 100vh; }
 
 .trusted {
   display: flex; align-items: center;
@@ -275,6 +277,12 @@ p { max-width: var(--reading); }
 
 /* ===== Featured Projects ===== */
 .work { display: flex; align-items: center; background: var(--background); border-radius: var(--r-hero) var(--r-hero) 0 0; box-shadow: 0 -28px 64px -28px rgba(0,0,0,.5); padding: var(--s-96) 0; }
+/* فلتر الأعمال (الكل / برمجة / تصميم) */
+.work-filter { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: var(--s-40); }
+.wf-btn { font-family: var(--font-body); font-size: .92rem; font-weight: 600; padding: 9px 22px; border-radius: var(--r-pill); border: 1px solid rgba(10,19,48,.2); background: transparent; color: rgba(10,19,48,.6); cursor: pointer; transition: color var(--t-fast), background var(--t-fast), border-color var(--t-fast); }
+.wf-btn:hover { color: var(--navy-900); border-color: var(--navy-900); }
+.wf-btn.is-active { background: var(--navy-800); color: var(--cream); border-color: var(--navy-800); }
+.work-card.is-hidden { display: none; }
 .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-24); }
 .work-card { position: relative; border-radius: var(--r-lg); overflow: hidden; background: var(--card); border: 1px solid var(--border); transition: transform .4s var(--ease), box-shadow .4s var(--ease); }
 .work-card__link { position: absolute; inset: 0; z-index: 3; border-radius: inherit; }
