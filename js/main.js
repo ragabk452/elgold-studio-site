@@ -604,6 +604,23 @@
     var btns = document.querySelectorAll('.wf-btn');
     if (!btns.length) return;
     var cards = document.querySelectorAll('#work .work-card');
+    // تايلز عريضة (Bento) — مشاريع بصور عريضة تاخد عرض مزدوج
+    var WIDE = ['aios', 'gold', 'nexa', 'jun'];
+    cards.forEach(function (c) {
+      var lnk = c.querySelector('.work-card__link');
+      var k = lnk && lnk.getAttribute('data-project');
+      if (k && WIDE.indexOf(k) !== -1) c.classList.add('work-card--wide');
+    });
+    // عدّاد المشاريع فوق الفلتر
+    var grid = document.querySelector('.work-grid');
+    var filter = document.querySelector('.work-filter');
+    if (grid && filter) {
+      var isAr = document.documentElement.lang === 'ar';
+      var cnt = document.createElement('span');
+      cnt.className = 'work-count';
+      cnt.textContent = cards.length + (isAr ? ' مشروع' : ' Projects');
+      filter.parentNode.insertBefore(cnt, filter);
+    }
     btns.forEach(function (b) {
       b.addEventListener('click', function () {
         var f = b.getAttribute('data-filter');

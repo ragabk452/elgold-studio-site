@@ -45,6 +45,8 @@
   .hero__stats { gap: var(--s-32); flex-wrap: wrap; }
   .cards { grid-template-columns: 1fr; }
   .work-grid { grid-template-columns: 1fr; }
+  .work-card--wide { grid-column: auto; }
+  .work-card--wide .work-card__media { aspect-ratio: 16/10; }
   .stats-row { grid-template-columns: repeat(2, 1fr); gap: var(--s-32); }
   .stats-panel { padding: var(--s-24); }
   .services, .work, .why, .process, .techstack, .contact, .cta, .faq, .testi { padding: var(--s-80) 0; }
