@@ -12,15 +12,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/tokens.css?v=20260630o" />
-  <link rel="stylesheet" href="css/style.css?v=20260630o" />
-  <link rel="stylesheet" href="css/responsive.css?v=20260630o" />
+  <link rel="stylesheet" href="css/tokens.css?v=20260630p" />
+  <link rel="stylesheet" href="css/style.css?v=20260630p" />
+  <link rel="stylesheet" href="css/responsive.css?v=20260630p" />
 
   <!-- المكتبات مستضافة محلياً (من سيرفرنا، مش CDN خارجي) + defer لتحميل غير معطِّل -->
   <script src="assets/js/vendor/gsap.min.js" defer></script>
   <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
   <script src="assets/js/vendor/lenis.min.js" defer></script>
-  <script src="js/main.js?v=20260630o" defer></script>
+  <script src="js/main.js?v=20260630p" defer></script>
 </head>
 <body>
 
@@ -80,8 +80,8 @@
   <section id="hero" class="page hero">
     <div class="hero__inner">
       <h1 class="hero__lockup">
-        <img class="hero__lockup-img hero__lockup-img--ar" src="assets/kareem-ar.png?v=20260630o" alt="كريم" width="1250" height="444" />
-        <img class="hero__lockup-img hero__lockup-img--en" src="assets/kareem-en.png?v=20260630o" alt="KAREEM" width="1057" height="152" />
+        <img class="hero__lockup-img hero__lockup-img--ar" src="assets/kareem-ar.png?v=20260630p" alt="كريم" width="1250" height="444" />
+        <img class="hero__lockup-img hero__lockup-img--en" src="assets/kareem-en.png?v=20260630p" alt="KAREEM" width="1057" height="152" />
       </h1>
       <span class="hero__divider" aria-hidden="true"></span>
       <p class="hero__role" data-i18n="hero.role">Graphic Designer · Web Developer</p>
@@ -333,27 +333,30 @@
         <h2 class="sec-title" data-reveal data-i18n="process.title">A clear path from idea to launch</h2>
         <p class="sec-sub" data-reveal data-i18n="process.sub">A calm, proven process — no chaos, no surprises.</p>
       </div>
-      <div class="timeline">
-        <div class="timeline__line"><span class="timeline__fill"></span></div>
+      <div class="steps">
         <div class="step" data-reveal>
-          <div class="step__node">01</div>
-          <div class="step__body"><h3 data-i18n="process.s1t">Discover</h3><p data-i18n="process.s1d">We learn your goals, users and brand.</p></div>
+          <span class="step__num">1</span>
+          <div class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.7 7.4L3 21l2.1-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg></div>
+          <h3 data-i18n="process.s1t">Discover</h3>
+          <p data-i18n="process.s1d">We listen and understand your goal.</p>
         </div>
         <div class="step" data-reveal>
-          <div class="step__node">02</div>
-          <div class="step__body"><h3 data-i18n="process.s2t">Plan</h3><p data-i18n="process.s2d">Scope, timeline and a clear roadmap.</p></div>
+          <span class="step__num">2</span>
+          <div class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l3-1L17 9l-2-2L5 18z"/><path d="M14 6l4 4"/></svg></div>
+          <h3 data-i18n="process.s2t">Design</h3>
+          <p data-i18n="process.s2d">We turn it into a clear, beautiful design.</p>
         </div>
         <div class="step" data-reveal>
-          <div class="step__node">03</div>
-          <div class="step__body"><h3 data-i18n="process.s3t">Design</h3><p data-i18n="process.s3d">Premium visuals and interface design.</p></div>
+          <span class="step__num">3</span>
+          <div class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/></svg></div>
+          <h3 data-i18n="process.s3t">Build</h3>
+          <p data-i18n="process.s3d">We build it — fast and clean.</p>
         </div>
         <div class="step" data-reveal>
-          <div class="step__node">04</div>
-          <div class="step__body"><h3 data-i18n="process.s4t">Develop</h3><p data-i18n="process.s4d">Fast, clean engineering and testing.</p></div>
-        </div>
-        <div class="step" data-reveal>
-          <div class="step__node">05</div>
-          <div class="step__body"><h3 data-i18n="process.s5t">Launch</h3><p data-i18n="process.s5d">We ship — and stay for support.</p></div>
+          <span class="step__num">4</span>
+          <div class="step__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V6"/><path d="M6 12l6-6 6 6"/></svg></div>
+          <h3 data-i18n="process.s4t">Launch</h3>
+          <p data-i18n="process.s4d">We launch it and stay for support.</p>
         </div>
       </div>
     </div>

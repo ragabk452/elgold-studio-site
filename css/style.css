@@ -312,14 +312,15 @@ html[lang="ar"] .work-cursor::after { content: "عرض ↗"; }
 
 /* ===== Workflow / Timeline ===== */
 .process { display: flex; align-items: center; background: var(--background); border-radius: var(--r-hero) var(--r-hero) 0 0; box-shadow: 0 -28px 64px -28px rgba(0,0,0,.5); padding: var(--s-96) 0; }
-.timeline { position: relative; max-width: 720px; margin-inline: auto; display: flex; flex-direction: column; gap: var(--s-40); }
-.timeline__line { position: absolute; inset-inline-start: 27px; top: 10px; bottom: 10px; width: 2px; background: var(--border); border-radius: 2px; overflow: hidden; }
-.timeline__fill { position: absolute; inset: 0; transform-origin: top; transform: scaleY(0); background: linear-gradient(var(--accent2), var(--blue-glow)); }
-.step { position: relative; display: grid; grid-template-columns: 56px 1fr; gap: var(--s-24); align-items: start; }
-.step__node { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; color: var(--text); background: var(--surface); border: 1px solid var(--border); box-shadow: 0 0 0 6px var(--background); z-index: 1; }
-.step__body { padding-top: 8px; }
-.step__body h3 { font-size: 1.35rem; }
-.step__body p { color: var(--muted); margin-top: 6px; }
+/* خطوات بسيطة في صفّ أفقي بأيقونات */
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: var(--s-24); max-width: 1080px; width: 100%; margin-inline: auto; }
+.step { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: var(--s-32) var(--s-24); border-radius: var(--r-lg); background: var(--card); border: 1px solid var(--border); transition: transform .35s var(--ease), border-color .35s var(--ease); }
+.step:hover { transform: translateY(-5px); border-color: rgba(244,238,223,.28); }
+.step__num { position: absolute; top: 14px; inset-inline-end: 18px; font-family: var(--font-display); font-weight: 700; font-size: 1.7rem; line-height: 1; color: rgba(244,238,223,.15); }
+.step__icon { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: var(--glass); border: 1px solid var(--border); color: var(--cream); }
+.step__icon svg { width: 22px; height: 22px; }
+.step h3 { font-size: 1.18rem; line-height: 1.2; }
+.step p { color: var(--muted); font-size: .9rem; line-height: 1.55; }
 
 /* ===== Tech Stack ===== */
 .techstack { display: flex; flex-direction: column; justify-content: center; gap: var(--s-48); background: var(--background); border-radius: var(--r-hero) var(--r-hero) 0 0; box-shadow: 0 -28px 64px -28px rgba(0,0,0,.5); padding: var(--s-96) 0; }
