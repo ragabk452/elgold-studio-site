@@ -284,23 +284,20 @@ p { max-width: var(--reading); }
 .wf-btn.is-active { background: var(--navy-800); color: var(--cream); border-color: var(--navy-800); }
 .work-card.is-hidden { display: none; }
 .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-24); }
-/* عرض سينمائي: الكارت كله صورة كبيرة + معلومات فوقها */
-.work-card { position: relative; border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 4/5; background: var(--navy-800); border: 1px solid var(--border); transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+/* عرض الأعمال — كارت احترافي: صورة عريضة (16/11) فوق + تفاصيل تحتها */
+.work-card { position: relative; display: flex; flex-direction: column; border-radius: var(--r-lg); overflow: hidden; background: var(--surface); border: 1px solid var(--border); box-shadow: 0 2px 6px rgba(7,12,32,.05); transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease); }
 .work-card__link { position: absolute; inset: 0; z-index: 4; border-radius: inherit; }
-.work-card:hover { transform: translateY(-10px); box-shadow: 0 55px 110px -45px rgba(0,0,0,.6); }
-.work-card__media { position: absolute; inset: 0; overflow: hidden; }
+.work-card:hover { transform: translateY(-7px); box-shadow: 0 40px 82px -42px rgba(7,12,32,.5); border-color: rgba(10,19,48,.28); }
+.work-card__media { position: relative; aspect-ratio: 16/11; overflow: hidden; }
 .work-card__media::before { display: none; }
-/* تدرّج أسفل لوضوح النص فوق أي صورة */
-.work-card::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgba(6,9,22,.94) 2%, rgba(6,9,22,.6) 30%, rgba(6,9,22,.08) 56%, transparent 78%); transition: opacity .5s var(--ease); }
-.work-card__tag { position: absolute; top: 16px; inset-inline-start: 16px; z-index: 3; font-size: .72rem; font-weight: 600; letter-spacing: .03em; color: var(--cream); background: rgba(10,19,48,.42); border: 1px solid rgba(244,238,223,.28); border-radius: var(--r-pill); padding: 6px 13px; backdrop-filter: blur(8px); }
-.work-card__view { display: none; }
-.work-card__body { position: absolute; inset-inline: 0; bottom: 0; z-index: 3; padding: 22px; }
-.work-card__body h3 { font-size: clamp(1.25rem, 2.4vw, 1.5rem); color: #fff; line-height: 1.18; display: flex; align-items: baseline; gap: 9px; }
-.work-card__body h3::after { content: "↗"; font-size: .95em; opacity: 0; transform: translate(-7px, 0); transition: opacity .4s var(--ease), transform .4s var(--ease); }
-.work-card:hover .work-card__body h3::after { opacity: .9; transform: translate(0,0); }
-.work-card__body p { color: rgba(255,255,255,.74); margin: 0; font-size: .9rem; line-height: 1.5; max-height: 0; opacity: 0; overflow: hidden; transition: max-height .55s var(--ease), opacity .4s var(--ease), margin-top .45s var(--ease); }
-.work-card:hover .work-card__body p { max-height: 70px; opacity: 1; margin-top: 8px; }
-.work-card__tags { display: none; }
+.work-card__tag { position: absolute; top: 14px; inset-inline-start: 14px; z-index: 2; font-size: .72rem; font-weight: 600; letter-spacing: .02em; color: var(--cream); background: rgba(7,12,32,.62); border: 1px solid rgba(244,238,223,.22); border-radius: var(--r-pill); padding: 6px 13px; backdrop-filter: blur(8px); }
+.work-card__view { position: absolute; inset: 0; z-index: 2; display: flex; align-items: flex-end; padding: 18px; color: var(--cream); font-weight: 600; font-size: .95rem; background: linear-gradient(transparent 50%, rgba(7,12,32,.72)); opacity: 0; transition: opacity .4s var(--ease); }
+.work-card:hover .work-card__view { opacity: 1; }
+.work-card__body { display: flex; flex-direction: column; gap: 8px; padding: var(--s-24); flex: 1; }
+.work-card__body h3 { font-size: 1.32rem; line-height: 1.2; }
+.work-card__body p { color: var(--muted); font-size: .94rem; line-height: 1.6; }
+.work-card__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 8px; }
+.work-card__tags span { font-size: .72rem; color: var(--muted); border: 1px solid var(--border); border-radius: var(--r-pill); padding: 4px 11px; }
 
 /* ===== Workflow / Timeline ===== */
 .process { display: flex; align-items: center; background: var(--background); border-radius: var(--r-hero) var(--r-hero) 0 0; box-shadow: 0 -28px 64px -28px rgba(0,0,0,.5); padding: var(--s-96) 0; }
