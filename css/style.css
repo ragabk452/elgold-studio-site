@@ -284,30 +284,31 @@ p { max-width: var(--reading); }
 .wf-btn:hover { color: var(--cream); border-color: rgba(244,238,223,.5); }
 .wf-btn.is-active { background: var(--cream); color: var(--navy-900); border-color: var(--cream); }
 .work-card.is-hidden { display: none; }
-/* شبكة Bento: 3 أعمدة + تايلز عريضة (span 2) + تعبئة كثيفة */
-.work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-40) var(--s-24); grid-auto-flow: dense; align-items: start; }
-.work-card--wide { grid-column: span 2; }
-/* الكارت = صورة مدوّرة + معلومات تحتها (بدون إطار) */
-.work-card { position: relative; display: flex; flex-direction: column; gap: 15px; background: none; border: none; }
+/* شبكة موحّدة 3 أعمدة، كل تايل 16:9 (زي Maatouk) */
+.work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-48) var(--s-32); }
+/* الكارت = صورة 16:9 + معلومات تحتها (بدون إطار) */
+.work-card { position: relative; display: flex; flex-direction: column; gap: 14px; background: none; border: none; }
 .work-card__link { position: absolute; inset: 0; z-index: 4; }
-.work-card__media { position: relative; aspect-ratio: 4/3; overflow: hidden; border-radius: var(--r-lg); background: var(--navy-800); transition: transform .45s var(--ease), box-shadow .45s var(--ease); }
-.work-card--wide .work-card__media { aspect-ratio: 16/9; }
-.work-card__media::before, .work-card__media::after { display: none; }
-.work-card:hover .work-card__media { transform: translateY(-6px); box-shadow: 0 44px 86px -38px rgba(0,0,0,.75); }
-.work-card:hover .work-card__img { transform: scale(1.05); }
-.work-card__tag { position: absolute; top: 14px; inset-inline-start: 14px; z-index: 3; font-size: .72rem; font-weight: 600; letter-spacing: .02em; color: var(--cream); background: rgba(7,12,32,.5); border: 1px solid rgba(244,238,223,.2); border-radius: var(--r-pill); padding: 6px 13px; backdrop-filter: blur(8px); }
-/* زر View دائري يظهر عند المرور */
-.work-card__view { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity .4s var(--ease); background: rgba(7,12,32,.22); font-size: 0; }
-.work-card__view::after { content: "View ↗"; font-size: .9rem; font-weight: 700; color: var(--navy-900); background: var(--cream); width: 92px; height: 92px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transform: scale(.65); transition: transform .45s var(--ease); box-shadow: 0 18px 44px -12px rgba(0,0,0,.55); }
-html[lang="ar"] .work-card__view::after { content: "عرض ↗"; }
-.work-card:hover .work-card__view { opacity: 1; }
-.work-card:hover .work-card__view::after { transform: scale(1); }
-/* المعلومات تحت الصورة */
+.work-card__media { position: relative; aspect-ratio: 16/9; overflow: hidden; border-radius: var(--r-md); background: #0b1124; }
+.work-card__media::after { display: none; }
+/* تعتيم خفيف وقت الراحة يخفّ عند المرور */
+.work-card__media::before { content: ""; display: block; position: absolute; inset: 0; z-index: 1; background: rgba(6,9,22,.22); transition: opacity .5s var(--ease); }
+.work-card:hover .work-card__media::before { opacity: 0; }
+.work-card:hover .work-card__img { transform: scale(1.04); }
+.work-card__tag { position: absolute; top: 12px; inset-inline-start: 12px; z-index: 2; font-size: .7rem; font-weight: 600; letter-spacing: .02em; color: var(--cream); background: rgba(7,12,32,.5); border: 1px solid rgba(244,238,223,.18); border-radius: var(--r-pill); padding: 5px 12px; backdrop-filter: blur(8px); }
+.work-card__view { display: none; }
+/* المعلومات تحت الصورة: اسم (serif) يسار + السنة يمين، ووصف تحت */
 .work-card__body { display: flex; flex-direction: column; gap: 4px; padding: 0 2px; }
-.work-card__body h3 { font-size: 1.32rem; line-height: 1.25; color: var(--cream); }
-.work-card__body p { color: rgba(244,238,223,.55); font-size: .92rem; line-height: 1.5; }
-.work-card__tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 7px; }
-.work-card__tags span { font-size: .7rem; color: rgba(244,238,223,.5); border: 1px solid rgba(244,238,223,.16); border-radius: var(--r-pill); padding: 3px 10px; }
+.work-card__top { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+.work-card__body h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; line-height: 1.2; color: var(--cream); }
+.work-card__year { flex-shrink: 0; color: rgba(244,238,223,.4); font-size: .85rem; font-variant-numeric: tabular-nums; }
+.work-card__body p { color: rgba(244,238,223,.5); font-size: .88rem; line-height: 1.5; }
+.work-card__tags { display: none; }
+/* دائرة "View ↗" تتبع الماوس فوق المعرض */
+.work-cursor { position: fixed; top: 0; left: 0; z-index: 60; width: 92px; height: 92px; border-radius: 50%; background: var(--cream); color: var(--navy-900); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .85rem; pointer-events: none; opacity: 0; transform: translate(-50%, -50%) scale(.3); transition: opacity .3s var(--ease), transform .35s var(--ease); box-shadow: 0 18px 44px -12px rgba(0,0,0,.5); }
+.work-cursor::after { content: "View ↗"; }
+html[lang="ar"] .work-cursor::after { content: "عرض ↗"; }
+.work-cursor.is-on { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
 /* ===== Workflow / Timeline ===== */
 .process { display: flex; align-items: center; background: var(--background); border-radius: var(--r-hero) var(--r-hero) 0 0; box-shadow: 0 -28px 64px -28px rgba(0,0,0,.5); padding: var(--s-96) 0; }

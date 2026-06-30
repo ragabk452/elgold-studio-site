@@ -604,12 +604,24 @@
     var btns = document.querySelectorAll('.wf-btn');
     if (!btns.length) return;
     var cards = document.querySelectorAll('#work .work-card');
-    // تايلز عريضة (Bento) — مشاريع بصور عريضة تاخد عرض مزدوج
-    var WIDE = ['aios', 'gold', 'nexa', 'jun'];
+    // معلومات تحت كل تايل: اسم (يسار) + السنة (يمين) — مع حقن السنة من بيانات المشروع
     cards.forEach(function (c) {
       var lnk = c.querySelector('.work-card__link');
       var k = lnk && lnk.getAttribute('data-project');
-      if (k && WIDE.indexOf(k) !== -1) c.classList.add('work-card--wide');
+      var body = c.querySelector('.work-card__body');
+      var h3 = body && body.querySelector('h3');
+      if (!body || !h3 || body.querySelector('.work-card__top')) return;
+      var top = document.createElement('div');
+      top.className = 'work-card__top';
+      h3.parentNode.insertBefore(top, h3);
+      top.appendChild(h3);
+      var yr = (k && PROJECTS[k] && PROJECTS[k].year) || '';
+      if (yr) {
+        var ys = document.createElement('span');
+        ys.className = 'work-card__year';
+        ys.textContent = yr;
+        top.appendChild(ys);
+      }
     });
     // عدّاد المشاريع فوق الفلتر
     var grid = document.querySelector('.work-grid');
@@ -620,6 +632,16 @@
       cnt.className = 'work-count';
       cnt.textContent = cards.length + (isAr ? ' مشروع' : ' Projects');
       filter.parentNode.insertBefore(cnt, filter);
+    }
+    // دائرة "View ↗" تتبع الماوس فوق المعرض (ديسكتوب فقط)
+    if (grid && fine && !reduce) {
+      var wc = document.createElement('div');
+      wc.className = 'work-cursor';
+      document.body.appendChild(wc);
+      grid.addEventListener('mousemove', function (e) { wc.style.left = e.clientX + 'px'; wc.style.top = e.clientY + 'px'; });
+      grid.addEventListener('mouseover', function (e) { if (e.target.closest && e.target.closest('.work-card:not(.is-hidden)')) wc.classList.add('is-on'); });
+      grid.addEventListener('mouseout', function (e) { var to = e.relatedTarget; if (!to || !to.closest || !to.closest('.work-card')) wc.classList.remove('is-on'); });
+      grid.addEventListener('mouseleave', function () { wc.classList.remove('is-on'); });
     }
     btns.forEach(function (b) {
       b.addEventListener('click', function () {
