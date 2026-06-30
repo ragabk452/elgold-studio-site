@@ -43,10 +43,20 @@
       'services.s5t': 'Social Media Design', 'services.s5d': 'Marketing visuals that grow your brand.',
       'services.s6t': 'CRM Systems', 'services.s6d': 'Custom CRM & systems that automate work.',
       'work.eyebrow': 'Selected work', 'work.title': 'Featured projects',
-      'work.sub': 'A few products we designed and engineered.', 'work.view': 'View project →',
+      'work.sub': 'Selected design & development work — tap any project to explore it.', 'work.view': 'View project →',
       'work.p1t': 'AI Agency OS', 'work.p1d': 'SaaS for agencies — clients, projects, invoicing & AI.', 'work.p1tag': 'Multi‑tenant SaaS',
       'work.p2t': 'Anamil Yasin', 'work.p2d': 'Premium handcrafted store with a full dashboard.', 'work.p2tag': 'Live store',
       'work.p3t': 'Nexa Digital', 'work.p3d': 'Agency site with smooth motion & social proof.', 'work.p3tag': 'Live site',
+      'work.p4t': "Gold Skincare", 'work.p4d': "Skincare e-commerce store with a clean, premium UI.", 'work.p4tag': "Live store",
+      'work.p5t': "Pizza Height", 'work.p5d': "Premium pizza restaurant site with tasty motion.", 'work.p5tag': "Live site",
+      'work.p6t': "Bright Dental", 'work.p6d': "Dental clinic website with online booking.", 'work.p6tag': "Live site",
+      'work.p7t': "Fast Round", 'work.p7d': "Full brand identity & guidelines.", 'work.p7tag': "Brand identity",
+      'work.p8t': "JUN Profile", 'work.p8d': "Company profile for real estate & contracting.", 'work.p8tag': "Company profile",
+      'work.p9t': "Al-Yasmina", 'work.p9d': "Real-estate brochure for Ecobuild Developments.", 'work.p9tag': "Brochure",
+      'work.p10t': "Optima Eye", 'work.p10d': "Social media designs for an eye clinic.", 'work.p10tag': "Social media",
+      'work.p11t': "Social Designs · I", 'work.p11d': "A collection of scroll-stopping social posts.", 'work.p11tag': "Social media",
+      'work.p12t': "Social Designs · II", 'work.p12d': "More social designs across brands & niches.", 'work.p12tag': "Social media",
+      'work.p13t': "Logo Collection", 'work.p13d': "A selection of logos & brand marks.", 'work.p13tag': "Logos",
       'process.eyebrow': 'How we work', 'process.title': 'A clear path from idea to launch',
       'process.sub': 'A calm, proven process — no chaos, no surprises.',
       'process.s1t': 'Discover', 'process.s1d': 'We learn your goals, users and brand.',
@@ -119,10 +129,20 @@
       'services.s5t': 'تصميم سوشيال ميديا', 'services.s5d': 'تصاميم تسويقية بترفع علامتك.',
       'services.s6t': 'أنظمة CRM', 'services.s6d': 'أنظمة CRM وإدارة بتأتمت شغلك.',
       'work.eyebrow': 'مختارات من أعمالنا', 'work.title': 'مشاريع مختارة',
-      'work.sub': 'نماذج من منتجات صمّمناها وبرمجناها.', 'work.view': 'عرض المشروع →',
+      'work.sub': 'مختارات من أعمال التصميم والتطوير — اضغط أي مشروع لتشوفه بالكامل.', 'work.view': 'عرض المشروع →',
       'work.p1t': 'AI Agency OS', 'work.p1d': 'منصّة SaaS للوكالات — عملاء ومشاريع وفواتير.', 'work.p1tag': 'SaaS متعدّد المستأجرين',
       'work.p2t': 'أنامل ياسين', 'work.p2d': 'متجر منتجات حرفية فاخر بلوحة تحكّم كاملة.', 'work.p2tag': 'متجر مباشر',
       'work.p3t': 'Nexa Digital', 'work.p3d': 'موقع وكالة بحركة سلسة وإثبات اجتماعي.', 'work.p3tag': 'موقع مباشر',
+      'work.p4t': "Gold Skincare", 'work.p4d': "متجر سكين‑كير إلكتروني بواجهة نظيفة وفاخرة.", 'work.p4tag': "متجر مباشر",
+      'work.p5t': "Pizza Height", 'work.p5d': "موقع مطعم بيتزا فاخر بحركة شهية.", 'work.p5tag': "موقع مباشر",
+      'work.p6t': "Bright Dental", 'work.p6d': "موقع عيادة أسنان بحجز أونلاين.", 'work.p6tag': "موقع مباشر",
+      'work.p7t': "Fast Round", 'work.p7d': "هوية بصرية كاملة ودليل استخدام.", 'work.p7tag': "هوية بصرية",
+      'work.p8t': "بروفايل JUN", 'work.p8d': "بروفايل شركة عقارات ومقاولات.", 'work.p8tag': "بروفايل شركة",
+      'work.p9t': "الياسمينة", 'work.p9d': "بروشور عقاري لإيكوبيلد.", 'work.p9tag': "بروشور",
+      'work.p10t': "Optima Eye", 'work.p10d': "تصاميم سوشيال ميديا لعيادة عيون.", 'work.p10tag': "سوشيال",
+      'work.p11t': "تصاميم سوشيال · ١", 'work.p11d': "مجموعة تصاميم سوشيال ميديا لافتة.", 'work.p11tag': "سوشيال",
+      'work.p12t': "تصاميم سوشيال · ٢", 'work.p12d': "المزيد من تصاميم السوشيال لعلامات متنوّعة.", 'work.p12tag': "سوشيال",
+      'work.p13t': "مجموعة شعارات", 'work.p13d': "مجموعة شعارات وعلامات تجارية.", 'work.p13tag': "شعارات",
       'process.eyebrow': 'إزاي بنشتغل', 'process.title': 'طريق واضح من الفكرة للإطلاق',
       'process.sub': 'منهجية هادية ومجرّبة — مفيش لخبطة ولا مفاجآت.',
       'process.s1t': 'اكتشاف', 'process.s1d': 'نفهم أهدافك وجمهورك وعلامتك.',
@@ -369,11 +389,147 @@
       tech: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vercel'],
       metrics: [{ v: 'Live', l: { en: 'live site', ar: 'موقع مباشر' } }, { v: 'Motion', l: { en: 'smooth animated UX', ar: 'تجربة متحرّكة سلسة' } }, { v: '100%', l: { en: 'responsive design', ar: 'تصميم متجاوب' } }],
       quote: { en: 'Kareem is a respectful, creative and hardworking professional.', ar: 'الأخ كريم شخصية محترمة ومبدعة ومجتهدة في العمل.' }, author: 'Modern Engineering'
+    },
+    gold: {
+      liveUrl: "https://gold-skincare.vercel.app", liveLabel: "visit",
+      cover: "assets/work/covers/gold-skincare-store.jpg",
+      gallery: ["assets/work/covers/gold-skincare-store.jpg"],
+      cat: { en: "E-commerce", ar: "متجر إلكتروني" }, year: "2025",
+      client: { en: "Gold Skincare", ar: "Gold Skincare" },
+      title: { en: "Gold Skincare", ar: "Gold Skincare" },
+      summary: { en: "A full skincare e-commerce store: category browsing, cart, orders & checkout, and an admin dashboard — Next.js + Prisma + PostgreSQL.", ar: "متجر إلكتروني متكامل للعناية بالبشرة: تصفّح بالتصنيفات، سلة، طلبات ودفع، ولوحة تحكم — Next.js + Prisma + PostgreSQL." },
+      problem: { en: "The brand needed a professional store to showcase products and manage orders, checkout, and inventory smoothly without off-the-shelf platforms.", ar: "العلامة تحتاج متجرًا احترافيًا يعرض المنتجات ويدير الطلبات والدفع والمخزون بسلاسة دون اعتماد على منصّات جاهزة." },
+      solution: { en: "Built a Next.js + Prisma + PostgreSQL store: category browsing, cart, checkout (COD/online), order tracking, and a full admin dashboard for products and orders.", ar: "بنيت متجر Next.js + Prisma + PostgreSQL: تصفّح بالتصنيفات، سلة، إتمام طلب (دفع عند الاستلام/إلكتروني)، تتبّع الطلب، ولوحة تحكم أدمن كاملة لإدارة المنتجات والطلبات." },
+      results: { en: "A sell-ready store with a smooth buying experience and full self-service management from the dashboard.", ar: "متجر جاهز للبيع بتجربة شراء سلسة وإدارة كاملة ذاتية من لوحة التحكم." },
+      tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "Vercel"],
+      metrics: [{ v: "Live", l: { en: "live store", ar: "متجر مباشر" } }, { v: "Mobile-first", l: { en: "mobile-first UX", ar: "تجربة الجوال أولًا" } }, { v: "Fast", l: { en: "fast checkout", ar: "دفع سريع" } }]
+    },
+    pizza: {
+      liveUrl: "https://pizza-height.vercel.app", liveLabel: "visit",
+      cover: "assets/work/covers/pizza-height.jpg",
+      gallery: ["assets/work/covers/pizza-height.jpg"],
+      cat: { en: "Restaurant", ar: "مطعم" }, year: "2025",
+      client: { en: "Pizza Height", ar: "Pizza Height" },
+      title: { en: "Pizza Height", ar: "Pizza Height" },
+      summary: { en: "An interactive site for an artisan pizza brand with cinematic motion and an elegant ordering experience.", ar: "موقع تفاعلي لمطعم بيتزا حرفي بتأثيرات حركية سينمائية وتجربة طلب أنيقة." },
+      problem: { en: "The restaurant needed a premium digital presence that reflects its artisan quality and drives direct orders.", ar: "المطعم يحتاج حضورًا رقميًا فاخرًا يعكس جودة منتجه الحرفي ويشجّع على الطلب مباشرة." },
+      solution: { en: "Built a Next.js site with a cinematic hero and Framer Motion effects, interactive menu/story/locations sections, and a smooth fully-responsive ordering flow.", ar: "بنيت موقع Next.js بهيرو سينمائي وتأثيرات Framer Motion، أقسام تفاعلية للقائمة والقصة والفروع، وتجربة طلب سلسة ريسبونسيف بالكامل." },
+      results: { en: "A standout visual experience that builds brand trust and makes browsing and ordering more compelling.", ar: "تجربة بصرية مميّزة ترفع الثقة بالعلامة وتجعل تصفّح القائمة والطلب أكثر إقناعًا." },
+      tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"],
+      metrics: [{ v: "Live", l: { en: "live site", ar: "موقع مباشر" } }, { v: "Motion", l: { en: "smooth motion", ar: "حركة سلسة" } }, { v: "100%", l: { en: "responsive", ar: "متجاوب" } }]
+    },
+    bright: {
+      liveUrl: "https://bright-dental-clinic.vercel.app", liveLabel: "visit",
+      cover: "assets/work/covers/bright-dental-clinic.jpg",
+      gallery: ["assets/work/covers/bright-dental-clinic.jpg"],
+      cat: { en: "Clinic / Booking", ar: "عيادة / حجز" }, year: "2025",
+      client: { en: "Bright Dental", ar: "Bright Dental" },
+      title: { en: "Bright Dental", ar: "Bright Dental" },
+      summary: { en: "A premium Arabic dental clinic site with an elegant UI, appointment booking, doctors and services.", ar: "موقع عيادة أسنان فاخر بواجهة عربية أنيقة ونظام حجز مواعيد وعرض الأطباء والخدمات." },
+      problem: { en: "The clinic needed a reassuring digital presence that makes booking effortless without phone calls.", ar: "العيادة تحتاج حضورًا رقميًا يطمئن المريض ويسهّل حجز المواعيد دون اتصال هاتفي." },
+      solution: { en: "A Next.js site with a premium Arabic (RTL) UI, an appointment booking system, doctor/service pages, and a calm, trustworthy design.", ar: "موقع Next.js بواجهة عربية فاخرة (RTL)، نظام حجز مواعيد، صفحات أطباء وخدمات، وتصميم يبعث على الثقة والراحة." },
+      results: { en: "An easier booking experience and a professional image that boosts patient trust.", ar: "تجربة حجز أسهل وصورة احترافية ترفع ثقة المرضى بالعيادة." },
+      tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "Vercel"],
+      metrics: [{ v: "Booking", l: { en: "online booking", ar: "حجز أونلاين" } }, { v: "Live", l: { en: "live site", ar: "موقع مباشر" } }, { v: "100%", l: { en: "responsive", ar: "متجاوب" } }]
+    },
+    fastround: {
+      liveUrl: "https://fgdmqhyclnaotgptkbkt.supabase.co/storage/v1/object/public/portfolio-media/projects/fast-round-guidelines.pdf", liveLabel: "pdf",
+      cover: "assets/work/covers/fast-round-brand-identity.jpg",
+      gallery: ["assets/work/g/fast-round-brand-identity-1.jpg", "assets/work/g/fast-round-brand-identity-2.jpg", "assets/work/g/fast-round-brand-identity-3.jpg", "assets/work/g/fast-round-brand-identity-4.jpg", "assets/work/g/fast-round-brand-identity-5.jpg", "assets/work/g/fast-round-brand-identity-6.jpg", "assets/work/g/fast-round-brand-identity-7.jpg", "assets/work/g/fast-round-brand-identity-8.jpg", "assets/work/g/fast-round-brand-identity-9.jpg", "assets/work/g/fast-round-brand-identity-10.jpg"],
+      cat: { en: "Brand Identity", ar: "هوية بصرية" }, year: "2025",
+      client: { en: "Fast Round", ar: "Fast Round" },
+      title: { en: "Fast Round", ar: "Fast Round" },
+      summary: { en: "The full brand identity guidelines for Fast Round — logo, colors, typography, and applications.", ar: "دليل الهوية البصرية الكامل لعلامة Fast Round — الشعار، الألوان، الخطوط، والتطبيقات." },
+      problem: { en: "The brand needed a complete, unified identity expressing the speed and energy of its service.", ar: "احتاجت العلامة هوية متكاملة وموحّدة تعبّر عن سرعة الخدمة وحيويتها." },
+      solution: { en: "We built a full identity system with a distinctive logo, a vibrant color palette, clear usage guidelines, and practical applications.", ar: "بنينا نظام هوية كامل بشعار مميز ولوحة ألوان حيوية ودليل استخدام واضح وتطبيقات عملية." },
+      results: { en: "A cohesive, professional identity ready to apply across every touchpoint.", ar: "هوية احترافية متماسكة جاهزة للتطبيق على كل نقاط التواصل." },
+      tech: ["Adobe Illustrator", "Photoshop", "InDesign"],
+      metrics: [{ v: "Identity", l: { en: "full identity", ar: "هوية كاملة" } }, { v: "Guidelines", l: { en: "brand guidelines", ar: "دليل الهوية" } }, { v: "Print", l: { en: "print-ready", ar: "جاهز للطباعة" } }]
+    },
+    jun: {
+      liveUrl: "https://fgdmqhyclnaotgptkbkt.supabase.co/storage/v1/object/public/portfolio-media/projects/jun-company-profile.pdf", liveLabel: "pdf",
+      cover: "assets/work/covers/jun-company-profile.jpg",
+      gallery: ["assets/work/g/jun-company-profile-1.jpg", "assets/work/g/jun-company-profile-2.jpg", "assets/work/g/jun-company-profile-3.jpg", "assets/work/g/jun-company-profile-4.jpg", "assets/work/g/jun-company-profile-5.jpg", "assets/work/g/jun-company-profile-6.jpg", "assets/work/g/jun-company-profile-7.jpg", "assets/work/g/jun-company-profile-8.jpg", "assets/work/g/jun-company-profile-9.jpg", "assets/work/g/jun-company-profile-10.jpg"],
+      cat: { en: "Company Profile", ar: "بروفايل شركة" }, year: "2025",
+      client: { en: "JUN", ar: "JUN" },
+      title: { en: "JUN Profile", ar: "بروفايل JUN" },
+      summary: { en: "A professional 35-page company profile for JUN real estate & contracting.", ar: "تصميم بروفايل شركة احترافي (35 صفحة) لشركة جون التجارية والعقارية للمقاولات." },
+      problem: { en: "The company needed a profile that presents its services and projects professionally to clients and partners.", ar: "الشركة تحتاج بروفايلًا يعرض خدماتها ومشاريعها باحترافية تليق بها أمام العملاء والشركاء." },
+      solution: { en: "Designed a 35-page profile with a cohesive identity: cover, vision/mission, services, projects, and contact — with a premium layout.", ar: "صمّمت بروفايل 35 صفحة بهوية متناسقة: غلاف، رؤية/رسالة، الخدمات، المشاريع، وبيانات التواصل — بإخراج فاخر." },
+      results: { en: "A professional profile that strengthens the company's credibility in tenders and meetings.", ar: "بروفايل احترافي يعزّز مصداقية الشركة في العطاءات والاجتماعات." },
+      tech: ["Adobe InDesign", "Photoshop", "Illustrator"],
+      metrics: [{ v: "Profile", l: { en: "company profile", ar: "بروفايل شركة" } }, { v: "Real estate", l: { en: "real estate & contracting", ar: "عقارات ومقاولات" } }, { v: "Print", l: { en: "print-ready", ar: "جاهز للطباعة" } }]
+    },
+    yasmina: {
+      liveUrl: "https://fgdmqhyclnaotgptkbkt.supabase.co/storage/v1/object/public/portfolio-media/projects/yasmina-brochure.pdf", liveLabel: "pdf",
+      cover: "assets/work/covers/yasmina-brochure.jpg",
+      gallery: ["assets/work/g/yasmina-brochure-1.jpg", "assets/work/g/yasmina-brochure-2.jpg", "assets/work/g/yasmina-brochure-3.jpg", "assets/work/g/yasmina-brochure-4.jpg", "assets/work/g/yasmina-brochure-5.jpg", "assets/work/g/yasmina-brochure-6.jpg", "assets/work/g/yasmina-brochure-7.jpg", "assets/work/g/yasmina-brochure-8.jpg", "assets/work/g/yasmina-brochure-9.jpg", "assets/work/g/yasmina-brochure-10.jpg"],
+      cat: { en: "Brochure", ar: "بروشور" }, year: "2025",
+      client: { en: "Ecobuild Developments", ar: "إيكوبيلد" },
+      title: { en: "Al-Yasmina", ar: "الياسمينة" },
+      summary: { en: "A premium 14-page real-estate brochure for the 'Al-Yasmina' project by Ecobuild.", ar: "تصميم بروشور عقاري فاخر (14 صفحة) لمشروع «الياسمينا» السكني من Ecobuild." },
+      problem: { en: "The developer needed a brochure that presents the project and its units attractively to drive sales.", ar: "المطوّر يحتاج بروشورًا يقدّم المشروع ووحداته بشكل جذّاب يحفّز على الشراء." },
+      solution: { en: "Designed a 14-page brochure with 3D renders, unit layouts, and features, in an elegant green identity.", ar: "صمّمت بروشور 14 صفحة بصور ريندر ثلاثية الأبعاد، مخططات الوحدات، والمميّزات، بهوية خضراء أنيقة." },
+      results: { en: "A premium marketing asset that highlights the project's value and supports the buying decision.", ar: "أداة تسويقية فاخرة تبرز قيمة المشروع وتدعم قرار الشراء." },
+      tech: ["Adobe InDesign", "Photoshop", "3D Visualization"],
+      metrics: [{ v: "Brochure", l: { en: "property brochure", ar: "بروشور عقاري" } }, { v: "3D", l: { en: "3D visualization", ar: "تصوّر ثلاثي الأبعاد" } }, { v: "Print", l: { en: "print-ready", ar: "جاهز للطباعة" } }]
+    },
+    optima: {
+      cover: "assets/work/covers/optima-eye-clinic-social.jpg",
+      gallery: ["assets/work/g/optima-eye-clinic-social-1.jpg"],
+      cat: { en: "Social Media", ar: "سوشيال ميديا" }, year: "2025",
+      client: { en: "Optima Eye Clinic", ar: "عيادة Optima للعيون" },
+      title: { en: "Optima Eye", ar: "Optima Eye" },
+      summary: { en: "An awareness social media design for an eye clinic highlighting the importance of eye care.", ar: "تصميم سوشيال ميديا توعوي لعيادة عيون يبرز أهمية العناية بالبصر." },
+      problem: { en: "The clinic needed eye-catching awareness content encouraging eye care.", ar: "احتاجت العيادة محتوى توعويًا لافتًا يشجّع على العناية بالعيون." },
+      solution: { en: "We designed a 3D scene with vibrant colors, a clear message, and brand elements.", ar: "صممنا مشهدًا ثلاثي الأبعاد بألوان حيوية ورسالة واضحة وعناصر العلامة." },
+      results: { en: "A striking design that raised audience awareness and engagement with the clinic.", ar: "تصميم لافت رفع وعي الجمهور وتفاعله مع العيادة." },
+      tech: ["Photoshop", "Cinema 4D"],
+      metrics: [{ v: "Social", l: { en: "social media", ar: "سوشيال ميديا" } }, { v: "3D", l: { en: "3D visuals", ar: "عناصر ثلاثية الأبعاد" } }, { v: "Brand", l: { en: "on-brand", ar: "متّسق مع الهوية" } }]
+    },
+    social1: {
+      cover: "assets/work/covers/social-media-designs-1.jpg",
+      gallery: ["assets/work/g/social-media-designs-1-1.jpg", "assets/work/g/social-media-designs-1-2.jpg", "assets/work/g/social-media-designs-1-3.jpg", "assets/work/g/social-media-designs-1-4.jpg", "assets/work/g/social-media-designs-1-5.jpg", "assets/work/g/social-media-designs-1-6.jpg", "assets/work/g/social-media-designs-1-7.jpg", "assets/work/g/social-media-designs-1-8.jpg", "assets/work/g/social-media-designs-1-9.jpg", "assets/work/g/social-media-designs-1-10.jpg"],
+      cat: { en: "Social Media", ar: "سوشيال ميديا" }, year: "2025",
+      client: { en: "Various clients", ar: "عملاء متنوّعون" },
+      title: { en: "Social Designs · I", ar: "تصاميم سوشيال · ١" },
+      summary: { en: "A selected collection of social media designs for various brands.", ar: "مجموعة مختارة من تصاميم السوشيال ميديا لعلامات تجارية متنوّعة." },
+      problem: { en: "Brands need consistent, eye-catching visual content that builds identity and boosts social engagement.", ar: "العلامات التجارية تحتاج محتوى بصري ثابت وجذّاب يبني هويتها ويزيد التفاعل على السوشيال ميديا." },
+      solution: { en: "Designed a variety of social posts (offers, occasions, ads) with a consistent visual identity and engaging styles per brand.", ar: "صمّمت منشورات سوشيال ميديا متنوّعة (عروض، مناسبات، إعلانات) بهوية بصرية متّسقة وأساليب جذّابة لكل علامة." },
+      results: { en: "Professional visual content that strengthens brand presence and lifts engagement.", ar: "محتوى بصري احترافي يعزّز حضور العلامة ويرفع التفاعل." },
+      tech: ["Adobe Photoshop", "Illustrator"],
+      metrics: [{ v: "Posts", l: { en: "social posts", ar: "بوستات سوشيال" } }, { v: "Brand", l: { en: "on-brand", ar: "متّسق مع الهوية" } }, { v: "Vol. 1", l: { en: "collection", ar: "مجموعة" } }]
+    },
+    social2: {
+      cover: "assets/work/covers/social-media-designs-2.jpg",
+      gallery: ["assets/work/g/social-media-designs-2-1.jpg", "assets/work/g/social-media-designs-2-2.jpg", "assets/work/g/social-media-designs-2-3.jpg", "assets/work/g/social-media-designs-2-4.jpg", "assets/work/g/social-media-designs-2-5.jpg", "assets/work/g/social-media-designs-2-6.jpg", "assets/work/g/social-media-designs-2-7.jpg", "assets/work/g/social-media-designs-2-8.jpg", "assets/work/g/social-media-designs-2-9.jpg", "assets/work/g/social-media-designs-2-10.jpg"],
+      cat: { en: "Social Media", ar: "سوشيال ميديا" }, year: "2025",
+      client: { en: "Various clients", ar: "عملاء متنوّعون" },
+      title: { en: "Social Designs · II", ar: "تصاميم سوشيال · ٢" },
+      summary: { en: "Another collection of social media designs for various brands and occasions.", ar: "مجموعة أخرى من تصاميم السوشيال ميديا لعلامات ومناسبات متنوّعة." },
+      problem: { en: "Brands need consistent, eye-catching visual content that builds identity and boosts social engagement.", ar: "العلامات التجارية تحتاج محتوى بصري ثابت وجذّاب يبني هويتها ويزيد التفاعل على السوشيال ميديا." },
+      solution: { en: "Designed a variety of social posts (offers, occasions, ads) with a consistent visual identity and engaging styles per brand.", ar: "صمّمت منشورات سوشيال ميديا متنوّعة (عروض، مناسبات، إعلانات) بهوية بصرية متّسقة وأساليب جذّابة لكل علامة." },
+      results: { en: "Professional visual content that strengthens brand presence and lifts engagement.", ar: "محتوى بصري احترافي يعزّز حضور العلامة ويرفع التفاعل." },
+      tech: ["Adobe Photoshop", "Illustrator"],
+      metrics: [{ v: "Posts", l: { en: "social posts", ar: "بوستات سوشيال" } }, { v: "Brand", l: { en: "on-brand", ar: "متّسق مع الهوية" } }, { v: "Vol. 2", l: { en: "collection", ar: "مجموعة" } }]
+    },
+    logo: {
+      cover: "assets/work/covers/logo-design-collection.jpg",
+      gallery: ["assets/work/g/logo-design-collection-1.jpg", "assets/work/g/logo-design-collection-2.jpg", "assets/work/g/logo-design-collection-3.jpg", "assets/work/g/logo-design-collection-4.jpg", "assets/work/g/logo-design-collection-5.jpg", "assets/work/g/logo-design-collection-6.jpg"],
+      cat: { en: "Logo & Brand Mark", ar: "شعارات وهوية" }, year: "2025",
+      client: { en: "Various clients", ar: "عملاء متنوّعون" },
+      title: { en: "Logo Collection", ar: "مجموعة شعارات" },
+      summary: { en: "A collection of logos I designed for various brands.", ar: "مجموعة من الشعارات التي صمّمتها لعلامات تجارية متنوّعة." },
+      problem: { en: "Every brand needs a distinctive logo that expresses it and sticks in customers' minds.", ar: "كل علامة تجارية تحتاج شعارًا مميّزًا يعبّر عنها ويترسّخ في ذهن العميل." },
+      solution: { en: "Designed logos with thoughtful visual concepts per brand — simple, distinctive, and application-ready across media.", ar: "صمّمت شعارات بمفاهيم بصرية مدروسة لكل علامة — بساطة، تميّز، وقابلية للتطبيق على كل الوسائط." },
+      results: { en: "Strong logos that build a clear identity and leave a lasting impression.", ar: "شعارات قوية تبني هوية واضحة وتترك انطباعًا يدوم." },
+      tech: ["Adobe Illustrator", "Photoshop"],
+      metrics: [{ v: "Logos", l: { en: "logo marks", ar: "شعارات" } }, { v: "Brand", l: { en: "brand identity", ar: "هوية بصرية" } }, { v: "Vector", l: { en: "scalable vector", ar: "فيكتور قابل للتكبير" } }]
     }
   };
   var WM = {
-    en: { problem: 'The Problem', solution: 'The Solution', results: 'Results & Impact', tech: 'Technologies', gallery: 'Inside the project', live: 'Visit live site', close: 'Close' },
-    ar: { problem: 'المشكلة', solution: 'الحل', results: 'النتائج والأثر', tech: 'التقنيات المستخدمة', gallery: 'جوّه المشروع', live: 'زيارة الموقع المباشر', close: 'إغلاق' }
+    en: { problem: 'The Problem', solution: 'The Solution', results: 'Results & Impact', tech: 'Technologies', gallery: 'Inside the project', live: 'Visit live site', pdf: 'View the full PDF', close: 'Close' },
+    ar: { problem: 'المشكلة', solution: 'الحل', results: 'النتائج والأثر', tech: 'التقنيات المستخدمة', gallery: 'جوّه المشروع', live: 'زيارة الموقع المباشر', pdf: 'عرض الملف كامل (PDF)', close: 'إغلاق' }
   };
   var wmodal = document.getElementById('workModal');
   function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
@@ -384,7 +540,7 @@
     var metrics = p.metrics.map(function (m) { return '<div class="wm__metric"><b>' + esc(m.v) + '</b><span>' + tr(m.l) + '</span></div>'; }).join('');
     var tags = p.tech.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('');
     var gallery = p.gallery.map(function (g) { return '<img src="' + g + '" alt="" loading="lazy">'; }).join('');
-    var live = '<a class="btn btn--primary wm__live" href="' + p.liveUrl + '" target="_blank" rel="noopener">' + L.live + ' ↗</a>';
+    var live = p.liveUrl ? '<a class="btn btn--primary wm__live" href="' + p.liveUrl + '" target="_blank" rel="noopener">' + (p.liveLabel === 'pdf' ? L.pdf : L.live) + ' ↗</a>' : '';
     var quote = p.quote ? '<blockquote class="wm__quote">“' + tr(p.quote) + '”<cite>— ' + esc(p.author) + '</cite></blockquote>' : '';
     wmodal.innerHTML =
       '<button class="wm__close" aria-label="' + L.close + '">&times;</button>' +
