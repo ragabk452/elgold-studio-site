@@ -5,6 +5,12 @@
 (function () {
   'use strict';
 
+  /* لو المتصفح رجّع الصفحة من ذاكرته (bfcache / استرجاع تبويب) يعيد تحميلها
+     عشان العميل دايمًا يشوف آخر نسخة — مفيش لوب لأن إعادة التحميل بتيجي persisted=false */
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) window.location.reload();
+  });
+
   var fine = matchMedia('(pointer:fine)').matches;
   var reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
   var hasGsap = typeof gsap !== 'undefined';
