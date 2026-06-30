@@ -3,7 +3,7 @@
    ========================================================= */
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; scroll-padding-top: var(--nav-h); overflow-x: clip; }
 body {
   font-family: var(--font);
   background: var(--background);
@@ -135,7 +135,7 @@ p { max-width: var(--reading); }
   border-bottom: 1px solid transparent;
   transition: background var(--t-normal) var(--ease), border-color var(--t-normal) var(--ease), backdrop-filter var(--t-normal);
 }
-.nav.is-scrolled { background: rgba(10,19,48,.6); backdrop-filter: blur(16px) saturate(140%); border-bottom-color: var(--border); }
+.nav.is-scrolled { background: rgba(10,19,48,.82); backdrop-filter: blur(16px) saturate(140%); border-bottom-color: var(--border); }
 .nav__inner { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--pad); display: flex; align-items: center; justify-content: space-between; gap: var(--s-24); }
 .brand { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; letter-spacing: .02em; color: var(--cream); }
 .brand b { font-weight: 800; }
@@ -159,7 +159,7 @@ p { max-width: var(--reading); }
 /* =========================================================
    الهيرو
    ========================================================= */
-.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: calc(var(--nav-h) + var(--s-48)) var(--pad) var(--s-80); overflow: hidden; }
+.hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: calc(var(--nav-h) + var(--s-48)) var(--pad) var(--s-80); overflow: hidden; }
 /* خلفية معرض الأعمال المموّهة (تظهر بعد ظهور الاسم) */
 .hero__gallery { position: absolute; inset: -6%; z-index: 0; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 1fr); gap: 16px; filter: blur(34px); opacity: 0; transform: scale(1.14); transition: opacity 1.6s var(--ease), transform 2.2s var(--ease); pointer-events: none; }
 .hero.is-revealed .hero__gallery { opacity: .4; transform: scale(1); }

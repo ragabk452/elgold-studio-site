@@ -265,6 +265,14 @@
       }});
     });
 
+    // إعادة حساب مواقع التشغيل بعد ما الصور/الخطوط تحمّل وبعد ما اللودر يخلّص —
+    // مهم جداً عشان إزاحة المحتوى ما تخليش أي قسم يفضل مخفي (opacity:0) على أي جهاز
+    var doRefresh = function () { ScrollTrigger.refresh(); };
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(doRefresh); }
+    if (document.readyState === 'complete') { doRefresh(); } else { window.addEventListener('load', doRefresh); }
+    setTimeout(doRefresh, 1600);
+    setTimeout(doRefresh, 3800);
+
     initSnap();
   }
 
