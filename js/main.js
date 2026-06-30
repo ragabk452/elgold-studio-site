@@ -45,7 +45,7 @@
       'services.s6t': 'CRM Systems', 'services.s6d': 'Custom CRM & systems that automate work.',
       'work.eyebrow': 'Selected work', 'work.title': 'Featured projects',
       'work.sub': 'Selected design & development work — tap any project to explore it.', 'work.view': 'View project →',
-      'work.fall': 'All', 'work.fdev': 'Development', 'work.fdesign': 'Design',
+      'work.fall': 'All', 'work.fdev': 'Development', 'work.fdesign': 'Design', 'work.projects': 'Projects',
       'work.p1t': 'AI Agency OS', 'work.p1d': 'SaaS for agencies — clients, projects, invoicing & AI.', 'work.p1tag': 'Multi‑tenant SaaS',
       'work.p2t': 'Anamil Yasin', 'work.p2d': 'Premium handcrafted store with a full dashboard.', 'work.p2tag': 'Live store',
       'work.p3t': 'Nexa Digital', 'work.p3d': 'Agency site with smooth motion & social proof.', 'work.p3tag': 'Live site',
@@ -131,7 +131,7 @@
       'services.s6t': 'أنظمة CRM', 'services.s6d': 'أنظمة CRM وإدارة بتأتمت شغلك.',
       'work.eyebrow': 'مختارات من أعمالنا', 'work.title': 'مشاريع مختارة',
       'work.sub': 'مختارات من أعمال التصميم والتطوير — اضغط أي مشروع لتشوفه بالكامل.', 'work.view': 'عرض المشروع →',
-      'work.fall': 'الكل', 'work.fdev': 'برمجة', 'work.fdesign': 'تصميم',
+      'work.fall': 'الكل', 'work.fdev': 'برمجة', 'work.fdesign': 'تصميم', 'work.projects': 'مشروع',
       'work.p1t': 'AI Agency OS', 'work.p1d': 'منصّة SaaS للوكالات — عملاء ومشاريع وفواتير.', 'work.p1tag': 'SaaS متعدّد المستأجرين',
       'work.p2t': 'أنامل ياسين', 'work.p2d': 'متجر منتجات حرفية فاخر بلوحة تحكّم كاملة.', 'work.p2tag': 'متجر مباشر',
       'work.p3t': 'Nexa Digital', 'work.p3d': 'موقع وكالة بحركة سلسة وإثبات اجتماعي.', 'work.p3tag': 'موقع مباشر',
@@ -625,10 +625,10 @@
     var grid = document.querySelector('.work-grid');
     var filter = document.querySelector('.work-filter');
     if (grid && filter) {
-      var isAr = document.documentElement.lang === 'ar';
+      var lang = curLang();
       var cnt = document.createElement('span');
       cnt.className = 'work-count';
-      cnt.textContent = cards.length + (isAr ? ' مشروع' : ' Projects');
+      cnt.innerHTML = cards.length + ' <span data-i18n="work.projects">' + (((T[lang] || T.en)['work.projects']) || 'Projects') + '</span>';
       filter.parentNode.insertBefore(cnt, filter);
     }
     // دائرة "View ↗" تتبع الماوس فوق المعرض (ديسكتوب فقط)

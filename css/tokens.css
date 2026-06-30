@@ -37,7 +37,7 @@
   /* ===== Fonts ===== */
   --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-body:    'Inter', system-ui, -apple-system, sans-serif;
-  --font-ar:      'Falasteen', 'Cairo', 'Tajawal', sans-serif;
+  --font-ar:      'Falasteen', 'Inter', 'Cairo', 'Tajawal', sans-serif;
   --font:         var(--font-body);
 
   /* ===== Spacing scale (بس دول) ===== */
@@ -67,6 +67,9 @@ html[lang="ar"] { --font: var(--font-ar); --font-display: var(--font-ar); }
   src: url('../assets/fonts/Falasteen.ttf') format('truetype');
   font-weight: 100 900;
   font-display: swap;
+  /* عربي فقط — الخط حروفه اللاتينية فاضية، فنقصره على نطاق العربي
+     عشان أي نص لاتيني (إيميل/PayPal/أسماء) يرجع لـInter تلقائياً */
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F, U+0640;
 }
 /* Tajawal مستضاف محلياً (مفتوح المصدر) — لاسم الهيرو العربي، يتحمّل أكيد من سيرفرنا */
 @font-face {
