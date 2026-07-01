@@ -12,11 +12,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/tokens.css?v=20260701t" />
-  <link rel="stylesheet" href="css/portal.css?v=20260701t" />
+  <link rel="stylesheet" href="css/tokens.css?v=20260701u" />
+  <link rel="stylesheet" href="css/portal.css?v=20260701u" />
 
   <script src="assets/js/vendor/supabase.min.js"></script>
-  <script src="js/portal-config.js?v=20260701t"></script>
+  <script src="js/portal-config.js?v=20260701u"></script>
 </head>
 <body>
 
@@ -157,6 +157,7 @@
       <div class="pt-ctabs">
         <button class="pt-ctab is-active" type="button" data-ct="numbers" data-i18n="content.tab_num">Numbers</button>
         <button class="pt-ctab" type="button" data-ct="services" data-i18n="content.tab_svc">Services</button>
+        <button class="pt-ctab" type="button" data-ct="testi" data-i18n="content.tab_testi">Reviews</button>
       </div>
 
       <!-- تبويب الأرقام -->
@@ -178,6 +179,12 @@
         <div id="pt-svc-list"></div>
       </div>
 
+      <!-- تبويب الآراء (يتولّد بالجافاسكريبت) -->
+      <div class="pt-cpane is-hidden" data-pane="testi">
+        <p class="pt-sub" data-i18n="content.testi_sub">Edit client reviews (English + Arabic).</p>
+        <div id="pt-testi-list"></div>
+      </div>
+
       <p class="pt-msg" id="pt-content-msg"></p>
       <div class="pt-modal__actions">
         <button class="pt-btn pt-btn--ghost" id="pt-content-cancel" type="button" data-i18n="content.cancel">Cancel</button>
@@ -186,6 +193,6 @@
     </div>
   </div>
 
-  <script src="js/portal.js?v=20260701t"></script>
+  <script src="js/portal.js?v=20260701u"></script>
 </body>
 </html>

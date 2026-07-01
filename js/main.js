@@ -37,6 +37,20 @@
           if (p && dd) p.textContent = dd;
         });
       }
+      var tq = __content.testimonials;
+      if (tq && tq.length) {
+        var ar2 = document.documentElement.lang === 'ar';
+        document.querySelectorAll('#testimonials .testi-card').forEach(function (card) {
+          var bq = card.querySelector('blockquote[data-i18n^="testi.q"]'); if (!bq) return;
+          var mm = (bq.getAttribute('data-i18n') || '').match(/testi\.q(\d)/); if (!mm) return;
+          var it = tq[parseInt(mm[1], 10) - 1]; if (!it) return;
+          var q = ar2 ? it.q_ar : it.q_en; if (q) bq.textContent = q;
+          var nm = card.querySelector('.testi-meta b'), av = card.querySelector('.testi-avatar'), src = card.querySelector('.testi-meta em');
+          if (nm && it.name) nm.textContent = it.name;
+          if (av && it.initials) av.textContent = it.initials;
+          if (src && it.source) src.textContent = it.source;
+        });
+      }
     } catch (e) {}
   }
   (function loadContent() {

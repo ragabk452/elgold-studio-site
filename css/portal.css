@@ -183,6 +183,7 @@ body {
 .pt-cpane { display: flex; flex-direction: column; gap: var(--s-16); }
 .pt-svc { border: 1px solid var(--border); border-radius: var(--r-md); padding: var(--s-16); margin-bottom: var(--s-12); display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-12); }
 .pt-svc__n { grid-column: 1 / -1; font-weight: 700; color: var(--accent2); font-size: .85rem; }
+.pt-svc .pt-wide { grid-column: 1 / -1; }
 .pt-svc .pt-field input { font: inherit; color: var(--cream); background: rgba(244,238,223,.04); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 9px 11px; width: 100%; }
 .pt-svc .pt-field input:focus { outline: none; border-color: var(--accent2); }
 @media (max-width: 520px) { .pt-svc { grid-template-columns: 1fr; } }

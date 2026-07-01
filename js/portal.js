@@ -22,6 +22,7 @@
       'add.title': 'New request', 'add.name': 'Client name', 'add.email': 'Email', 'add.phone': 'Phone / WhatsApp', 'add.service': 'Service', 'add.price': 'Price', 'add.cur': 'Currency', 'add.details': 'Details', 'add.cancel': 'Cancel', 'add.save': 'Add', add_ok: 'Added ✓', add_need: 'Enter at least a client name.',
       'owner.content': '⚙️ Site content', 'content.title': 'Site numbers', 'content.sub': 'The counters shown on the site (Why section).', 'content.projects': 'Projects', 'content.clients': 'Clients', 'content.years': 'Years', 'content.designs': 'Designs', 'content.cancel': 'Cancel', 'content.save': 'Save', content_ok: 'Saved ✓ — the site now shows the new numbers.',
       'content.tab_num': 'Numbers', 'content.tab_svc': 'Services', 'content.svc_sub': 'Edit the 6 services (English + Arabic).', svc_ten: 'Title (EN)', svc_den: 'Description (EN)', svc_tar: 'Title (AR)', svc_dar: 'Description (AR)', svc_ok: 'Services saved ✓ — the site is updated.',
+      'content.tab_testi': 'Reviews', 'content.testi_sub': 'Edit client reviews (English + Arabic).', ti_qen: 'Review (EN)', ti_qar: 'Review (AR)', ti_name: 'Name', ti_init: 'Initials', ti_src: 'Source', testi_ok: 'Reviews saved ✓ — the site is updated.',
       st_new: 'New', st_reviewing: 'Reviewing', st_in_progress: 'In progress', st_delivered: 'Delivered', st_cancelled: 'Cancelled',
       m_requests: 'Requests', m_due: 'Total due', m_paid: 'Total paid', m_price: 'Price', m_paidL: 'Paid', m_dueL: 'Due',
       save: 'Save', saved: 'Saved ✓', all: 'All', proposed: 'Proposed budget', welcome: 'Welcome',
@@ -48,6 +49,7 @@
       'add.title': 'طلب جديد', 'add.name': 'اسم العميل', 'add.email': 'الإيميل', 'add.phone': 'الموبايل / واتساب', 'add.service': 'الخدمة', 'add.price': 'السعر', 'add.cur': 'العملة', 'add.details': 'التفاصيل', 'add.cancel': 'إلغاء', 'add.save': 'إضافة', add_ok: 'اتضاف ✓', add_need: 'اكتب اسم العميل على الأقل.',
       'owner.content': '⚙️ محتوى الموقع', 'content.title': 'أرقام الموقع', 'content.sub': 'الأرقام اللي بتظهر في الموقع (قسم ليه إلجولد).', 'content.projects': 'مشاريع', 'content.clients': 'عملاء', 'content.years': 'سنوات', 'content.designs': 'تصاميم', 'content.cancel': 'إلغاء', 'content.save': 'حفظ', content_ok: 'اتحفظ ✓ — الموقع دلوقتي بيعرض الأرقام الجديدة.',
       'content.tab_num': 'الأرقام', 'content.tab_svc': 'الخدمات', 'content.svc_sub': 'عدّل الـ6 خدمات (إنجليزي + عربي).', svc_ten: 'العنوان (إنجليزي)', svc_den: 'الوصف (إنجليزي)', svc_tar: 'العنوان (عربي)', svc_dar: 'الوصف (عربي)', svc_ok: 'اتحفظت الخدمات ✓ — الموقع اتحدّث.',
+      'content.tab_testi': 'الآراء', 'content.testi_sub': 'عدّل آراء العملاء (إنجليزي + عربي).', ti_qen: 'الرأي (إنجليزي)', ti_qar: 'الرأي (عربي)', ti_name: 'الاسم', ti_init: 'الأحرف', ti_src: 'المصدر', testi_ok: 'اتحفظت الآراء ✓ — الموقع اتحدّث.',
       st_new: 'جديد', st_reviewing: 'قيد المراجعة', st_in_progress: 'جاري التنفيذ', st_delivered: 'تم التسليم', st_cancelled: 'ملغي',
       m_requests: 'الطلبات', m_due: 'إجمالي المستحق', m_paid: 'إجمالي المدفوع', m_price: 'السعر', m_paidL: 'المدفوع', m_dueL: 'المتبقّي',
       save: 'حفظ', saved: 'اتحفظ ✓', all: 'الكل', proposed: 'الميزانية المقترحة', welcome: 'أهلاً',
@@ -404,7 +406,22 @@
         });
       });
     }
-    btn.addEventListener('click', function () { showTab('numbers'); loadNumbers(); loadServices(); modal.classList.remove('is-hidden'); });
+    function loadTesti() {
+      SB.from('site_content').select('value').eq('key', 'testimonials').maybeSingle().then(function (r) {
+        var list = (r && r.data && r.data.value) || [], box = $('pt-testi-list'); box.innerHTML = '';
+        list.forEach(function (s, i) {
+          var d = document.createElement('div'); d.className = 'pt-svc';
+          d.innerHTML = '<div class="pt-svc__n">#' + (i + 1) + '</div>'
+            + '<label class="pt-field pt-wide"><span>' + esc(t('ti_qen')) + '</span><input class="ti-qen" value="' + esc(s.q_en || '') + '" dir="ltr"></label>'
+            + '<label class="pt-field pt-wide"><span>' + esc(t('ti_qar')) + '</span><input class="ti-qar" value="' + esc(s.q_ar || '') + '" dir="rtl"></label>'
+            + '<label class="pt-field"><span>' + esc(t('ti_name')) + '</span><input class="ti-name" value="' + esc(s.name || '') + '"></label>'
+            + '<label class="pt-field"><span>' + esc(t('ti_init')) + '</span><input class="ti-init" value="' + esc(s.initials || '') + '" dir="ltr"></label>'
+            + '<label class="pt-field"><span>' + esc(t('ti_src')) + '</span><input class="ti-src" value="' + esc(s.source || '') + '"></label>';
+          box.appendChild(d);
+        });
+      });
+    }
+    btn.addEventListener('click', function () { showTab('numbers'); loadNumbers(); loadServices(); loadTesti(); modal.classList.remove('is-hidden'); });
     [].forEach.call(document.querySelectorAll('.pt-ctab'), function (b) { b.addEventListener('click', function () { showTab(b.getAttribute('data-ct')); }); });
     $('pt-content-cancel').addEventListener('click', function () { modal.classList.add('is-hidden'); });
     modal.addEventListener('click', function (e) { if (e.target === modal) modal.classList.add('is-hidden'); });
@@ -414,13 +431,20 @@
       if (activeTab === 'numbers') {
         payload = { key: 'stats', value: { projects: Number($('sc-projects').value || 0), clients: Number($('sc-clients').value || 0), years: Number($('sc-years').value || 0), designs: Number($('sc-designs').value || 0) }, updated_at: new Date().toISOString() };
         okMsg = t('content_ok');
-      } else {
+      } else if (activeTab === 'services') {
         var arr = [];
         [].forEach.call(document.querySelectorAll('#pt-svc-list .pt-svc'), function (d) {
           arr.push({ t_en: d.querySelector('.s-ten').value.trim(), d_en: d.querySelector('.s-den').value.trim(), t_ar: d.querySelector('.s-tar').value.trim(), d_ar: d.querySelector('.s-dar').value.trim() });
         });
         payload = { key: 'services', value: arr, updated_at: new Date().toISOString() };
         okMsg = t('svc_ok');
+      } else {
+        var tarr = [];
+        [].forEach.call(document.querySelectorAll('#pt-testi-list .pt-svc'), function (d) {
+          tarr.push({ q_en: d.querySelector('.ti-qen').value.trim(), q_ar: d.querySelector('.ti-qar').value.trim(), name: d.querySelector('.ti-name').value.trim(), initials: d.querySelector('.ti-init').value.trim(), source: d.querySelector('.ti-src').value.trim() });
+        });
+        payload = { key: 'testimonials', value: tarr, updated_at: new Date().toISOString() };
+        okMsg = t('testi_ok');
       }
       SB.from('site_content').upsert(payload, { onConflict: 'key' }).then(function (r) {
         b.disabled = false;
