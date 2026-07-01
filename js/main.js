@@ -51,6 +51,40 @@
           if (src && it.source) src.textContent = it.source;
         });
       }
+      try { applyWorks(); } catch (e) {}
+    } catch (e) {}
+  }
+  var __works = null;
+  function applyWorks() {
+    try {
+      if (!__works || !__works.length) return;
+      var ar = document.documentElement.lang === 'ar';
+      var pair = function (en, arv) { return { en: en || '', ar: arv || en || '' }; };
+      __works.forEach(function (w) {
+        if (!w.slug) return;
+        // 1) بيانات المودال (PROJECTS) — يتحدّث لو PROJECTS متعرّف
+        try {
+          if (PROJECTS) {
+            PROJECTS[w.slug] = {
+              liveUrl: w.live_url || '', liveLabel: w.live_label || 'visit', cover: w.cover || '', gallery: w.gallery || [],
+              cat: pair(w.cat_en, w.cat_ar), year: w.year || '', client: pair(w.client_en, w.client_ar),
+              title: pair(w.title_en, w.title_ar), summary: pair(w.summary_en, w.summary_ar),
+              problem: pair(w.problem_en, w.problem_ar), solution: pair(w.solution_en, w.solution_ar), results: pair(w.results_en, w.results_ar),
+              tech: w.tech || [], metrics: w.metrics || [],
+              quote: (w.quote_en || w.quote_ar) ? pair(w.quote_en, w.quote_ar) : null, author: w.author || ''
+            };
+          }
+        } catch (e) {}
+        // 2) الكارت (عنوان/غلاف/سنة/رابط) — تحديث نصّي آمن، من غير إعادة بناء
+        var link = document.querySelector('.work-card__link[data-project="' + w.slug + '"]');
+        if (!link) return;
+        var card = link.closest('.work-card'); if (!card) return;
+        var h3 = card.querySelector('.work-card__body h3'), tt = ar ? w.title_ar : w.title_en;
+        if (h3 && tt) h3.textContent = tt;
+        var img = card.querySelector('.work-card__img'); if (img && w.cover) { img.src = w.cover; if (tt) img.alt = tt; }
+        var yr = card.querySelector('.work-card__year'); if (yr && w.year) yr.textContent = w.year;
+        if (w.live_url) link.setAttribute('href', w.live_url);
+      });
     } catch (e) {}
   }
   (function loadContent() {
@@ -62,6 +96,10 @@
           r.data.forEach(function (row) { __content[row.key] = row.value; });
           applyStats(); applyContent();
         } catch (e) {}
+      }, function () {});
+      // الأعمال: تحديث عنوان/غلاف/سنة الكروت + بيانات المودال (من غير إعادة بناء الشبكة)
+      window.SB.from('portal_works').select('*').order('sort_order').then(function (r) {
+        try { if (r && r.data && r.data.length) { __works = r.data; applyWorks(); } } catch (e) {}
       }, function () {});
     } catch (e) {}
   })();
