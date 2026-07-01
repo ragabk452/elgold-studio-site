@@ -108,4 +108,5 @@ html[lang="ar"] li { line-height: 2; }
   --border: rgba(10, 19, 48, 0.12);
   --card: rgba(10, 19, 48, 0.03);
   --primary: var(--navy-800);
+  --accent: var(--navy-600);   /* عشان أيقونات الكروت وخطوط الـeyebrow تبان على البيج */
 }
