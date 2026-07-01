@@ -136,7 +136,7 @@
       'contact.eyebrow': 'Contact', 'contact.title': 'Let’s start your project',
       'contact.sub': 'Tell us what you need and your budget — we reply within 24 hours.',
       'contact.wa': 'WhatsApp', 'contact.email': 'Email', 'contact.pay': 'Pay securely:',
-      'contact.ph_name': 'Your name', 'contact.ph_email': 'Your email', 'contact.ph_brief': 'Describe your project…',
+      'contact.ph_name': 'Your name', 'contact.ph_email': 'Your email', 'contact.ph_phone': 'Your WhatsApp / phone', 'contact.ph_brief': 'Describe your project…',
       'contact.s1': 'Brand identity', 'contact.s2': 'Website', 'contact.s3': 'Web app', 'contact.s4': 'Mobile app', 'contact.s5': 'Other',
       'contact.budget': 'Your budget', 'contact.submit': 'Send request',
       'contact.payNow': '— or pay directly —', 'contact.paypal': 'Pay with PayPal / Card',
@@ -223,7 +223,7 @@
       'contact.eyebrow': 'تواصل', 'contact.title': 'يلا نبدأ مشروعك',
       'contact.sub': 'قوللنا محتاج إيه وميزانيتك — بنرد خلال ٢٤ ساعة.',
       'contact.wa': 'واتساب', 'contact.email': 'إيميل', 'contact.pay': 'ادفع بأمان:',
-      'contact.ph_name': 'اسمك', 'contact.ph_email': 'إيميلك', 'contact.ph_brief': 'اوصف مشروعك…',
+      'contact.ph_name': 'اسمك', 'contact.ph_email': 'إيميلك', 'contact.ph_phone': 'واتسابك / رقم تليفونك', 'contact.ph_brief': 'اوصف مشروعك…',
       'contact.s1': 'هوية بصرية', 'contact.s2': 'موقع', 'contact.s3': 'تطبيق ويب', 'contact.s4': 'تطبيق موبايل', 'contact.s5': 'أخرى',
       'contact.budget': 'ميزانيتك', 'contact.submit': 'ابعت الطلب',
       'contact.payNow': '— أو ادفع مباشرة —', 'contact.paypal': 'ادفع بـ PayPal / كارت',
@@ -818,6 +818,7 @@
     e.preventDefault();
     if (oform.company && oform.company.value) return;          // مصيدة سبام
     var name = oform.name.value.trim(), email = oform.email.value.trim(), brief = oform.brief.value.trim();
+    var phone = oform.phone ? oform.phone.value.trim() : '';
     var ar = document.documentElement.lang === 'ar';
     if (!name || email.indexOf('@') < 1) { alert(ar ? 'من فضلك اكتب اسمك وإيميل صحيح.' : 'Please enter your name and a valid email.'); return; }
     var budget = fmtNum(range ? range.value : '') + ' ' + currency;
@@ -826,18 +827,18 @@
     function sent() {
       oform.innerHTML = '<div style="text-align:center;padding:28px 6px"><div style="font-size:2.6rem">✅</div>'
         + '<h3 style="margin:12px 0 6px;color:var(--ink)">' + (ar ? 'وصل طلبك!' : 'Request sent!') + '</h3>'
-        + '<p style="color:#6b6256;line-height:1.7">' + (ar ? 'استلمنا تفاصيل مشروعك — هنرد عليك في أقرب وقت.' : 'We got your project details — we’ll reply shortly.') + '</p></div>';
+        + '<p style="color:#6b6256;line-height:1.7">' + (ar ? 'استلمنا طلبك — بيوصلنا على الإيميل والواتساب، وهنرد عليك في أقرب وقت.' : 'We got your request — it reaches us by email & WhatsApp. We’ll reply shortly.') + '</p></div>';
     }
-    var payload = { name: name, email: email, service: selected, budget: budget, details: (brief || '—'),
+    // رسالة واتساب لصاحب الاستوديو مع كل التفاصيل (مع الإيميل)
+    var waMsg = 'طلب مشروع جديد — ELGOLD STUDIO\n——————\nالاسم: ' + name + '\nالإيميل: ' + email
+      + (phone ? '\nالرقم: ' + phone : '') + '\nالخدمة: ' + selected + '\nالميزانية: ' + budget + '\nالتفاصيل: ' + (brief || '—');
+    var waUrl = 'https://wa.me/201069082986?text=' + encodeURIComponent(waMsg);
+    var payload = { name: name, email: email, phone: (phone || '—'), service: selected, budget: budget, details: (brief || '—'),
       _subject: 'طلب مشروع جديد من الموقع — ELGOLD STUDIO', _template: 'table', _captcha: 'false' };
     fetch('https://formsubmit.co/ajax/' + ORDER_EMAIL, {
       method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(payload)
-    }).then(function (r) { return r.json(); }).then(function () { sent(); })
-      .catch(function () {   // فشل الشبكة → واتساب كخطة بديلة
-        var msg = 'طلب مشروع — ELGOLD STUDIO\nالاسم: ' + name + '\nالإيميل: ' + email + '\nالخدمة: ' + selected + '\nالميزانية: ' + budget + '\nالتفاصيل: ' + (brief || '—');
-        window.open('https://wa.me/201069082986?text=' + encodeURIComponent(msg), '_blank'); sent();
-      });
+    })['finally'](function () { window.open(waUrl, '_blank'); sent(); });   // إيميل + واتساب مع بعض
   });
 
   // الدفع المباشر: PayPal (بالإيميل — الكارت بيروح لـPayPal تلقائياً) + نسخ رقم InstaPay
