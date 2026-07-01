@@ -899,7 +899,7 @@
 
   var range = document.getElementById('budget-range'), bVal = document.getElementById('budget-val'), bCur = document.getElementById('budget-cur');
   var currency = 'USD';
-  var ranges = { USD: { min: 50, max: 5000, step: 50, def: 500 }, EGP: { min: 1000, max: 200000, step: 1000, def: 15000 } };
+  var ranges = { USD: { min: 10, max: 5000, step: 10, def: 500 }, EGP: { min: 500, max: 200000, step: 500, def: 15000 } };
   function fmtNum(n) { return Number(n).toLocaleString('en-US'); }
   if (range && bVal) range.addEventListener('input', function () { bVal.textContent = fmtNum(range.value); });
   document.querySelectorAll('.cur-btn').forEach(function (b) {
