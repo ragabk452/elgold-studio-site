@@ -813,14 +813,31 @@
   });
 
   var oform = document.getElementById('order-form');
+  var ORDER_EMAIL = 'ragabk452@gmail.com';   // الطلبات توصل عليه
   if (oform) oform.addEventListener('submit', function (e) {
     e.preventDefault();
     if (oform.company && oform.company.value) return;          // مصيدة سبام
     var name = oform.name.value.trim(), email = oform.email.value.trim(), brief = oform.brief.value.trim();
-    if (!name || email.indexOf('@') < 1) { alert('Please enter your name and a valid email.'); return; }
-    var msg = 'New project request — ELGOLD STUDIO\n——————\nName: ' + name + '\nEmail: ' + email + '\nService: ' + selected + '\nBudget: ' + fmtNum(range ? range.value : '') + ' ' + currency + '\nDetails: ' + (brief || '—');
-    window.open('https://wa.me/201069082986?text=' + encodeURIComponent(msg), '_blank');
-    oform.innerHTML = '<div style="text-align:center;padding:24px 0"><div style="font-size:2.4rem">✅</div><h3 style="margin:10px 0;color:var(--ink)">Request sent!</h3><p style="color:#6b6256">We opened WhatsApp with your details — hit send and we’ll reply fast. Or email ragabk452@gmail.com</p></div>';
+    var ar = document.documentElement.lang === 'ar';
+    if (!name || email.indexOf('@') < 1) { alert(ar ? 'من فضلك اكتب اسمك وإيميل صحيح.' : 'Please enter your name and a valid email.'); return; }
+    var budget = fmtNum(range ? range.value : '') + ' ' + currency;
+    var subBtn = oform.querySelector('button[type="submit"]');
+    if (subBtn) { subBtn.disabled = true; subBtn.textContent = ar ? 'جارٍ الإرسال…' : 'Sending…'; }
+    function sent() {
+      oform.innerHTML = '<div style="text-align:center;padding:28px 6px"><div style="font-size:2.6rem">✅</div>'
+        + '<h3 style="margin:12px 0 6px;color:var(--ink)">' + (ar ? 'وصل طلبك!' : 'Request sent!') + '</h3>'
+        + '<p style="color:#6b6256;line-height:1.7">' + (ar ? 'استلمنا تفاصيل مشروعك — هنرد عليك في أقرب وقت.' : 'We got your project details — we’ll reply shortly.') + '</p></div>';
+    }
+    var payload = { name: name, email: email, service: selected, budget: budget, details: (brief || '—'),
+      _subject: 'طلب مشروع جديد من الموقع — ELGOLD STUDIO', _template: 'table', _captcha: 'false' };
+    fetch('https://formsubmit.co/ajax/' + ORDER_EMAIL, {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (r) { return r.json(); }).then(function () { sent(); })
+      .catch(function () {   // فشل الشبكة → واتساب كخطة بديلة
+        var msg = 'طلب مشروع — ELGOLD STUDIO\nالاسم: ' + name + '\nالإيميل: ' + email + '\nالخدمة: ' + selected + '\nالميزانية: ' + budget + '\nالتفاصيل: ' + (brief || '—');
+        window.open('https://wa.me/201069082986?text=' + encodeURIComponent(msg), '_blank'); sent();
+      });
   });
 
   // الدفع المباشر: PayPal (بالإيميل — الكارت بيروح لـPayPal تلقائياً) + نسخ رقم InstaPay
