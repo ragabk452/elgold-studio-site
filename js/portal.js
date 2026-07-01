@@ -21,6 +21,7 @@
       k_clients: 'Clients', k_revenue: 'Revenue', k_outstanding: 'Outstanding', k_new: 'New', del: 'Delete', del_confirm: 'Delete this request? This cannot be undone.', noresults: 'No matches.',
       'add.title': 'New request', 'add.name': 'Client name', 'add.email': 'Email', 'add.phone': 'Phone / WhatsApp', 'add.service': 'Service', 'add.price': 'Price', 'add.cur': 'Currency', 'add.details': 'Details', 'add.cancel': 'Cancel', 'add.save': 'Add', add_ok: 'Added ✓', add_need: 'Enter at least a client name.',
       'owner.content': '⚙️ Site content', 'content.title': 'Site numbers', 'content.sub': 'The counters shown on the site (Why section).', 'content.projects': 'Projects', 'content.clients': 'Clients', 'content.years': 'Years', 'content.designs': 'Designs', 'content.cancel': 'Cancel', 'content.save': 'Save', content_ok: 'Saved ✓ — the site now shows the new numbers.',
+      'content.tab_num': 'Numbers', 'content.tab_svc': 'Services', 'content.svc_sub': 'Edit the 6 services (English + Arabic).', svc_ten: 'Title (EN)', svc_den: 'Description (EN)', svc_tar: 'Title (AR)', svc_dar: 'Description (AR)', svc_ok: 'Services saved ✓ — the site is updated.',
       st_new: 'New', st_reviewing: 'Reviewing', st_in_progress: 'In progress', st_delivered: 'Delivered', st_cancelled: 'Cancelled',
       m_requests: 'Requests', m_due: 'Total due', m_paid: 'Total paid', m_price: 'Price', m_paidL: 'Paid', m_dueL: 'Due',
       save: 'Save', saved: 'Saved ✓', all: 'All', proposed: 'Proposed budget', welcome: 'Welcome',
@@ -46,6 +47,7 @@
       k_clients: 'العملاء', k_revenue: 'الإيرادات', k_outstanding: 'المستحقات', k_new: 'جديدة', del: 'حذف', del_confirm: 'تحذف الطلب ده؟ مش هينفع ترجعه.', noresults: 'مفيش نتائج.',
       'add.title': 'طلب جديد', 'add.name': 'اسم العميل', 'add.email': 'الإيميل', 'add.phone': 'الموبايل / واتساب', 'add.service': 'الخدمة', 'add.price': 'السعر', 'add.cur': 'العملة', 'add.details': 'التفاصيل', 'add.cancel': 'إلغاء', 'add.save': 'إضافة', add_ok: 'اتضاف ✓', add_need: 'اكتب اسم العميل على الأقل.',
       'owner.content': '⚙️ محتوى الموقع', 'content.title': 'أرقام الموقع', 'content.sub': 'الأرقام اللي بتظهر في الموقع (قسم ليه إلجولد).', 'content.projects': 'مشاريع', 'content.clients': 'عملاء', 'content.years': 'سنوات', 'content.designs': 'تصاميم', 'content.cancel': 'إلغاء', 'content.save': 'حفظ', content_ok: 'اتحفظ ✓ — الموقع دلوقتي بيعرض الأرقام الجديدة.',
+      'content.tab_num': 'الأرقام', 'content.tab_svc': 'الخدمات', 'content.svc_sub': 'عدّل الـ6 خدمات (إنجليزي + عربي).', svc_ten: 'العنوان (إنجليزي)', svc_den: 'الوصف (إنجليزي)', svc_tar: 'العنوان (عربي)', svc_dar: 'الوصف (عربي)', svc_ok: 'اتحفظت الخدمات ✓ — الموقع اتحدّث.',
       st_new: 'جديد', st_reviewing: 'قيد المراجعة', st_in_progress: 'جاري التنفيذ', st_delivered: 'تم التسليم', st_cancelled: 'ملغي',
       m_requests: 'الطلبات', m_due: 'إجمالي المستحق', m_paid: 'إجمالي المدفوع', m_price: 'السعر', m_paidL: 'المدفوع', m_dueL: 'المتبقّي',
       save: 'حفظ', saved: 'اتحفظ ✓', all: 'الكل', proposed: 'الميزانية المقترحة', welcome: 'أهلاً',
@@ -369,12 +371,17 @@
     });
   }
 
-  /* ---------- site content (stats) ---------- */
+  /* ---------- site content (numbers + services) ---------- */
   function wireContent() {
     var modal = $('pt-content-modal'), btn = $('pt-content'); if (!btn || !modal) return;
+    var activeTab = 'numbers';
     function cmsg(txt, kind) { var m = $('pt-content-msg'); if (m) { m.textContent = txt || ''; m.className = 'pt-msg' + (kind ? ' ' + kind : ''); } }
-    btn.addEventListener('click', function () {
-      cmsg('', '');
+    function showTab(tab) {
+      activeTab = tab; cmsg('', '');
+      [].forEach.call(document.querySelectorAll('.pt-ctab'), function (b) { b.classList.toggle('is-active', b.getAttribute('data-ct') === tab); });
+      [].forEach.call(document.querySelectorAll('.pt-cpane'), function (p) { p.classList.toggle('is-hidden', p.getAttribute('data-pane') !== tab); });
+    }
+    function loadNumbers() {
       SB.from('site_content').select('value').eq('key', 'stats').maybeSingle().then(function (r) {
         var v = (r && r.data && r.data.value) || {};
         $('sc-projects').value = v.projects != null ? v.projects : '';
@@ -382,20 +389,43 @@
         $('sc-years').value = v.years != null ? v.years : '';
         $('sc-designs').value = v.designs != null ? v.designs : '';
       });
-      modal.classList.remove('is-hidden');
-    });
+    }
+    function loadServices() {
+      SB.from('site_content').select('value').eq('key', 'services').maybeSingle().then(function (r) {
+        var list = (r && r.data && r.data.value) || [], box = $('pt-svc-list'); box.innerHTML = '';
+        list.forEach(function (s, i) {
+          var d = document.createElement('div'); d.className = 'pt-svc';
+          d.innerHTML = '<div class="pt-svc__n">#' + (i + 1) + '</div>'
+            + '<label class="pt-field"><span>' + esc(t('svc_ten')) + '</span><input class="s-ten" value="' + esc(s.t_en || '') + '" dir="ltr"></label>'
+            + '<label class="pt-field"><span>' + esc(t('svc_den')) + '</span><input class="s-den" value="' + esc(s.d_en || '') + '" dir="ltr"></label>'
+            + '<label class="pt-field"><span>' + esc(t('svc_tar')) + '</span><input class="s-tar" value="' + esc(s.t_ar || '') + '" dir="rtl"></label>'
+            + '<label class="pt-field"><span>' + esc(t('svc_dar')) + '</span><input class="s-dar" value="' + esc(s.d_ar || '') + '" dir="rtl"></label>';
+          box.appendChild(d);
+        });
+      });
+    }
+    btn.addEventListener('click', function () { showTab('numbers'); loadNumbers(); loadServices(); modal.classList.remove('is-hidden'); });
+    [].forEach.call(document.querySelectorAll('.pt-ctab'), function (b) { b.addEventListener('click', function () { showTab(b.getAttribute('data-ct')); }); });
     $('pt-content-cancel').addEventListener('click', function () { modal.classList.add('is-hidden'); });
     modal.addEventListener('click', function (e) { if (e.target === modal) modal.classList.add('is-hidden'); });
     $('pt-content-save').addEventListener('click', function () {
-      var val = {
-        projects: Number($('sc-projects').value || 0), clients: Number($('sc-clients').value || 0),
-        years: Number($('sc-years').value || 0), designs: Number($('sc-designs').value || 0)
-      };
       var b = $('pt-content-save'); b.disabled = true;
-      SB.from('site_content').upsert({ key: 'stats', value: val, updated_at: new Date().toISOString() }, { onConflict: 'key' }).then(function (r) {
+      var payload, okMsg;
+      if (activeTab === 'numbers') {
+        payload = { key: 'stats', value: { projects: Number($('sc-projects').value || 0), clients: Number($('sc-clients').value || 0), years: Number($('sc-years').value || 0), designs: Number($('sc-designs').value || 0) }, updated_at: new Date().toISOString() };
+        okMsg = t('content_ok');
+      } else {
+        var arr = [];
+        [].forEach.call(document.querySelectorAll('#pt-svc-list .pt-svc'), function (d) {
+          arr.push({ t_en: d.querySelector('.s-ten').value.trim(), d_en: d.querySelector('.s-den').value.trim(), t_ar: d.querySelector('.s-tar').value.trim(), d_ar: d.querySelector('.s-dar').value.trim() });
+        });
+        payload = { key: 'services', value: arr, updated_at: new Date().toISOString() };
+        okMsg = t('svc_ok');
+      }
+      SB.from('site_content').upsert(payload, { onConflict: 'key' }).then(function (r) {
         b.disabled = false;
         if (r.error) { cmsg(r.error.message || t('err_generic'), 'err'); return; }
-        cmsg(t('content_ok'), 'ok'); setTimeout(function () { modal.classList.add('is-hidden'); }, 1400);
+        cmsg(okMsg, 'ok');
       });
     });
   }

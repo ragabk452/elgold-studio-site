@@ -176,6 +176,17 @@ body {
 .pt-btn.pt-del { background: rgba(226,121,107,.12); color: #E2796B; border-color: rgba(226,121,107,.3); }
 .pt-btn.pt-del:hover { background: rgba(226,121,107,.2); }
 
+/* تبويبات محتوى الموقع + محرّر الخدمات */
+.pt-ctabs { display: flex; gap: 6px; background: rgba(244,238,223,.05); border: 1px solid var(--border); border-radius: var(--r-pill); padding: 5px; margin-bottom: var(--s-16); }
+.pt-ctab { flex: 1; font: inherit; cursor: pointer; color: var(--muted); background: transparent; border: 0; border-radius: var(--r-pill); padding: 9px 12px; font-weight: 600; }
+.pt-ctab.is-active { background: var(--cream); color: var(--ink); }
+.pt-cpane { display: flex; flex-direction: column; gap: var(--s-16); }
+.pt-svc { border: 1px solid var(--border); border-radius: var(--r-md); padding: var(--s-16); margin-bottom: var(--s-12); display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-12); }
+.pt-svc__n { grid-column: 1 / -1; font-weight: 700; color: var(--accent2); font-size: .85rem; }
+.pt-svc .pt-field input { font: inherit; color: var(--cream); background: rgba(244,238,223,.04); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 9px 11px; width: 100%; }
+.pt-svc .pt-field input:focus { outline: none; border-color: var(--accent2); }
+@media (max-width: 520px) { .pt-svc { grid-template-columns: 1fr; } }
+
 /* ===== العربي: العناوين بخط فلسطين ===== */
 html[lang="ar"] .pt-title { font-family: 'Falasteen', 'Cairo', sans-serif; line-height: 1.45; }
 html[lang="ar"] body { line-height: 1.9; }

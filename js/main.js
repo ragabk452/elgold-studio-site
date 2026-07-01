@@ -8,20 +8,45 @@
   /* ===== محتوى قابل للتحديث من لوحة التحكم (آمن تماماً) =====
      الأرقام مكتوبة ثابتة في الـHTML (تشتغل دايماً)؛ ده بس بيحدّثها لو فيه قيم في قاعدة البيانات.
      كله داخل try/catch — أي خطأ هنا لا يؤثر على أي جزء تاني في الموقع. */
-  (function loadSiteStats() {
+  var __content = {};
+  function applyStats() {
+    try {
+      var v = __content.stats; if (!v) return;
+      var nodes = document.querySelectorAll('.count[data-stat]');
+      for (var i = 0; i < nodes.length; i++) {
+        var el = nodes[i], k = el.getAttribute('data-stat'), val = v[k];
+        if (val != null && !isNaN(val)) {
+          el.setAttribute('data-to', String(parseInt(val, 10)));
+          if (el.textContent !== '0') el.textContent = String(parseInt(val, 10)); // لو العدّاد خلص خلاص
+        }
+      }
+    } catch (e) {}
+  }
+  function applyContent() {   // الخدمات — يتنادى بعد تبديل اللغة كمان
+    try {
+      var s = __content.services;
+      if (s && s.length) {
+        var ar = document.documentElement.lang === 'ar';
+        document.querySelectorAll('#services .card').forEach(function (card) {
+          var h = card.querySelector('h3[data-i18n^="services.s"]'); if (!h) return;
+          var m = (h.getAttribute('data-i18n') || '').match(/services\.s(\d)/); if (!m) return;
+          var item = s[parseInt(m[1], 10) - 1]; if (!item) return;
+          var p = card.querySelector('p[data-i18n^="services.s"]');
+          var tt = ar ? item.t_ar : item.t_en, dd = ar ? item.d_ar : item.d_en;
+          if (tt) h.textContent = tt;
+          if (p && dd) p.textContent = dd;
+        });
+      }
+    } catch (e) {}
+  }
+  (function loadContent() {
     try {
       if (!window.SB || !window.SB.from) return;
-      window.SB.from('site_content').select('value').eq('key', 'stats').maybeSingle().then(function (r) {
+      window.SB.from('site_content').select('key,value').then(function (r) {
         try {
-          var v = r && r.data && r.data.value; if (!v) return;
-          var nodes = document.querySelectorAll('.count[data-stat]');
-          for (var i = 0; i < nodes.length; i++) {
-            var el = nodes[i], k = el.getAttribute('data-stat'), val = v[k];
-            if (val != null && !isNaN(val)) {
-              el.setAttribute('data-to', String(parseInt(val, 10)));
-              if (el.textContent !== '0') el.textContent = String(parseInt(val, 10)); // لو العدّاد خلص خلاص
-            }
-          }
+          if (!r || !r.data) return;
+          r.data.forEach(function (row) { __content[row.key] = row.value; });
+          applyStats(); applyContent();
         } catch (e) {}
       }, function () {});
     } catch (e) {}
@@ -262,6 +287,7 @@
     document.querySelectorAll('[data-i18n]').forEach(function (el) { var k = el.getAttribute('data-i18n'); if (d[k] != null) el.textContent = d[k]; });
     document.querySelectorAll('[data-i18n-ph]').forEach(function (el) { var k = el.getAttribute('data-i18n-ph'); if (d[k] != null) el.setAttribute('placeholder', d[k]); });
     try { localStorage.setItem('elgold_lang', l); } catch (e) {}
+    try { applyContent(); } catch (e) {}   // إعادة تطبيق محتوى قاعدة البيانات (الخدمات) بعد تغيير اللغة
   }
   applyLang(curLang());
   var langBtn = document.getElementById('lang');
