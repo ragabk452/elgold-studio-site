@@ -471,6 +471,9 @@ html[lang="ar"] .work-cursor::after { content: "عرض ↗"; }
 .about__points { list-style: none; display: grid; gap: var(--s-16); margin-bottom: var(--s-32); }
 .about__points li { display: flex; gap: 12px; align-items: flex-start; color: var(--ink); font-weight: 500; line-height: 1.5; }
 .about__points svg { flex: 0 0 22px; width: 22px; height: 22px; padding: 4px; border-radius: 50%; background: var(--navy-800); color: var(--cream); }
+.about__points li span { flex: 1; }
+/* العربي: نهايات النقاط تتساوى — النص يمتد لملء العرض فتنتهي كلها عند نفس النقطة */
+html[lang="ar"] .about__points li span { text-align: justify; -webkit-text-align-last: justify; text-align-last: justify; }
 
 /* =========================================================
    نافذة تفاصيل المشروع (Case Study Modal)
