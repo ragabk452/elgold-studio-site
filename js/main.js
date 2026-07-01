@@ -135,14 +135,14 @@
       'cta.btn1': 'Start a project', 'cta.btn2': 'Book a call',
       'contact.eyebrow': 'Contact', 'contact.title': 'Let’s start your project',
       'contact.sub': 'Tell us what you need and your budget — we reply within 24 hours.',
-      'contact.wa': 'WhatsApp', 'contact.email': 'Email', 'contact.pay': 'Pay securely:',
+      'contact.wa': 'WhatsApp', 'contact.email': 'Email', 'contact.pay': 'Pay securely:', 'contact.portalLink': 'Already a client? Log in to track your project →',
       'contact.ph_name': 'Your name', 'contact.ph_email': 'Your email', 'contact.ph_phone': 'Your WhatsApp / phone', 'contact.ph_brief': 'Describe your project…',
       'contact.s1': 'Brand identity', 'contact.s2': 'Website', 'contact.s3': 'Web app', 'contact.s4': 'Mobile app', 'contact.s5': 'Other',
       'contact.budget': 'Your budget', 'contact.submit': 'Send request',
       'contact.payNow': '— or pay directly —', 'contact.paypal': 'Pay with PayPal / Card',
       'contact.instapayLbl': 'InstaPay (Egypt)', 'contact.copy': 'Copy',
       'footer.tag': 'Digital products that sell — SaaS, CRM systems & dashboards, designed and engineered by Kareem Ragab.',
-      'footer.links': 'Navigate', 'footer.faq': 'FAQ', 'footer.services': 'Services', 'footer.contact': 'Contact',
+      'footer.links': 'Navigate', 'footer.faq': 'FAQ', 'footer.services': 'Services', 'footer.contact': 'Contact', 'footer.portal': 'Client Portal',
       'footer.news_ph': 'Your email', 'footer.rights': 'All rights reserved'
     },
     ar: {
@@ -222,14 +222,14 @@
       'cta.btn1': 'ابدأ مشروعك', 'cta.btn2': 'احجز مكالمة',
       'contact.eyebrow': 'تواصل', 'contact.title': 'يلا نبدأ مشروعك',
       'contact.sub': 'قوللنا محتاج إيه وميزانيتك — بنرد خلال ٢٤ ساعة.',
-      'contact.wa': 'واتساب', 'contact.email': 'إيميل', 'contact.pay': 'ادفع بأمان:',
+      'contact.wa': 'واتساب', 'contact.email': 'إيميل', 'contact.pay': 'ادفع بأمان:', 'contact.portalLink': 'عميل عندنا؟ سجّل دخول لمتابعة مشروعك →',
       'contact.ph_name': 'اسمك', 'contact.ph_email': 'إيميلك', 'contact.ph_phone': 'واتسابك / رقم تليفونك', 'contact.ph_brief': 'اوصف مشروعك…',
       'contact.s1': 'هوية بصرية', 'contact.s2': 'موقع', 'contact.s3': 'تطبيق ويب', 'contact.s4': 'تطبيق موبايل', 'contact.s5': 'أخرى',
       'contact.budget': 'ميزانيتك', 'contact.submit': 'ابعت الطلب',
       'contact.payNow': '— أو ادفع مباشرة —', 'contact.paypal': 'ادفع بـ PayPal / كارت',
       'contact.instapayLbl': 'إنستا باي (مصر)', 'contact.copy': 'نسخ',
       'footer.tag': 'منتجات رقمية بتبيع — SaaS وCRM ولوحات تحكم، تصميم وبرمجة من كريم رجب.',
-      'footer.links': 'تنقّل', 'footer.faq': 'الأسئلة', 'footer.services': 'الخدمات', 'footer.contact': 'تواصل',
+      'footer.links': 'تنقّل', 'footer.faq': 'الأسئلة', 'footer.services': 'الخدمات', 'footer.contact': 'تواصل', 'footer.portal': 'بوابة العملاء',
       'footer.news_ph': 'إيميلك', 'footer.rights': 'جميع الحقوق محفوظة'
     }
   };
@@ -833,6 +833,16 @@
     var waMsg = 'طلب مشروع جديد — ELGOLD STUDIO\n——————\nالاسم: ' + name + '\nالإيميل: ' + email
       + (phone ? '\nالرقم: ' + phone : '') + '\nالخدمة: ' + selected + '\nالميزانية: ' + budget + '\nالتفاصيل: ' + (brief || '—');
     var waUrl = 'https://wa.me/201069082986?text=' + encodeURIComponent(waMsg);
+    // لو العميل مسجّل دخول في البورتال — احفظ الطلب في حسابه (يظهر في لوحته ومستحقاته)
+    if (window.SB && window.SB.auth) {
+      window.SB.auth.getSession().then(function (s) {
+        var u = s && s.data && s.data.session && s.data.session.user; if (!u) return;
+        window.SB.from('portal_requests').insert({
+          user_id: u.id, name: name, email: email, phone: phone || null,
+          service: selected, budget: budget, details: brief || null
+        }).then(function () {}, function () {});
+      });
+    }
     var payload = { name: name, email: email, phone: (phone || '—'), service: selected, budget: budget, details: (brief || '—'),
       _subject: 'طلب مشروع جديد من الموقع — ELGOLD STUDIO', _template: 'table', _captcha: 'false' };
     fetch('https://formsubmit.co/ajax/' + ORDER_EMAIL, {

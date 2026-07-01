@@ -390,6 +390,8 @@ html[lang="ar"] .work-cursor::after { content: "عرض ↗"; }
 .contact__method em { font-style: normal; color: var(--muted); font-size: .9rem; }
 .contact__pay { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: var(--s-32); color: var(--muted); font-size: .85rem; }
 .pay-b { font-family: var(--font-en); font-size: .72rem; font-weight: 700; color: var(--text); border: 1px solid var(--border); border-radius: 7px; padding: 4px 9px; }
+.contact__portal { display: inline-block; margin-top: var(--s-24); color: var(--muted); font-size: .9rem; font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; transition: color var(--t-fast), border-color var(--t-fast); }
+.contact__portal:hover { color: var(--text); border-bottom-color: var(--border); }
 .contact__form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: var(--s-32); }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-12); }
 .contact__form input, .contact__form textarea { width: 100%; font-family: var(--font); font-size: 1rem; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(10,19,48,.18); background: #fffdf8; color: var(--ink); margin-bottom: var(--s-12); }

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0A1330" />
+  <title>Client Portal — ELGOLD STUDIO</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230A1330'/><text x='50' y='70' font-size='58' text-anchor='middle' fill='%23F4EEDF' font-family='Georgia,serif' font-weight='bold'>E</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/tokens.css?v=20260701m" />
+  <link rel="stylesheet" href="css/portal.css?v=20260701m" />
+
+  <script src="assets/js/vendor/supabase.min.js"></script>
+  <script src="js/portal-config.js?v=20260701m"></script>
+</head>
+<body>
+
+  <!-- الهيدر -->
+  <header class="pt-nav">
+    <a href="index.html" class="pt-brand"><b>ELGOLD</b> <span>STUDIO</span></a>
+    <div class="pt-nav__right">
+      <button id="pt-lang" class="pt-ghost" type="button">ع</button>
+      <a href="index.html" class="pt-ghost" data-i18n="back">← Site</a>
+      <button id="pt-logout" class="pt-ghost is-hidden" type="button" data-i18n="logout">Log out</button>
+    </div>
+  </header>
+
+  <main class="pt-main">
+
+    <!-- شاشة تحميل بسيطة -->
+    <div id="pt-loading" class="pt-loading"><div class="pt-spin"></div></div>
+
+    <!-- ============ دخول / حساب جديد ============ -->
+    <section id="pt-auth" class="pt-auth is-hidden">
+      <div class="pt-card pt-auth__card">
+        <h1 class="pt-title" data-i18n="auth.title">Client Portal</h1>
+        <p class="pt-sub" data-i18n="auth.sub">Sign in to track your projects and dues.</p>
+
+        <div class="pt-tabs">
+          <button class="pt-tab is-active" data-tab="login" data-i18n="auth.login">Log in</button>
+          <button class="pt-tab" data-tab="signup" data-i18n="auth.signup">Create account</button>
+        </div>
+
+        <form id="pt-form" class="pt-form" novalidate>
+          <label class="pt-field pt-name is-hidden">
+            <span data-i18n="auth.name">Full name</span>
+            <input type="text" name="name" autocomplete="name" />
+          </label>
+          <label class="pt-field">
+            <span data-i18n="auth.email">Email</span>
+            <input type="email" name="email" required autocomplete="email" dir="ltr" />
+          </label>
+          <label class="pt-field">
+            <span data-i18n="auth.password">Password</span>
+            <input type="password" name="password" required minlength="6" autocomplete="current-password" dir="ltr" />
+          </label>
+          <button type="submit" class="pt-btn pt-btn--primary" id="pt-submit" data-i18n="auth.login">Log in</button>
+          <button type="button" class="pt-link" id="pt-forgot" data-i18n="auth.forgot">Forgot password?</button>
+          <p class="pt-msg" id="pt-msg" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ لوحة العميل ============ -->
+    <section id="pt-client" class="pt-dash is-hidden">
+      <div class="pt-dash__head">
+        <div>
+          <h1 class="pt-title" id="pt-hi">Welcome</h1>
+          <p class="pt-sub" data-i18n="client.sub">Your projects &amp; dues in one place.</p>
+        </div>
+        <a href="index.html#contact" class="pt-btn pt-btn--primary" data-i18n="client.new">+ New request</a>
+      </div>
+
+      <div class="pt-stats" id="pt-stats"></div>
+
+      <h2 class="pt-h2" data-i18n="client.requests">Your requests</h2>
+      <div class="pt-list" id="pt-client-list"></div>
+      <div class="pt-empty is-hidden" id="pt-client-empty" data-i18n="client.empty">No requests yet — start one from the site.</div>
+    </section>
+
+    <!-- ============ لوحة صاحب الاستوديو ============ -->
+    <section id="pt-owner" class="pt-dash is-hidden">
+      <div class="pt-dash__head">
+        <div>
+          <h1 class="pt-title" data-i18n="owner.title">Studio dashboard</h1>
+          <p class="pt-sub" data-i18n="owner.sub">All requests — set price, payments &amp; status.</p>
+        </div>
+        <button class="pt-btn pt-btn--ghost" id="pt-refresh" type="button" data-i18n="owner.refresh">Refresh</button>
+      </div>
+
+      <div class="pt-stats" id="pt-owner-stats"></div>
+
+      <div class="pt-filters" id="pt-owner-filters"></div>
+      <div class="pt-list" id="pt-owner-list"></div>
+      <div class="pt-empty is-hidden" id="pt-owner-empty" data-i18n="owner.empty">No requests yet.</div>
+    </section>
+
+  </main>
+
+  <script src="js/portal.js?v=20260701m"></script>
+</body>
+</html>
