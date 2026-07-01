@@ -13,7 +13,12 @@
 
   /* تحديث تلقائي: لو فيه نسخة أجدد على السيرفر، الموقع يعمل ريفريش لوحده —
      على الموبايل مع السكرول، وعند الرجوع للتبويب/الفوكس. العميل دايمًا يشوف آخر تحديث. */
-  var BUILD = '20260701c';                       // يتبمب كل نشر (نفس رقم ?v=)
+  // رقم النسخة الحالي = نفس ?v= بتاع السكربت ده (يتقري تلقائيًا، فمفيش تبميب يدوي هنا)
+  var BUILD = (function () {
+    var s = document.querySelector('script[src*="js/main.js"]');
+    var m = s && s.src.match(/[?&]v=([^&]+)/);
+    return m ? decodeURIComponent(m[1]) : 'dev';
+  })();
   var _lastCheck = 0, _checking = false;
   function checkUpdate() {
     if (_checking) return;
@@ -28,6 +33,11 @@
         if (v && v !== BUILD) {
           var ae = document.activeElement;
           if (ae && /^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName)) return;  // ما نقاطعش وهو بيملا فورم
+          try {  // حماية من اللوب: ريفريش تلقائي مرة كل دقيقة كحد أقصى
+            var last = +(sessionStorage.getItem('_updRld') || 0);
+            if (Date.now() - last < 60000) return;
+            sessionStorage.setItem('_updRld', String(Date.now()));
+          } catch (e) {}
           window.location.reload();
         }
       })
