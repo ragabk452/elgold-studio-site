@@ -456,8 +456,8 @@ html[lang="ar"] .work-cursor::after { content: "عرض ↗"; }
 .about__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); box-shadow: 0 0 8px var(--success); }
 .about__content { max-width: 560px; }
 .about__title { margin: var(--s-12) 0 var(--s-20); }
-/* الاسم على سطره لوحده وأكبر عشان ياخد نفس عرض السطر الأول (تناسق) */
-.about__name { display: block; font-size: 1.68em; line-height: 1.05; margin-top: .1em; }
+/* الاسم على سطره لوحده بنفس حجم السطر الأول — والعرض بيتظبط بالمدّ (كشيدة) في النص */
+.about__name { display: block; margin-top: .12em; }
 .about__body { color: var(--muted); font-size: 1.05rem; line-height: 1.85; margin-bottom: var(--s-24); }
 .about__points { list-style: none; display: grid; gap: var(--s-16); margin-bottom: var(--s-32); }
 .about__points li { display: flex; gap: 12px; align-items: flex-start; color: var(--ink); font-weight: 500; line-height: 1.5; }
