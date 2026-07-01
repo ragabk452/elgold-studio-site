@@ -154,6 +154,7 @@
   var lenis = null;
   var modalOpen = false;
   var snapRemeasure = null;
+  var snapNav = null;   // ينقل لقسم باستخدام المواضع المحفوظة (الديسكتوب/السنّاب)
 
   /* ---------- i18n (EN افتراضي + AR) ---------- */
   var T = {
@@ -458,6 +459,12 @@
     measure();
     window.addEventListener('resize', measure);
     snapRemeasure = measure;   // عشان نعيد القياس بعد الفلترة
+    // نقل موثوق لقسم باستخدام الموضع المحفوظ (نفس آلية عجلة السنّاب اللي شغّالة)
+    snapNav = function (el) {
+      var idx = targets.indexOf(el); if (idx < 0) return false;
+      lenis.scrollTo(offsets[idx], { immediate: true, force: true });
+      return true;
+    };
 
     var locked = false, lockT;
     // القسم الحالي = آخر قسم بدايته فاتت منتصف الشاشة
@@ -811,7 +818,11 @@
       var t = document.querySelector(id); if (!t) return;
       e.preventDefault();
       if (menu) menu.classList.remove('is-open'); if (nav) nav.classList.remove('menu-open');
-      if (lenis) lenis.scrollTo(t, { offset: -90 }); else t.scrollIntoView({ behavior: 'smooth' });
+      // الديسكتوب (سنّاب): مواضع محفوظة موثوقة. الموبايل: سكرول طبيعي (الأقسام مش sticky فالقراءة الحيّة صح).
+      var usedSnap = (fine && window.innerWidth > 1024 && snapNav) ? snapNav(t) : false;
+      if (!usedSnap) {
+        if (lenis) lenis.scrollTo(t, { offset: -90 }); else t.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   });
 
