@@ -12,11 +12,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/tokens.css?v=20260701m" />
-  <link rel="stylesheet" href="css/portal.css?v=20260701m" />
+  <link rel="stylesheet" href="css/tokens.css?v=20260701n" />
+  <link rel="stylesheet" href="css/portal.css?v=20260701n" />
 
   <script src="assets/js/vendor/supabase.min.js"></script>
-  <script src="js/portal-config.js?v=20260701m"></script>
+  <script src="js/portal-config.js?v=20260701n"></script>
 </head>
 <body>
 
@@ -26,6 +26,7 @@
     <div class="pt-nav__right">
       <button id="pt-lang" class="pt-ghost" type="button">ع</button>
       <a href="index.html" class="pt-ghost" data-i18n="back">← Site</a>
+      <button id="pt-chpw" class="pt-ghost is-hidden" type="button" data-i18n="chpw">Change password</button>
       <button id="pt-logout" class="pt-ghost is-hidden" type="button" data-i18n="logout">Log out</button>
     </div>
   </header>
@@ -102,6 +103,20 @@
 
   </main>
 
-  <script src="js/portal.js?v=20260701m"></script>
+  <!-- تغيير كلمة السر -->
+  <div id="pt-pw-modal" class="pt-modal is-hidden">
+    <div class="pt-modal__card">
+      <h3 class="pt-h2" data-i18n="chpw.title">Change password</h3>
+      <label class="pt-field"><span data-i18n="chpw.new">New password</span><input type="password" id="pt-pw1" minlength="6" dir="ltr" autocomplete="new-password" /></label>
+      <label class="pt-field"><span data-i18n="chpw.confirm">Confirm password</span><input type="password" id="pt-pw2" minlength="6" dir="ltr" autocomplete="new-password" /></label>
+      <p class="pt-msg" id="pt-pw-msg"></p>
+      <div class="pt-modal__actions">
+        <button class="pt-btn pt-btn--ghost" id="pt-pw-cancel" type="button" data-i18n="chpw.cancel">Cancel</button>
+        <button class="pt-btn pt-btn--primary" id="pt-pw-save" type="button" data-i18n="chpw.save">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/portal.js?v=20260701n"></script>
 </body>
 </html>

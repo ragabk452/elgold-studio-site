@@ -8,6 +8,8 @@
   var T = {
     en: {
       back: '← Site', logout: 'Log out',
+      chpw: 'Change password', 'chpw.title': 'Change password', 'chpw.new': 'New password', 'chpw.confirm': 'Confirm password', 'chpw.cancel': 'Cancel', 'chpw.save': 'Save',
+      chpw_ok: 'Password changed ✓', chpw_short: 'Password must be at least 6 characters.', chpw_nomatch: 'Passwords do not match.',
       'auth.title': 'Client Portal', 'auth.sub': 'Sign in to track your projects and dues.',
       'auth.login': 'Log in', 'auth.signup': 'Create account', 'auth.name': 'Full name',
       'auth.email': 'Email', 'auth.password': 'Password', 'auth.forgot': 'Forgot password?',
@@ -25,6 +27,8 @@
     },
     ar: {
       back: '← الموقع', logout: 'خروج',
+      chpw: 'غيّر كلمة السر', 'chpw.title': 'تغيير كلمة السر', 'chpw.new': 'كلمة السر الجديدة', 'chpw.confirm': 'تأكيد كلمة السر', 'chpw.cancel': 'إلغاء', 'chpw.save': 'حفظ',
+      chpw_ok: 'اتغيّرت كلمة السر ✓', chpw_short: 'كلمة السر لازم ٦ حروف على الأقل.', chpw_nomatch: 'كلمتا السر مش متطابقتين.',
       'auth.title': 'بوابة العملاء', 'auth.sub': 'سجّل دخول عشان تتابع مشاريعك ومستحقاتك.',
       'auth.login': 'تسجيل الدخول', 'auth.signup': 'حساب جديد', 'auth.name': 'الاسم بالكامل',
       'auth.email': 'الإيميل', 'auth.password': 'كلمة السر', 'auth.forgot': 'نسيت كلمة السر؟',
@@ -196,13 +200,34 @@
 
   /* ---------- routing ---------- */
   function route(session) {
-    if (!session || !session.user) { show('pt-auth'); $('pt-logout').classList.add('is-hidden'); return; }
+    if (!session || !session.user) { show('pt-auth'); $('pt-logout').classList.add('is-hidden'); $('pt-chpw').classList.add('is-hidden'); return; }
     $('pt-logout').classList.remove('is-hidden');
+    $('pt-chpw').classList.remove('is-hidden');
     var email = (session.user.email || '').toLowerCase();
     if (email === OWNER) { loadOwner(); return; }
     show('pt-client');
     SB.from('portal_requests').select('*').order('created_at', { ascending: false }).then(function (r) {
       renderClient(session.user, (r.data) || []);
+    });
+  }
+
+  /* ---------- change password ---------- */
+  function pwMsg(txt, kind) { var m = $('pt-pw-msg'); m.textContent = txt || ''; m.className = 'pt-msg' + (kind ? ' ' + kind : ''); }
+  function wireChpw() {
+    var modal = $('pt-pw-modal');
+    $('pt-chpw').addEventListener('click', function () { $('pt-pw1').value = ''; $('pt-pw2').value = ''; pwMsg('', ''); modal.classList.remove('is-hidden'); $('pt-pw1').focus(); });
+    $('pt-pw-cancel').addEventListener('click', function () { modal.classList.add('is-hidden'); });
+    modal.addEventListener('click', function (e) { if (e.target === modal) modal.classList.add('is-hidden'); });
+    $('pt-pw-save').addEventListener('click', function () {
+      var p1 = $('pt-pw1').value, p2 = $('pt-pw2').value;
+      if (p1.length < 6) { pwMsg(t('chpw_short'), 'err'); return; }
+      if (p1 !== p2) { pwMsg(t('chpw_nomatch'), 'err'); return; }
+      var b = $('pt-pw-save'); b.disabled = true;
+      SB.auth.updateUser({ password: p1 }).then(function (r) {
+        b.disabled = false;
+        if (r.error) { pwMsg(r.error.message || t('err_generic'), 'err'); }
+        else { pwMsg(t('chpw_ok'), 'ok'); setTimeout(function () { modal.classList.add('is-hidden'); }, 1300); }
+      });
     });
   }
 
@@ -216,7 +241,7 @@
       SB.auth.getSession().then(function (r) { route(r.data.session); });
     });
     if (!SB) { show('pt-auth'); msg('Supabase library failed to load.', 'err'); return; }
-    wireAuth(); wireOwner(); setMode('login');
+    wireAuth(); wireOwner(); wireChpw(); setMode('login');
     SB.auth.getSession().then(function (r) { route(r.data.session); });
     SB.auth.onAuthStateChange(function (_e, session) { applyLang(); route(session); });
   }
