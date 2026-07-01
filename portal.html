@@ -12,11 +12,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/tokens.css?v=20260701q" />
-  <link rel="stylesheet" href="css/portal.css?v=20260701q" />
+  <link rel="stylesheet" href="css/tokens.css?v=20260701r" />
+  <link rel="stylesheet" href="css/portal.css?v=20260701r" />
 
   <script src="assets/js/vendor/supabase.min.js"></script>
-  <script src="js/portal-config.js?v=20260701q"></script>
+  <script src="js/portal-config.js?v=20260701r"></script>
 </head>
 <body>
 
@@ -91,10 +91,22 @@
           <h1 class="pt-title" data-i18n="owner.title">Studio dashboard</h1>
           <p class="pt-sub" data-i18n="owner.sub">All requests — set price, payments &amp; status.</p>
         </div>
-        <button class="pt-btn pt-btn--ghost" id="pt-refresh" type="button" data-i18n="owner.refresh">Refresh</button>
+        <div class="pt-dash__actions">
+          <button class="pt-btn pt-btn--primary" id="pt-add" type="button" data-i18n="owner.add">+ New request</button>
+          <button class="pt-btn pt-btn--ghost" id="pt-refresh" type="button" data-i18n="owner.refresh">Refresh</button>
+        </div>
       </div>
 
       <div class="pt-stats" id="pt-owner-stats"></div>
+
+      <div class="pt-toolbar">
+        <input type="search" id="pt-search" data-i18n-ph="owner.search" placeholder="Search name / email / service…" />
+        <select id="pt-sort">
+          <option value="new" data-i18n="owner.sort_new">Newest</option>
+          <option value="old" data-i18n="owner.sort_old">Oldest</option>
+          <option value="due" data-i18n="owner.sort_due">Most owed</option>
+        </select>
+      </div>
 
       <div class="pt-filters" id="pt-owner-filters"></div>
       <div class="pt-list" id="pt-owner-list"></div>
@@ -117,6 +129,27 @@
     </div>
   </div>
 
-  <script src="js/portal.js?v=20260701q"></script>
+  <!-- إضافة طلب يدوي (للأدمن) -->
+  <div id="pt-add-modal" class="pt-modal is-hidden">
+    <div class="pt-modal__card">
+      <h3 class="pt-h2" data-i18n="add.title">New request</h3>
+      <label class="pt-field"><span data-i18n="add.name">Client name</span><input type="text" id="ar-name" /></label>
+      <label class="pt-field"><span data-i18n="add.email">Email</span><input type="email" id="ar-email" dir="ltr" /></label>
+      <label class="pt-field"><span data-i18n="add.phone">Phone / WhatsApp</span><input type="tel" id="ar-phone" dir="ltr" /></label>
+      <label class="pt-field"><span data-i18n="add.service">Service</span><input type="text" id="ar-service" /></label>
+      <div class="pt-add-row">
+        <label class="pt-field"><span data-i18n="add.price">Price</span><input type="number" id="ar-price" min="0" value="0" /></label>
+        <label class="pt-field"><span data-i18n="add.cur">Currency</span><select id="ar-cur"><option>USD</option><option>EGP</option></select></label>
+      </div>
+      <label class="pt-field"><span data-i18n="add.details">Details</span><textarea id="ar-details" rows="2"></textarea></label>
+      <p class="pt-msg" id="pt-add-msg"></p>
+      <div class="pt-modal__actions">
+        <button class="pt-btn pt-btn--ghost" id="pt-add-cancel" type="button" data-i18n="add.cancel">Cancel</button>
+        <button class="pt-btn pt-btn--primary" id="pt-add-save" type="button" data-i18n="add.save">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/portal.js?v=20260701r"></script>
 </body>
 </html>

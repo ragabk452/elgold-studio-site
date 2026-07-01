@@ -159,6 +159,22 @@ body {
 .pt-modal { position: fixed; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; padding: var(--pad); background: rgba(7,12,32,.72); backdrop-filter: blur(6px); }
 .pt-modal__card { width: 100%; max-width: 400px; background: var(--navy-700); border: 1px solid var(--border); border-radius: var(--r-lg); padding: clamp(22px, 4vw, 32px); display: flex; flex-direction: column; gap: var(--s-16); box-shadow: 0 30px 80px rgba(0,0,0,.5); }
 .pt-modal__actions { display: flex; gap: var(--s-12); justify-content: flex-end; margin-top: 4px; }
+.pt-modal__card { max-height: 92vh; overflow-y: auto; }
+#pt-add-modal textarea, #pt-add-modal select { font: inherit; color: var(--cream); background: rgba(244,238,223,.04); border: 1px solid var(--border); border-radius: var(--r-md); padding: 11px 13px; width: 100%; }
+#pt-add-modal textarea:focus, #pt-add-modal select:focus { outline: none; border-color: var(--accent2); }
+#pt-add-modal select option { color: #111; }
+.pt-add-row { display: flex; gap: var(--s-12); }
+.pt-add-row .pt-field { flex: 1; }
+
+/* شريط أدوات الأدمن + أزرار */
+.pt-dash__actions { display: flex; gap: var(--s-8); flex-wrap: wrap; }
+.pt-toolbar { display: flex; gap: var(--s-12); flex-wrap: wrap; margin: var(--s-20) 0 var(--s-8); }
+.pt-toolbar #pt-search { flex: 1; min-width: 200px; font: inherit; color: var(--cream); background: rgba(244,238,223,.05); border: 1px solid var(--border); border-radius: var(--r-md); padding: 11px 14px; }
+.pt-toolbar #pt-search:focus { outline: none; border-color: var(--accent2); }
+.pt-toolbar #pt-sort { font: inherit; color: var(--cream); background: rgba(244,238,223,.05); border: 1px solid var(--border); border-radius: var(--r-md); padding: 11px 14px; }
+.pt-toolbar #pt-sort option { color: #111; }
+.pt-btn.pt-del { background: rgba(226,121,107,.12); color: #E2796B; border-color: rgba(226,121,107,.3); }
+.pt-btn.pt-del:hover { background: rgba(226,121,107,.2); }
 
 /* ===== العربي: العناوين بخط فلسطين ===== */
 html[lang="ar"] .pt-title { font-family: 'Falasteen', 'Cairo', sans-serif; line-height: 1.45; }
