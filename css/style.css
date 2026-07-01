@@ -373,7 +373,7 @@ html[lang="ar"] .work-cursor::after { content: "عرض ↗"; }
 @keyframes ctaGlow { 0%,100% { opacity: .65; transform: translate(-50%,-50%) scale(1); } 50% { opacity: 1; transform: translate(-50%,-50%) scale(1.12); } }
 .cta__inner { position: relative; z-index: 1; max-width: 840px; }
 .cta__inner .pill { margin-bottom: var(--s-24); }
-.cta__title { font-size: clamp(2.6rem, 6.5vw, 5rem); line-height: 1.05; }
+.cta__title { font-size: clamp(2rem, 4.6vw, 3.5rem); line-height: 1.05; }
 .cta__title .line { display: block; }
 .accent2-text { background: linear-gradient(90deg, var(--accent2), var(--blue-glow)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .cta__sub { margin: var(--s-24) auto 0; color: var(--muted); }
