@@ -37,6 +37,7 @@
   /* ===== Fonts ===== */
   --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-en:      'Inter', system-ui, -apple-system, sans-serif;   /* لاتيني دايمًا (أيقونات/أرقام/شارات) */
   --font-ar:      'Falasteen', 'Inter', 'Cairo', 'Tajawal', sans-serif;
   --font:         var(--font-body);
 
@@ -65,7 +66,9 @@ html[lang="ar"] {
 }
 /* العناوين الرئيسية بخط فلسطين + مسافة مريحة بين السطور */
 html[lang="ar"] .sec-title,
-html[lang="ar"] .cta__title { font-family: 'Falasteen', 'Cairo', sans-serif; line-height: 1.5; }
+html[lang="ar"] .cta__title { font-family: 'Falasteen', 'Cairo', sans-serif; line-height: 1.5; padding-bottom: .08em; }
+/* مسافة أوضح بين العنوان والوصف (عشان امتدادات خط فلسطين لتحت) */
+html[lang="ar"] .sec-sub { margin-top: var(--s-24); }
 /* مسافة أوسع بين السطور للنصوص العربية عشان تتقرا مريح */
 html[lang="ar"] p,
 html[lang="ar"] .sec-sub,
