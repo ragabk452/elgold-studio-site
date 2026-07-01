@@ -144,6 +144,11 @@ body {
 .pt-edit__actions { grid-column: 1 / -1; display: flex; gap: var(--s-12); flex-wrap: wrap; }
 .pt-edit__actions .pt-btn { padding: 10px 16px; font-size: .9rem; }
 .pt-edit__actions .pt-save { flex: 1; min-width: 120px; }
+.pt-pay { grid-column: 1 / -1; display: flex; gap: var(--s-12); flex-wrap: wrap; align-items: center; border-top: 1px dashed var(--border); margin-top: var(--s-8); padding-top: var(--s-16); }
+.pt-pay__lbl { width: 100%; font-size: .82rem; color: var(--warning); font-weight: 700; }
+.pt-pay .e-newpay { flex: 1; min-width: 140px; font: inherit; color: var(--cream); background: rgba(230,181,102,.08); border: 1px solid rgba(230,181,102,.3); border-radius: var(--r-sm); padding: 10px 12px; }
+.pt-pay .e-newpay:focus { outline: none; border-color: var(--warning); }
+.pt-pay .pt-btn { padding: 10px 16px; font-size: .9rem; }
 .pt-req__who { font-size: .8rem; color: var(--muted); margin-top: 4px; }
 
 .pt-filters { display: flex; gap: 8px; flex-wrap: wrap; margin: var(--s-20) 0; }
