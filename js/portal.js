@@ -20,6 +20,7 @@
       st_new: 'New', st_reviewing: 'Reviewing', st_in_progress: 'In progress', st_delivered: 'Delivered', st_cancelled: 'Cancelled',
       m_requests: 'Requests', m_due: 'Total due', m_paid: 'Total paid', m_price: 'Price', m_paidL: 'Paid', m_dueL: 'Due',
       save: 'Save', saved: 'Saved ✓', all: 'All', proposed: 'Proposed budget', welcome: 'Welcome',
+      rcpt_email: '📧 Email receipt', rcpt_wa: '📱 WhatsApp', rc_subject: 'Payment receipt — ELGOLD STUDIO', rc_dear: 'Dear', rc_service: 'Service', rc_price: 'Price', rc_paid: 'Paid', rc_due: 'Remaining', rc_status: 'Status', rc_updated: 'Last update', rc_nophone: 'No phone number saved for this client.',
       err_login: 'Wrong email or password.', err_generic: 'Something went wrong — try again.',
       chk_confirm: 'Account created ✓ Check your email to confirm, then log in.',
       chk_reset: 'Password reset link sent to your email.',
@@ -39,6 +40,7 @@
       st_new: 'جديد', st_reviewing: 'قيد المراجعة', st_in_progress: 'جاري التنفيذ', st_delivered: 'تم التسليم', st_cancelled: 'ملغي',
       m_requests: 'الطلبات', m_due: 'إجمالي المستحق', m_paid: 'إجمالي المدفوع', m_price: 'السعر', m_paidL: 'المدفوع', m_dueL: 'المتبقّي',
       save: 'حفظ', saved: 'اتحفظ ✓', all: 'الكل', proposed: 'الميزانية المقترحة', welcome: 'أهلاً',
+      rcpt_email: '📧 إيصال إيميل', rcpt_wa: '📱 واتساب', rc_subject: 'إيصال مستحقات — ELGOLD STUDIO', rc_dear: 'عزيزي', rc_service: 'الخدمة', rc_price: 'السعر', rc_paid: 'المدفوع', rc_due: 'المتبقّي', rc_status: 'الحالة', rc_updated: 'آخر تحديث', rc_nophone: 'مفيش رقم محفوظ للعميل ده.',
       err_login: 'الإيميل أو كلمة السر غلط.', err_generic: 'حصل خطأ — جرّب تاني.',
       chk_confirm: 'اتعمل الحساب ✓ افتح إيميلك وأكّده، وبعدين سجّل دخول.',
       chk_reset: 'بعتنا لينك تغيير كلمة السر على إيميلك.',
@@ -65,6 +67,15 @@
   function show(view) { ['pt-loading', 'pt-auth', 'pt-client', 'pt-owner'].forEach(function (id) { var el = $(id); if (el) el.classList.toggle('is-hidden', id !== view); }); }
   function statusLabel(s) { return t('st_' + s) || s; }
   function stCls(s) { return STATUSES.indexOf(s) >= 0 ? s : 'new'; }   // تعقيم الحالة قبل ما تتحط في اسم كلاس
+  function receiptText(row, price, paid, cur, status) {
+    var c = (cur === 'EGP') ? 'EGP' : 'USD', due = Math.max(0, price - paid);
+    return t('rc_subject') + '\n————————\n' + t('rc_dear') + ' ' + (row.name || '') + '،\n'
+      + t('rc_service') + ': ' + (row.service || '—') + '\n'
+      + t('rc_price') + ': ' + price + ' ' + c + '\n'
+      + t('rc_paid') + ': ' + paid + ' ' + c + '\n'
+      + t('rc_due') + ': ' + due + ' ' + c + '\n'
+      + t('rc_status') + ': ' + statusLabel(status) + '\n————————\nELGOLD STUDIO';
+  }
 
   /* ---------- auth UI ---------- */
   var mode = 'login';
@@ -168,8 +179,11 @@
       + '<label>' + t('m_paidL') + '<input type="number" min="0" step="1" class="e-paid" value="' + Number(r.paid || 0) + '"></label>'
       + '<label>' + esc(curLang() === 'ar' ? 'العملة' : 'Currency') + '<select class="e-cur">' + curOpts + '</select></label>'
       + '<label>' + esc(curLang() === 'ar' ? 'الحالة' : 'Status') + '<select class="e-status">' + opts + '</select></label>'
+      + '<div class="pt-edit__actions">'
       + '<button class="pt-btn pt-btn--primary pt-save" type="button">' + t('save') + '</button>'
-      + '</div></article>';
+      + '<button class="pt-btn pt-btn--ghost pt-receipt" type="button" data-ch="email">' + t('rcpt_email') + '</button>'
+      + (r.phone ? '<button class="pt-btn pt-btn--ghost pt-receipt" type="button" data-ch="wa">' + t('rcpt_wa') + '</button>' : '')
+      + '</div></div></article>';
   }
   function wireOwner() {
     $('pt-refresh').addEventListener('click', loadOwner);
@@ -177,6 +191,24 @@
       var b = e.target.closest('.pt-fbtn'); if (!b) return; ownerFilter = b.getAttribute('data-f'); renderOwner(ownerRows);
     });
     $('pt-owner-list').addEventListener('click', function (e) {
+      // إرسال إيصال للعميل (إيميل أو واتساب) — من إيميل/واتساب صاحب الاستوديو مباشرة
+      var rcpt = e.target.closest('.pt-receipt');
+      if (rcpt) {
+        var rc = rcpt.closest('.pt-req'), rid = rc.getAttribute('data-id');
+        var row = ownerRows.filter(function (x) { return x.id === rid; })[0]; if (!row) return;
+        var price = Number(rc.querySelector('.e-price').value || 0), paid = Number(rc.querySelector('.e-paid').value || 0);
+        var cur = rc.querySelector('.e-cur').value, status = rc.querySelector('.e-status').value;
+        var body = receiptText(row, price, paid, cur, status);
+        if (rcpt.getAttribute('data-ch') === 'wa') {
+          var ph = (row.phone || '').replace(/[^0-9]/g, '');
+          if (!ph) { alert(t('rc_nophone')); return; }
+          if (/^01[0-9]{9}$/.test(ph)) ph = '20' + ph.slice(1);   // مصري محلي → دولي
+          window.open('https://wa.me/' + ph + '?text=' + encodeURIComponent(body), '_blank');
+        } else {
+          window.open('mailto:' + encodeURIComponent(row.email || '') + '?subject=' + encodeURIComponent(t('rc_subject')) + '&body=' + encodeURIComponent(body), '_blank');
+        }
+        return;
+      }
       var btn = e.target.closest('.pt-save'); if (!btn) return;
       var card = btn.closest('.pt-req'), id = card.getAttribute('data-id');
       var payload = {
