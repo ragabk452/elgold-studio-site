@@ -60,10 +60,11 @@
   /* ---------- helpers ---------- */
   function $(id) { return document.getElementById(id); }
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
-  function money(n, cur) { n = Number(n || 0); return n.toLocaleString(curLang() === 'ar' ? 'ar-EG' : 'en-US') + ' ' + (cur || 'USD'); }
+  function money(n, cur) { n = Number(n || 0); var c = (cur === 'EGP') ? 'EGP' : 'USD'; return n.toLocaleString(curLang() === 'ar' ? 'ar-EG' : 'en-US') + ' ' + c; }
   function fdate(s) { try { return new Date(s).toLocaleDateString(curLang() === 'ar' ? 'ar-EG' : 'en-GB', { year: 'numeric', month: 'short', day: 'numeric' }); } catch (e) { return ''; } }
   function show(view) { ['pt-loading', 'pt-auth', 'pt-client', 'pt-owner'].forEach(function (id) { var el = $(id); if (el) el.classList.toggle('is-hidden', id !== view); }); }
   function statusLabel(s) { return t('st_' + s) || s; }
+  function stCls(s) { return STATUSES.indexOf(s) >= 0 ? s : 'new'; }   // تعقيم الحالة قبل ما تتحط في اسم كلاس
 
   /* ---------- auth UI ---------- */
   var mode = 'login';
@@ -131,7 +132,7 @@
         + '<div class="due">' + t('m_dueL') + '<b>' + money(due, r.currency) + '</b></div></div>'
       : '';
     return '<article class="pt-req"><div class="pt-req__top"><span class="pt-req__svc">' + esc(r.service || '—') + '</span>'
-      + '<span class="pt-badge s-' + r.status + '">' + esc(statusLabel(r.status)) + '</span></div>'
+      + '<span class="pt-badge s-' + stCls(r.status) + '">' + esc(statusLabel(r.status)) + '</span></div>'
       + '<div class="pt-req__date">' + fdate(r.created_at) + (r.budget ? ' · ' + t('proposed') + ': ' + esc(r.budget) : '') + '</div>'
       + (r.details ? '<p class="pt-req__brief">' + esc(r.details) + '</p>' : '') + m + '</article>';
   }
@@ -158,7 +159,7 @@
     var opts = STATUSES.map(function (s) { return '<option value="' + s + '"' + (s === r.status ? ' selected' : '') + '>' + esc(statusLabel(s)) + '</option>'; }).join('');
     var curOpts = ['USD', 'EGP'].map(function (c) { return '<option' + (c === r.currency ? ' selected' : '') + '>' + c + '</option>'; }).join('');
     return '<article class="pt-req" data-id="' + r.id + '"><div class="pt-req__top">'
-      + '<span class="pt-req__svc">' + esc(r.service || '—') + '</span><span class="pt-badge s-' + r.status + '">' + esc(statusLabel(r.status)) + '</span></div>'
+      + '<span class="pt-req__svc">' + esc(r.service || '—') + '</span><span class="pt-badge s-' + stCls(r.status) + '">' + esc(statusLabel(r.status)) + '</span></div>'
       + '<div class="pt-req__who">' + esc(r.name || '—') + ' · ' + esc(r.email || '') + (r.phone ? ' · ' + esc(r.phone) : '') + '</div>'
       + '<div class="pt-req__date">' + fdate(r.created_at) + (r.budget ? ' · ' + t('proposed') + ': ' + esc(r.budget) : '') + '</div>'
       + (r.details ? '<p class="pt-req__brief">' + esc(r.details) + '</p>' : '')
