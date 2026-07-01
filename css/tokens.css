@@ -58,8 +58,19 @@
   --ease-soft: cubic-bezier(.4, 0, .2, 1);
 }
 
-/* العربي: خط فلسطين (يحتاج ملف الخط لاحقاً) + اتجاه */
-html[lang="ar"] { --font: var(--font-ar); --font-display: var(--font-ar); }
+/* العربي: العناوين الرئيسية بخط فلسطين، وباقي النصوص بخط Cairo (سهل للقراءة) + مسافات أوسع */
+html[lang="ar"] {
+  --font: 'Cairo', 'Tajawal', system-ui, sans-serif;          /* النص العادي — واضح ومريح */
+  --font-display: 'Cairo', 'Tajawal', sans-serif;
+}
+html[lang="ar"] .sec-title { font-family: 'Falasteen', 'Cairo', sans-serif; line-height: 1.4; }  /* العناوين الرئيسية فقط */
+/* مسافة أوسع بين السطور للنصوص العربية عشان تتقرا مريح */
+html[lang="ar"] p,
+html[lang="ar"] .sec-sub,
+html[lang="ar"] .work-card__body p,
+html[lang="ar"] .step p,
+html[lang="ar"] .about__text p,
+html[lang="ar"] li { line-height: 2; }
 
 /* خط فلسطين — لما تحط الملف في assets/fonts/ هيشتغل تلقائياً، لحد كده fallback */
 @font-face {
