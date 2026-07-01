@@ -20,6 +20,7 @@
       'owner.add': '+ New request', 'owner.search': 'Search name / email / service…', 'owner.sort_new': 'Newest', 'owner.sort_old': 'Oldest', 'owner.sort_due': 'Most owed',
       k_clients: 'Clients', k_revenue: 'Revenue', k_outstanding: 'Outstanding', k_new: 'New', del: 'Delete', del_confirm: 'Delete this request? This cannot be undone.', noresults: 'No matches.',
       'add.title': 'New request', 'add.name': 'Client name', 'add.email': 'Email', 'add.phone': 'Phone / WhatsApp', 'add.service': 'Service', 'add.price': 'Price', 'add.cur': 'Currency', 'add.details': 'Details', 'add.cancel': 'Cancel', 'add.save': 'Add', add_ok: 'Added ✓', add_need: 'Enter at least a client name.',
+      'owner.content': '⚙️ Site content', 'content.title': 'Site numbers', 'content.sub': 'The counters shown on the site (Why section).', 'content.projects': 'Projects', 'content.clients': 'Clients', 'content.years': 'Years', 'content.designs': 'Designs', 'content.cancel': 'Cancel', 'content.save': 'Save', content_ok: 'Saved ✓ — the site now shows the new numbers.',
       st_new: 'New', st_reviewing: 'Reviewing', st_in_progress: 'In progress', st_delivered: 'Delivered', st_cancelled: 'Cancelled',
       m_requests: 'Requests', m_due: 'Total due', m_paid: 'Total paid', m_price: 'Price', m_paidL: 'Paid', m_dueL: 'Due',
       save: 'Save', saved: 'Saved ✓', all: 'All', proposed: 'Proposed budget', welcome: 'Welcome',
@@ -44,6 +45,7 @@
       'owner.add': '+ طلب جديد', 'owner.search': 'بحث بالاسم / الإيميل / الخدمة…', 'owner.sort_new': 'الأحدث', 'owner.sort_old': 'الأقدم', 'owner.sort_due': 'الأكثر استحقاقاً',
       k_clients: 'العملاء', k_revenue: 'الإيرادات', k_outstanding: 'المستحقات', k_new: 'جديدة', del: 'حذف', del_confirm: 'تحذف الطلب ده؟ مش هينفع ترجعه.', noresults: 'مفيش نتائج.',
       'add.title': 'طلب جديد', 'add.name': 'اسم العميل', 'add.email': 'الإيميل', 'add.phone': 'الموبايل / واتساب', 'add.service': 'الخدمة', 'add.price': 'السعر', 'add.cur': 'العملة', 'add.details': 'التفاصيل', 'add.cancel': 'إلغاء', 'add.save': 'إضافة', add_ok: 'اتضاف ✓', add_need: 'اكتب اسم العميل على الأقل.',
+      'owner.content': '⚙️ محتوى الموقع', 'content.title': 'أرقام الموقع', 'content.sub': 'الأرقام اللي بتظهر في الموقع (قسم ليه إلجولد).', 'content.projects': 'مشاريع', 'content.clients': 'عملاء', 'content.years': 'سنوات', 'content.designs': 'تصاميم', 'content.cancel': 'إلغاء', 'content.save': 'حفظ', content_ok: 'اتحفظ ✓ — الموقع دلوقتي بيعرض الأرقام الجديدة.',
       st_new: 'جديد', st_reviewing: 'قيد المراجعة', st_in_progress: 'جاري التنفيذ', st_delivered: 'تم التسليم', st_cancelled: 'ملغي',
       m_requests: 'الطلبات', m_due: 'إجمالي المستحق', m_paid: 'إجمالي المدفوع', m_price: 'السعر', m_paidL: 'المدفوع', m_dueL: 'المتبقّي',
       save: 'حفظ', saved: 'اتحفظ ✓', all: 'الكل', proposed: 'الميزانية المقترحة', welcome: 'أهلاً',
@@ -367,6 +369,37 @@
     });
   }
 
+  /* ---------- site content (stats) ---------- */
+  function wireContent() {
+    var modal = $('pt-content-modal'), btn = $('pt-content'); if (!btn || !modal) return;
+    function cmsg(txt, kind) { var m = $('pt-content-msg'); if (m) { m.textContent = txt || ''; m.className = 'pt-msg' + (kind ? ' ' + kind : ''); } }
+    btn.addEventListener('click', function () {
+      cmsg('', '');
+      SB.from('site_content').select('value').eq('key', 'stats').maybeSingle().then(function (r) {
+        var v = (r && r.data && r.data.value) || {};
+        $('sc-projects').value = v.projects != null ? v.projects : '';
+        $('sc-clients').value = v.clients != null ? v.clients : '';
+        $('sc-years').value = v.years != null ? v.years : '';
+        $('sc-designs').value = v.designs != null ? v.designs : '';
+      });
+      modal.classList.remove('is-hidden');
+    });
+    $('pt-content-cancel').addEventListener('click', function () { modal.classList.add('is-hidden'); });
+    modal.addEventListener('click', function (e) { if (e.target === modal) modal.classList.add('is-hidden'); });
+    $('pt-content-save').addEventListener('click', function () {
+      var val = {
+        projects: Number($('sc-projects').value || 0), clients: Number($('sc-clients').value || 0),
+        years: Number($('sc-years').value || 0), designs: Number($('sc-designs').value || 0)
+      };
+      var b = $('pt-content-save'); b.disabled = true;
+      SB.from('site_content').upsert({ key: 'stats', value: val, updated_at: new Date().toISOString() }, { onConflict: 'key' }).then(function (r) {
+        b.disabled = false;
+        if (r.error) { cmsg(r.error.message || t('err_generic'), 'err'); return; }
+        cmsg(t('content_ok'), 'ok'); setTimeout(function () { modal.classList.add('is-hidden'); }, 1400);
+      });
+    });
+  }
+
   /* ---------- boot ---------- */
   function boot() {
     applyLang();
@@ -377,7 +410,7 @@
       SB.auth.getSession().then(function (r) { route(r.data.session); });
     });
     if (!SB) { show('pt-auth'); msg('Supabase library failed to load.', 'err'); return; }
-    wireAuth(); wireOwner(); wireChpw(); setMode('login');
+    wireAuth(); wireOwner(); wireChpw(); wireContent(); setMode('login');
     SB.auth.getSession().then(function (r) { route(r.data.session); });
     SB.auth.onAuthStateChange(function (_e, session) { applyLang(); route(session); });
   }

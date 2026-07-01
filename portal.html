@@ -12,11 +12,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/tokens.css?v=20260701r" />
-  <link rel="stylesheet" href="css/portal.css?v=20260701r" />
+  <link rel="stylesheet" href="css/tokens.css?v=20260701s" />
+  <link rel="stylesheet" href="css/portal.css?v=20260701s" />
 
   <script src="assets/js/vendor/supabase.min.js"></script>
-  <script src="js/portal-config.js?v=20260701r"></script>
+  <script src="js/portal-config.js?v=20260701s"></script>
 </head>
 <body>
 
@@ -93,6 +93,7 @@
         </div>
         <div class="pt-dash__actions">
           <button class="pt-btn pt-btn--primary" id="pt-add" type="button" data-i18n="owner.add">+ New request</button>
+          <button class="pt-btn pt-btn--ghost" id="pt-content" type="button" data-i18n="owner.content">⚙️ Site content</button>
           <button class="pt-btn pt-btn--ghost" id="pt-refresh" type="button" data-i18n="owner.refresh">Refresh</button>
         </div>
       </div>
@@ -150,6 +151,27 @@
     </div>
   </div>
 
-  <script src="js/portal.js?v=20260701r"></script>
+  <!-- محتوى الموقع: أرقام الإحصائيات -->
+  <div id="pt-content-modal" class="pt-modal is-hidden">
+    <div class="pt-modal__card">
+      <h3 class="pt-h2" data-i18n="content.title">Site numbers</h3>
+      <p class="pt-sub" data-i18n="content.sub">The counters shown on the site.</p>
+      <div class="pt-add-row">
+        <label class="pt-field"><span data-i18n="content.projects">Projects</span><input type="number" id="sc-projects" min="0" /></label>
+        <label class="pt-field"><span data-i18n="content.clients">Clients</span><input type="number" id="sc-clients" min="0" /></label>
+      </div>
+      <div class="pt-add-row">
+        <label class="pt-field"><span data-i18n="content.years">Years</span><input type="number" id="sc-years" min="0" /></label>
+        <label class="pt-field"><span data-i18n="content.designs">Designs</span><input type="number" id="sc-designs" min="0" /></label>
+      </div>
+      <p class="pt-msg" id="pt-content-msg"></p>
+      <div class="pt-modal__actions">
+        <button class="pt-btn pt-btn--ghost" id="pt-content-cancel" type="button" data-i18n="content.cancel">Cancel</button>
+        <button class="pt-btn pt-btn--primary" id="pt-content-save" type="button" data-i18n="content.save">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/portal.js?v=20260701s"></script>
 </body>
 </html>

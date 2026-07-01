@@ -5,6 +5,28 @@
 (function () {
   'use strict';
 
+  /* ===== محتوى قابل للتحديث من لوحة التحكم (آمن تماماً) =====
+     الأرقام مكتوبة ثابتة في الـHTML (تشتغل دايماً)؛ ده بس بيحدّثها لو فيه قيم في قاعدة البيانات.
+     كله داخل try/catch — أي خطأ هنا لا يؤثر على أي جزء تاني في الموقع. */
+  (function loadSiteStats() {
+    try {
+      if (!window.SB || !window.SB.from) return;
+      window.SB.from('site_content').select('value').eq('key', 'stats').maybeSingle().then(function (r) {
+        try {
+          var v = r && r.data && r.data.value; if (!v) return;
+          var nodes = document.querySelectorAll('.count[data-stat]');
+          for (var i = 0; i < nodes.length; i++) {
+            var el = nodes[i], k = el.getAttribute('data-stat'), val = v[k];
+            if (val != null && !isNaN(val)) {
+              el.setAttribute('data-to', String(parseInt(val, 10)));
+              if (el.textContent !== '0') el.textContent = String(parseInt(val, 10)); // لو العدّاد خلص خلاص
+            }
+          }
+        } catch (e) {}
+      }, function () {});
+    } catch (e) {}
+  })();
+
   /* لو المتصفح رجّع الصفحة من ذاكرته (bfcache / استرجاع تبويب) يعيد تحميلها
      عشان العميل دايمًا يشوف آخر نسخة — مفيش لوب لأن إعادة التحميل بتيجي persisted=false */
   window.addEventListener('pageshow', function (e) {
@@ -318,9 +340,9 @@
 
     // عدّاد الأرقام (Why ELGOLD)
     gsap.utils.toArray('.count').forEach(function (el) {
-      var to = parseInt(el.getAttribute('data-to'), 10) || 0;
       var obj = { v: 0 };
       ScrollTrigger.create({ trigger: el, start: 'top 90%', once: true, onEnter: function () {
+        var to = parseInt(el.getAttribute('data-to'), 10) || 0;   // يُقرأ وقت الظهور — يحترم أي تحديث من قاعدة البيانات
         gsap.to(obj, { v: to, duration: 1.6, ease: 'power2.out', onUpdate: function () { el.textContent = Math.round(obj.v); } });
       }});
     });
