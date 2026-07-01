@@ -12,11 +12,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/tokens.css?v=20260701u" />
-  <link rel="stylesheet" href="css/portal.css?v=20260701u" />
+  <link rel="stylesheet" href="css/tokens.css?v=20260701v" />
+  <link rel="stylesheet" href="css/portal.css?v=20260701v" />
 
   <script src="assets/js/vendor/supabase.min.js"></script>
-  <script src="js/portal-config.js?v=20260701u"></script>
+  <script src="js/portal-config.js?v=20260701v"></script>
 </head>
 <body>
 
@@ -158,6 +158,7 @@
         <button class="pt-ctab is-active" type="button" data-ct="numbers" data-i18n="content.tab_num">Numbers</button>
         <button class="pt-ctab" type="button" data-ct="services" data-i18n="content.tab_svc">Services</button>
         <button class="pt-ctab" type="button" data-ct="testi" data-i18n="content.tab_testi">Reviews</button>
+        <button class="pt-ctab" type="button" data-ct="works" data-i18n="content.tab_works">Works</button>
       </div>
 
       <!-- تبويب الأرقام -->
@@ -185,6 +186,15 @@
         <div id="pt-testi-list"></div>
       </div>
 
+      <!-- تبويب الأعمال -->
+      <div class="pt-cpane is-hidden" data-pane="works">
+        <div class="pt-works-head">
+          <p class="pt-sub" data-i18n="content.works_sub">Add, edit or remove your projects.</p>
+          <button class="pt-btn pt-btn--primary" id="pt-work-add" type="button" data-i18n="works.add">+ Add work</button>
+        </div>
+        <div id="pt-works-list"></div>
+      </div>
+
       <p class="pt-msg" id="pt-content-msg"></p>
       <div class="pt-modal__actions">
         <button class="pt-btn pt-btn--ghost" id="pt-content-cancel" type="button" data-i18n="content.cancel">Cancel</button>
@@ -193,6 +203,52 @@
     </div>
   </div>
 
-  <script src="js/portal.js?v=20260701u"></script>
+  <!-- تحرير عمل (إضافة/تعديل) -->
+  <div id="pt-work-modal" class="pt-modal is-hidden">
+    <div class="pt-modal__card pt-work-card">
+      <h3 class="pt-h2" id="pt-work-h">Work</h3>
+      <div class="pt-add-row">
+        <label class="pt-field"><span data-i18n="works.type">Type</span><select id="w-type"><option value="development" data-i18n="works.dev">Development</option><option value="design" data-i18n="works.design">Design</option></select></label>
+        <label class="pt-field"><span data-i18n="works.year">Year</span><input id="w-year" dir="ltr" /></label>
+      </div>
+      <div class="pt-add-row">
+        <label class="pt-field"><span data-i18n="works.ten">Title (EN)</span><input id="w-ten" dir="ltr" /></label>
+        <label class="pt-field"><span data-i18n="works.tar">Title (AR)</span><input id="w-tar" dir="rtl" /></label>
+      </div>
+      <div class="pt-add-row">
+        <label class="pt-field"><span data-i18n="works.cen">Category (EN)</span><input id="w-cen" dir="ltr" /></label>
+        <label class="pt-field"><span data-i18n="works.car">Category (AR)</span><input id="w-car" dir="rtl" /></label>
+      </div>
+      <label class="pt-field"><span data-i18n="works.sen">Summary (EN)</span><textarea id="w-sen" rows="2"></textarea></label>
+      <label class="pt-field"><span data-i18n="works.sar">Summary (AR)</span><textarea id="w-sar" rows="2" dir="rtl"></textarea></label>
+      <label class="pt-field"><span data-i18n="works.pen">Problem (EN)</span><textarea id="w-pen" rows="2"></textarea></label>
+      <label class="pt-field"><span data-i18n="works.par">Problem (AR)</span><textarea id="w-par" rows="2" dir="rtl"></textarea></label>
+      <label class="pt-field"><span data-i18n="works.solen">Solution (EN)</span><textarea id="w-solen" rows="2"></textarea></label>
+      <label class="pt-field"><span data-i18n="works.solar">Solution (AR)</span><textarea id="w-solar" rows="2" dir="rtl"></textarea></label>
+      <label class="pt-field"><span data-i18n="works.resen">Results (EN)</span><textarea id="w-resen" rows="2"></textarea></label>
+      <label class="pt-field"><span data-i18n="works.resar">Results (AR)</span><textarea id="w-resar" rows="2" dir="rtl"></textarea></label>
+      <label class="pt-field"><span data-i18n="works.tech">Tech (comma separated)</span><input id="w-tech" dir="ltr" /></label>
+      <div class="pt-add-row">
+        <label class="pt-field"><span data-i18n="works.qen">Quote (EN)</span><input id="w-qen" dir="ltr" /></label>
+        <label class="pt-field"><span data-i18n="works.qar">Quote (AR)</span><input id="w-qar" dir="rtl" /></label>
+      </div>
+      <label class="pt-field"><span data-i18n="works.author">Quote author</span><input id="w-author" /></label>
+      <div class="pt-add-row">
+        <label class="pt-field"><span data-i18n="works.live">Live URL</span><input id="w-live" dir="ltr" /></label>
+        <label class="pt-field"><span data-i18n="works.livelabel">Link label</span><select id="w-livelabel"><option value="visit" data-i18n="works.visit">Visit</option><option value="pdf">PDF</option></select></label>
+      </div>
+      <label class="pt-field"><span data-i18n="works.cover">Cover image</span><input type="file" id="w-cover-file" accept="image/*" /></label>
+      <img id="w-cover-preview" class="pt-cover-preview is-hidden" alt="" />
+      <label class="pt-field"><span data-i18n="works.gallery">Gallery images</span><input type="file" id="w-gal-file" accept="image/*" multiple /></label>
+      <div id="w-gal-preview" class="pt-gal-preview"></div>
+      <p class="pt-msg" id="pt-work-msg"></p>
+      <div class="pt-modal__actions">
+        <button class="pt-btn pt-btn--ghost" id="pt-work-cancel" type="button" data-i18n="works.cancel">Cancel</button>
+        <button class="pt-btn pt-btn--primary" id="pt-work-save" type="button" data-i18n="works.save">Save work</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/portal.js?v=20260701v"></script>
 </body>
 </html>

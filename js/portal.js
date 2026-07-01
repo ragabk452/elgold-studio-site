@@ -23,6 +23,7 @@
       'owner.content': '⚙️ Site content', 'content.title': 'Site numbers', 'content.sub': 'The counters shown on the site (Why section).', 'content.projects': 'Projects', 'content.clients': 'Clients', 'content.years': 'Years', 'content.designs': 'Designs', 'content.cancel': 'Cancel', 'content.save': 'Save', content_ok: 'Saved ✓ — the site now shows the new numbers.',
       'content.tab_num': 'Numbers', 'content.tab_svc': 'Services', 'content.svc_sub': 'Edit the 6 services (English + Arabic).', svc_ten: 'Title (EN)', svc_den: 'Description (EN)', svc_tar: 'Title (AR)', svc_dar: 'Description (AR)', svc_ok: 'Services saved ✓ — the site is updated.',
       'content.tab_testi': 'Reviews', 'content.testi_sub': 'Edit client reviews (English + Arabic).', ti_qen: 'Review (EN)', ti_qar: 'Review (AR)', ti_name: 'Name', ti_init: 'Initials', ti_src: 'Source', testi_ok: 'Reviews saved ✓ — the site is updated.',
+      'content.tab_works': 'Works', 'content.works_sub': 'Add, edit or remove your projects.', 'works.add': '+ Add work', 'works.edit': 'Edit', 'works.type': 'Type', 'works.dev': 'Development', 'works.design': 'Design', 'works.year': 'Year', 'works.ten': 'Title (EN)', 'works.tar': 'Title (AR)', 'works.cen': 'Category (EN)', 'works.car': 'Category (AR)', 'works.sen': 'Summary (EN)', 'works.sar': 'Summary (AR)', 'works.pen': 'Problem (EN)', 'works.par': 'Problem (AR)', 'works.solen': 'Solution (EN)', 'works.solar': 'Solution (AR)', 'works.resen': 'Results (EN)', 'works.resar': 'Results (AR)', 'works.tech': 'Tech (comma separated)', 'works.qen': 'Quote (EN)', 'works.qar': 'Quote (AR)', 'works.author': 'Quote author', 'works.live': 'Live URL', 'works.livelabel': 'Link label', 'works.visit': 'Visit', 'works.cover': 'Cover image', 'works.gallery': 'Gallery images', 'works.cancel': 'Cancel', 'works.save': 'Save work', works_edit: 'Edit work', works_new: 'New work', works_saved: 'Saved ✓', works_del: 'Delete this work? This cannot be undone.', uploading: 'Uploading…', work_needtitle: 'Enter a title (EN or AR).',
       st_new: 'New', st_reviewing: 'Reviewing', st_in_progress: 'In progress', st_delivered: 'Delivered', st_cancelled: 'Cancelled',
       m_requests: 'Requests', m_due: 'Total due', m_paid: 'Total paid', m_price: 'Price', m_paidL: 'Paid', m_dueL: 'Due',
       save: 'Save', saved: 'Saved ✓', all: 'All', proposed: 'Proposed budget', welcome: 'Welcome',
@@ -50,6 +51,7 @@
       'owner.content': '⚙️ محتوى الموقع', 'content.title': 'أرقام الموقع', 'content.sub': 'الأرقام اللي بتظهر في الموقع (قسم ليه إلجولد).', 'content.projects': 'مشاريع', 'content.clients': 'عملاء', 'content.years': 'سنوات', 'content.designs': 'تصاميم', 'content.cancel': 'إلغاء', 'content.save': 'حفظ', content_ok: 'اتحفظ ✓ — الموقع دلوقتي بيعرض الأرقام الجديدة.',
       'content.tab_num': 'الأرقام', 'content.tab_svc': 'الخدمات', 'content.svc_sub': 'عدّل الـ6 خدمات (إنجليزي + عربي).', svc_ten: 'العنوان (إنجليزي)', svc_den: 'الوصف (إنجليزي)', svc_tar: 'العنوان (عربي)', svc_dar: 'الوصف (عربي)', svc_ok: 'اتحفظت الخدمات ✓ — الموقع اتحدّث.',
       'content.tab_testi': 'الآراء', 'content.testi_sub': 'عدّل آراء العملاء (إنجليزي + عربي).', ti_qen: 'الرأي (إنجليزي)', ti_qar: 'الرأي (عربي)', ti_name: 'الاسم', ti_init: 'الأحرف', ti_src: 'المصدر', testi_ok: 'اتحفظت الآراء ✓ — الموقع اتحدّث.',
+      'content.tab_works': 'الأعمال', 'content.works_sub': 'أضف أو عدّل أو احذف مشاريعك.', 'works.add': '+ إضافة عمل', 'works.edit': 'تعديل', 'works.type': 'النوع', 'works.dev': 'تطوير', 'works.design': 'تصميم', 'works.year': 'السنة', 'works.ten': 'العنوان (إنجليزي)', 'works.tar': 'العنوان (عربي)', 'works.cen': 'التصنيف (إنجليزي)', 'works.car': 'التصنيف (عربي)', 'works.sen': 'الملخص (إنجليزي)', 'works.sar': 'الملخص (عربي)', 'works.pen': 'المشكلة (إنجليزي)', 'works.par': 'المشكلة (عربي)', 'works.solen': 'الحل (إنجليزي)', 'works.solar': 'الحل (عربي)', 'works.resen': 'النتائج (إنجليزي)', 'works.resar': 'النتائج (عربي)', 'works.tech': 'التقنيات (بينها فاصلة)', 'works.qen': 'اقتباس (إنجليزي)', 'works.qar': 'اقتباس (عربي)', 'works.author': 'صاحب الاقتباس', 'works.live': 'رابط مباشر', 'works.livelabel': 'نوع الرابط', 'works.visit': 'زيارة', 'works.cover': 'صورة الغلاف', 'works.gallery': 'صور المعرض', 'works.cancel': 'إلغاء', 'works.save': 'حفظ العمل', works_edit: 'تعديل عمل', works_new: 'عمل جديد', works_saved: 'اتحفظ ✓', works_del: 'تحذف العمل ده؟ مش هينفع يرجع.', uploading: 'جاري الرفع…', work_needtitle: 'اكتب عنوان (عربي أو إنجليزي).',
       st_new: 'جديد', st_reviewing: 'قيد المراجعة', st_in_progress: 'جاري التنفيذ', st_delivered: 'تم التسليم', st_cancelled: 'ملغي',
       m_requests: 'الطلبات', m_due: 'إجمالي المستحق', m_paid: 'إجمالي المدفوع', m_price: 'السعر', m_paidL: 'المدفوع', m_dueL: 'المتبقّي',
       save: 'حفظ', saved: 'اتحفظ ✓', all: 'الكل', proposed: 'الميزانية المقترحة', welcome: 'أهلاً',
@@ -382,6 +384,8 @@
       activeTab = tab; cmsg('', '');
       [].forEach.call(document.querySelectorAll('.pt-ctab'), function (b) { b.classList.toggle('is-active', b.getAttribute('data-ct') === tab); });
       [].forEach.call(document.querySelectorAll('.pt-cpane'), function (p) { p.classList.toggle('is-hidden', p.getAttribute('data-pane') !== tab); });
+      var cs = $('pt-content-save'); if (cs) cs.style.display = (tab === 'works') ? 'none' : '';   // الأعمال ليها حفظ خاص بكل عمل
+      if (tab === 'works' && window.__loadWorks) window.__loadWorks();
     }
     function loadNumbers() {
       SB.from('site_content').select('value').eq('key', 'stats').maybeSingle().then(function (r) {
@@ -454,6 +458,83 @@
     });
   }
 
+  /* ---------- works manager (add/edit/delete + image upload) ---------- */
+  function wireWorks() {
+    var wm = $('pt-work-modal'); if (!wm) return;
+    var editId = null, coverUrl = '', gallery = [];
+    function wmsg(txt, kind) { var m = $('pt-work-msg'); if (m) { m.textContent = txt || ''; m.className = 'pt-msg' + (kind ? ' ' + kind : ''); } }
+    function loadWorks() {
+      SB.from('portal_works').select('*').order('sort_order').then(function (r) {
+        var list = (r.data) || [], box = $('pt-works-list'); box.innerHTML = ''; window.__worksList = list;
+        list.forEach(function (w) {
+          var d = document.createElement('div'); d.className = 'pt-wrow'; d.setAttribute('data-id', w.id);
+          d.innerHTML = '<img class="pt-wrow__img" src="' + esc(w.cover || '') + '" alt="" loading="lazy">'
+            + '<div class="pt-wrow__info"><b>' + esc(w.title_en || w.title_ar || '—') + '</b><span>' + esc(w.wtype) + ' · ' + esc(w.year || '') + '</span></div>'
+            + '<button class="pt-btn pt-btn--ghost pt-wedit" type="button">' + t('works.edit') + '</button>'
+            + '<button class="pt-btn pt-del pt-wdel" type="button">🗑</button>';
+          box.appendChild(d);
+        });
+      });
+    }
+    window.__loadWorks = loadWorks;
+    function renderGal() {
+      var g = $('w-gal-preview'); g.innerHTML = '';
+      gallery.forEach(function (u, i) { var s = document.createElement('span'); s.className = 'pt-galitem'; s.innerHTML = '<img src="' + esc(u) + '"><button type="button" data-gi="' + i + '">×</button>'; g.appendChild(s); });
+    }
+    function fill(w) {
+      editId = w ? w.id : null; coverUrl = w ? (w.cover || '') : ''; gallery = (w && w.gallery) ? w.gallery.slice() : [];
+      $('pt-work-h').textContent = w ? t('works_edit') : t('works_new');
+      var V = function (id, val) { var el = $(id); if (el) el.value = val == null ? '' : val; };
+      $('w-type').value = w ? (w.wtype || 'development') : 'development';
+      V('w-year', w && w.year); V('w-ten', w && w.title_en); V('w-tar', w && w.title_ar);
+      V('w-cen', w && w.cat_en); V('w-car', w && w.cat_ar);
+      V('w-sen', w && w.summary_en); V('w-sar', w && w.summary_ar);
+      V('w-pen', w && w.problem_en); V('w-par', w && w.problem_ar);
+      V('w-solen', w && w.solution_en); V('w-solar', w && w.solution_ar);
+      V('w-resen', w && w.results_en); V('w-resar', w && w.results_ar);
+      V('w-tech', w && w.tech ? w.tech.join(', ') : '');
+      V('w-qen', w && w.quote_en); V('w-qar', w && w.quote_ar); V('w-author', w && w.author);
+      V('w-live', w && w.live_url); $('w-livelabel').value = (w && w.live_label === 'pdf') ? 'pdf' : 'visit';
+      var cp = $('w-cover-preview'); if (coverUrl) { cp.src = coverUrl; cp.classList.remove('is-hidden'); } else { cp.classList.add('is-hidden'); cp.removeAttribute('src'); }
+      $('w-cover-file').value = ''; $('w-gal-file').value = ''; renderGal(); wmsg('', '');
+    }
+    function uploadFile(file) {
+      var ext = (file.name.split('.').pop() || 'jpg').toLowerCase().replace(/[^a-z0-9]/g, '') || 'jpg';
+      var path = 'works/' + Date.now() + '-' + Math.round(Math.random() * 1e6) + '.' + ext;
+      return SB.storage.from('portfolio-media').upload(path, file, { cacheControl: '3600', upsert: false }).then(function (r) {
+        if (r.error) throw r.error;
+        return SB.storage.from('portfolio-media').getPublicUrl(path).data.publicUrl;
+      });
+    }
+    $('pt-work-add').addEventListener('click', function () { fill(null); wm.classList.remove('is-hidden'); });
+    $('pt-works-list').addEventListener('click', function (e) {
+      var row = e.target.closest('.pt-wrow'); if (!row) return; var id = row.getAttribute('data-id');
+      if (e.target.closest('.pt-wedit')) { var w = (window.__worksList || []).filter(function (x) { return x.id === id; })[0]; if (w) { fill(w); wm.classList.remove('is-hidden'); } return; }
+      if (e.target.closest('.pt-wdel')) { if (!confirm(t('works_del'))) return; SB.from('portal_works').delete().eq('id', id).then(function () { loadWorks(); }); return; }
+    });
+    $('w-cover-file').addEventListener('change', function (e) { var f = e.target.files[0]; if (!f) return; wmsg(t('uploading'), ''); uploadFile(f).then(function (u) { coverUrl = u; var cp = $('w-cover-preview'); cp.src = u; cp.classList.remove('is-hidden'); wmsg('', ''); }, function (er) { wmsg((er && er.message) || t('err_generic'), 'err'); }); });
+    $('w-gal-file').addEventListener('change', function (e) { var fs = [].slice.call(e.target.files); if (!fs.length) return; wmsg(t('uploading'), ''); Promise.all(fs.map(uploadFile)).then(function (us) { gallery = gallery.concat(us); renderGal(); $('w-gal-file').value = ''; wmsg('', ''); }, function (er) { wmsg((er && er.message) || t('err_generic'), 'err'); }); });
+    $('w-gal-preview').addEventListener('click', function (e) { var b = e.target.closest('button[data-gi]'); if (!b) return; gallery.splice(+b.getAttribute('data-gi'), 1); renderGal(); });
+    $('pt-work-cancel').addEventListener('click', function () { wm.classList.add('is-hidden'); });
+    wm.addEventListener('click', function (e) { if (e.target === wm) wm.classList.add('is-hidden'); });
+    $('pt-work-save').addEventListener('click', function () {
+      var ten = $('w-ten').value.trim(), tar = $('w-tar').value.trim();
+      if (!ten && !tar) { wmsg(t('work_needtitle'), 'err'); return; }
+      var techArr = $('w-tech').value.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+      var rec = {
+        wtype: $('w-type').value, year: $('w-year').value.trim(), title_en: ten, title_ar: tar,
+        cat_en: $('w-cen').value.trim(), cat_ar: $('w-car').value.trim(), summary_en: $('w-sen').value.trim(), summary_ar: $('w-sar').value.trim(),
+        problem_en: $('w-pen').value.trim(), problem_ar: $('w-par').value.trim(), solution_en: $('w-solen').value.trim(), solution_ar: $('w-solar').value.trim(),
+        results_en: $('w-resen').value.trim(), results_ar: $('w-resar').value.trim(), tech: techArr,
+        quote_en: $('w-qen').value.trim(), quote_ar: $('w-qar').value.trim(), author: $('w-author').value.trim(),
+        live_url: $('w-live').value.trim() || null, live_label: $('w-livelabel').value, cover: coverUrl || null, gallery: gallery, updated_at: new Date().toISOString()
+      };
+      var b = $('pt-work-save'); b.disabled = true;
+      var op = editId ? SB.from('portal_works').update(rec).eq('id', editId) : SB.from('portal_works').insert(Object.assign({ sort_order: 999, is_published: true }, rec));
+      op.then(function (r) { b.disabled = false; if (r.error) { wmsg(r.error.message || t('err_generic'), 'err'); return; } wmsg(t('works_saved'), 'ok'); setTimeout(function () { wm.classList.add('is-hidden'); loadWorks(); }, 800); });
+    });
+  }
+
   /* ---------- boot ---------- */
   function boot() {
     applyLang();
@@ -464,7 +545,7 @@
       SB.auth.getSession().then(function (r) { route(r.data.session); });
     });
     if (!SB) { show('pt-auth'); msg('Supabase library failed to load.', 'err'); return; }
-    wireAuth(); wireOwner(); wireChpw(); wireContent(); setMode('login');
+    wireAuth(); wireOwner(); wireChpw(); wireContent(); wireWorks(); setMode('login');
     SB.auth.getSession().then(function (r) { route(r.data.session); });
     SB.auth.onAuthStateChange(function (_e, session) { applyLang(); route(session); });
   }

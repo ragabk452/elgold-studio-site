@@ -184,6 +184,24 @@ body {
 .pt-svc { border: 1px solid var(--border); border-radius: var(--r-md); padding: var(--s-16); margin-bottom: var(--s-12); display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-12); }
 .pt-svc__n { grid-column: 1 / -1; font-weight: 700; color: var(--accent2); font-size: .85rem; }
 .pt-svc .pt-wide { grid-column: 1 / -1; }
+
+/* مدير الأعمال */
+.pt-works-head { display: flex; justify-content: space-between; align-items: center; gap: var(--s-12); flex-wrap: wrap; margin-bottom: var(--s-12); }
+.pt-wrow { display: flex; align-items: center; gap: var(--s-12); border: 1px solid var(--border); border-radius: var(--r-md); padding: 8px 12px; margin-bottom: var(--s-8); }
+.pt-wrow__img { width: 56px; height: 40px; object-fit: cover; border-radius: 6px; background: rgba(244,238,223,.06); flex-shrink: 0; }
+.pt-wrow__info { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.pt-wrow__info b { color: var(--cream); font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pt-wrow__info span { color: var(--muted); font-size: .78rem; }
+.pt-wrow .pt-btn { padding: 7px 12px; font-size: .82rem; }
+.pt-work-card { max-width: 560px; }
+#pt-work-modal textarea, #pt-work-modal input, #pt-work-modal select { font: inherit; color: var(--cream); background: rgba(244,238,223,.04); border: 1px solid var(--border); border-radius: var(--r-md); padding: 10px 12px; width: 100%; }
+#pt-work-modal textarea:focus, #pt-work-modal input:focus, #pt-work-modal select:focus { outline: none; border-color: var(--accent2); }
+#pt-work-modal input[type=file] { padding: 8px; }
+.pt-cover-preview { max-width: 180px; border-radius: var(--r-md); border: 1px solid var(--border); margin-top: 4px; }
+.pt-gal-preview { display: flex; flex-wrap: wrap; gap: 8px; }
+.pt-galitem { position: relative; }
+.pt-galitem img { width: 60px; height: 46px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border); }
+.pt-galitem button { position: absolute; top: -6px; inset-inline-end: -6px; width: 20px; height: 20px; border-radius: 50%; border: 0; background: var(--danger); color: #fff; cursor: pointer; font-size: 12px; line-height: 1; }
 .pt-svc .pt-field input { font: inherit; color: var(--cream); background: rgba(244,238,223,.04); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 9px 11px; width: 100%; }
 .pt-svc .pt-field input:focus { outline: none; border-color: var(--accent2); }
 @media (max-width: 520px) { .pt-svc { grid-template-columns: 1fr; } }
