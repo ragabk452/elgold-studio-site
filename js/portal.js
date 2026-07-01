@@ -425,7 +425,7 @@
         });
       });
     }
-    btn.addEventListener('click', function () { showTab('numbers'); loadNumbers(); loadServices(); loadTesti(); modal.classList.remove('is-hidden'); });
+    btn.addEventListener('click', function () { showTab('numbers'); loadNumbers(); loadServices(); modal.classList.remove('is-hidden'); });
     [].forEach.call(document.querySelectorAll('.pt-ctab'), function (b) { b.addEventListener('click', function () { showTab(b.getAttribute('data-ct')); }); });
     $('pt-content-cancel').addEventListener('click', function () { modal.classList.add('is-hidden'); });
     modal.addEventListener('click', function (e) { if (e.target === modal) modal.classList.add('is-hidden'); });
@@ -442,14 +442,7 @@
         });
         payload = { key: 'services', value: arr, updated_at: new Date().toISOString() };
         okMsg = t('svc_ok');
-      } else {
-        var tarr = [];
-        [].forEach.call(document.querySelectorAll('#pt-testi-list .pt-svc'), function (d) {
-          tarr.push({ q_en: d.querySelector('.ti-qen').value.trim(), q_ar: d.querySelector('.ti-qar').value.trim(), name: d.querySelector('.ti-name').value.trim(), initials: d.querySelector('.ti-init').value.trim(), source: d.querySelector('.ti-src').value.trim() });
-        });
-        payload = { key: 'testimonials', value: tarr, updated_at: new Date().toISOString() };
-        okMsg = t('testi_ok');
-      }
+      } else { b.disabled = false; return; }
       SB.from('site_content').upsert(payload, { onConflict: 'key' }).then(function (r) {
         b.disabled = false;
         if (r.error) { cmsg(r.error.message || t('err_generic'), 'err'); return; }
