@@ -63,7 +63,9 @@ html[lang="ar"] {
   --font: 'Cairo', 'Tajawal', system-ui, sans-serif;          /* النص العادي — واضح ومريح */
   --font-display: 'Cairo', 'Tajawal', sans-serif;
 }
-html[lang="ar"] .sec-title { font-family: 'Falasteen', 'Cairo', sans-serif; line-height: 1.4; }  /* العناوين الرئيسية فقط */
+/* العناوين الرئيسية بخط فلسطين + مسافة مريحة بين السطور */
+html[lang="ar"] .sec-title,
+html[lang="ar"] .cta__title { font-family: 'Falasteen', 'Cairo', sans-serif; line-height: 1.5; }
 /* مسافة أوسع بين السطور للنصوص العربية عشان تتقرا مريح */
 html[lang="ar"] p,
 html[lang="ar"] .sec-sub,
