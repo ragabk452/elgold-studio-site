@@ -460,9 +460,22 @@
     window.addEventListener('resize', measure);
     snapRemeasure = measure;   // عشان نعيد القياس بعد الفلترة
     // نقل موثوق لقسم باستخدام الموضع المحفوظ (نفس آلية عجلة السنّاب اللي شغّالة)
+    // حركة سلسة مخصّصة للموضع المحفوظ الصح (نوقّف لينيس عشان ما يتعارضش) — سلس + موثوق من أي مكان
     snapNav = function (el) {
       var idx = targets.indexOf(el); if (idx < 0) return false;
-      lenis.scrollTo(offsets[idx], { immediate: true, force: true });
+      var targetY = Math.max(0, offsets[idx]);
+      if (lenis && lenis.stop) lenis.stop();
+      var startY = window.pageYOffset || 0, dist = targetY - startY, dur = 700, t0 = null;
+      var easeInOut = function (x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+      function step(ts) {
+        if (t0 === null) t0 = ts;
+        var p = Math.min(1, (ts - t0) / dur);
+        window.scrollTo(0, Math.round(startY + dist * easeInOut(p)));
+        if (hasST) { try { ScrollTrigger.update(); } catch (e) {} }
+        if (p < 1) { requestAnimationFrame(step); }
+        else { window.scrollTo(0, targetY); if (lenis && lenis.start) lenis.start(); if (hasST) { try { ScrollTrigger.update(); } catch (e) {} } }
+      }
+      requestAnimationFrame(step);
       return true;
     };
 
