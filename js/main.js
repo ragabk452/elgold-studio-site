@@ -11,6 +11,33 @@
     if (e.persisted) window.location.reload();
   });
 
+  /* تحديث تلقائي: لو فيه نسخة أجدد على السيرفر، الموقع يعمل ريفريش لوحده —
+     على الموبايل مع السكرول، وعند الرجوع للتبويب/الفوكس. العميل دايمًا يشوف آخر تحديث. */
+  var BUILD = '20260701c';                       // يتبمب كل نشر (نفس رقم ?v=)
+  var _lastCheck = 0, _checking = false;
+  function checkUpdate() {
+    if (_checking) return;
+    var now = Date.now();
+    if (now - _lastCheck < 25000) return;        // مرة كل 25 ثانية بحد أقصى
+    _lastCheck = now; _checking = true;
+    fetch('version.txt?t=' + now, { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.text() : null; })
+      .then(function (v) {
+        _checking = false;
+        if (!v) return; v = v.trim();
+        if (v && v !== BUILD) {
+          var ae = document.activeElement;
+          if (ae && /^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName)) return;  // ما نقاطعش وهو بيملا فورم
+          window.location.reload();
+        }
+      })
+      .catch(function () { _checking = false; });
+  }
+  window.addEventListener('scroll', checkUpdate, { passive: true });
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) checkUpdate(); });
+  window.addEventListener('focus', checkUpdate);
+  setTimeout(checkUpdate, 4000);
+
   var fine = matchMedia('(pointer:fine)').matches;
   var reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
   var hasGsap = typeof gsap !== 'undefined';
