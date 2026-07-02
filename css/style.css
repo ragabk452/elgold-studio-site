@@ -136,14 +136,25 @@ p { max-width: var(--reading); }
 /* =========================================================
    النافبار
    ========================================================= */
+/* هيدر عائم على شكل حبّة (pill) — كحلي شفاف + حدود وتوهّج خفيف */
 .nav {
-  position: fixed; top: 0; inset-inline: 0; z-index: 100; height: var(--nav-h);
-  display: flex; align-items: center;
-  border-bottom: 1px solid transparent;
-  transition: background var(--t-normal) var(--ease), border-color var(--t-normal) var(--ease), backdrop-filter var(--t-normal);
+  position: fixed; top: 0; inset-inline: 0; z-index: 100;
+  display: flex; justify-content: center; padding: 14px var(--pad);
+  pointer-events: none;   /* المساحة الشفافة حوالين الحبّة ما تحجبش المحتوى */
 }
-.nav.is-scrolled { background: rgba(10,19,48,.82); backdrop-filter: blur(16px) saturate(140%); border-bottom-color: var(--border); }
-.nav__inner { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--pad); display: flex; align-items: center; justify-content: space-between; gap: var(--s-24); }
+.nav__inner {
+  pointer-events: auto;
+  display: inline-flex; align-items: center; gap: var(--s-20);
+  max-width: calc(100% - 2 * var(--pad));
+  padding: 9px 10px 9px 22px;
+  border-radius: var(--r-pill);
+  background: rgba(10, 19, 48, .6);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%);
+  box-shadow: 0 14px 40px -14px rgba(0,0,0,.5), inset 0 1px 0 rgba(244,238,223,.06);
+  transition: background var(--t-normal) var(--ease), box-shadow var(--t-normal) var(--ease);
+}
+.nav.is-scrolled .nav__inner { background: rgba(10, 19, 48, .82); box-shadow: 0 16px 46px -14px rgba(0,0,0,.6), inset 0 1px 0 rgba(244,238,223,.08); }
 .brand { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; letter-spacing: .02em; color: var(--cream); }
 .brand b { font-weight: 800; }
 .brand span { opacity: .55; }

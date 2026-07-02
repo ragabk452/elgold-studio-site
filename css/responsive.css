@@ -97,11 +97,12 @@
 
   /* شيل backdrop-filter من العناصر المتكررة (أكبر مكسب أداء على الموبايل) */
   .card, .stats-panel, .testi-card, .glass-card,
-  .btn--ghost, .chip, .work-card__tag, .nav, .menu {
+  .btn--ghost, .chip, .work-card__tag, .nav, .nav__inner, .menu {
     backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
   }
-  /* تعويض الوضوح في النافبار/القائمة بعد ما الـblur اتشال */
-  .nav.is-scrolled { background: rgba(10, 19, 48, .96); }
+  /* تعويض الوضوح في حبّة النافبار/القائمة بعد ما الـblur اتشال */
+  .nav__inner { background: rgba(10, 19, 48, .9); }
+  .nav.is-scrolled .nav__inner { background: rgba(10, 19, 48, .96); }
   .menu { background: rgba(7, 12, 32, .98); }
 
   /* تنضيف طبقات الـcompositor الدايمة (التلت/الماجنتيك متقفلين على اللمس أصلاً) */
