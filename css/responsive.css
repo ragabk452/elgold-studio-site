@@ -16,7 +16,7 @@
   .hero__grid { grid-template-columns: 1fr; gap: var(--s-48); }
   .hero__visual { max-width: 460px; margin-inline: auto; order: -1; width: 100%; }
   .cards { grid-template-columns: repeat(2, 1fr); }
-  .work-grid { grid-template-columns: repeat(2, 1fr); }
+  .exhibit { min-height: 76vh; }
   .why-cards { grid-template-columns: 1fr; }
   .contact__grid { grid-template-columns: 1fr; gap: var(--s-40); }
   .footer__grid { grid-template-columns: 1fr 1fr; gap: var(--s-32); }
@@ -44,9 +44,11 @@
   .hero__cta .btn { width: 100%; }
   .hero__stats { gap: var(--s-32); flex-wrap: wrap; }
   .cards { grid-template-columns: 1fr; }
-  .work-grid { grid-template-columns: 1fr; }
-  .work-card--wide { grid-column: auto; }
-  .work-card--wide .work-card__media { aspect-ratio: 16/10; }
+  /* المعرض على الموبايل: كل مشروع بلوك مريح بمعاينة كبيرة (مش تكديس كروت) */
+  .exhibit { min-height: auto; padding: var(--s-48) 0; }
+  .exhibit + .exhibit { border-top: none; }
+  .exhibit__info { margin-top: var(--s-24); }
+  .exhibit[data-type="social"] .exhibit__media { max-width: 100%; }
   .stats-row { grid-template-columns: repeat(2, 1fr); gap: var(--s-32); }
   .stats-panel { padding: var(--s-24); }
   .services, .work, .why, .process, .techstack, .contact, .cta, .faq, .testi { padding: var(--s-80) 0; }

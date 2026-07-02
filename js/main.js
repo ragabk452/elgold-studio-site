@@ -76,14 +76,13 @@
           }
         } catch (e) {}
         // 2) الكارت (عنوان/غلاف/سنة/رابط) — تحديث نصّي آمن، من غير إعادة بناء
-        var link = document.querySelector('.work-card__link[data-project="' + w.slug + '"]');
-        if (!link) return;
-        var card = link.closest('.work-card'); if (!card) return;
-        var h3 = card.querySelector('.work-card__body h3'), tt = ar ? w.title_ar : w.title_en;
+        var card = document.querySelector('.exhibit[data-slug="' + w.slug + '"]');
+        if (!card) return;
+        var h3 = card.querySelector('.exhibit__title'), tt = ar ? w.title_ar : w.title_en;
         if (h3 && tt) h3.textContent = tt;
-        var img = card.querySelector('.work-card__img'); if (img && w.cover) { img.src = w.cover; if (tt) img.alt = tt; }
-        var yr = card.querySelector('.work-card__year'); if (yr && w.year) yr.textContent = w.year;
-        if (w.live_url) link.setAttribute('href', w.live_url);
+        var img = card.querySelector('.exhibit__img'); if (img && w.cover) { img.src = w.cover; if (tt) img.alt = tt; }
+        var yr = card.querySelector('.exhibit__year'); if (yr && w.year) yr.textContent = w.year;
+        var cta = card.querySelector('.exhibit__cta'); if (cta && w.live_url) cta.setAttribute('href', w.live_url);
       });
     } catch (e) {}
   }
@@ -737,62 +736,41 @@
     document.body.classList.remove('modal-lock'); modalOpen = false;
     if (lenis && lenis.start) lenis.start();
   }
-  document.querySelectorAll('.work-card__link').forEach(function (a) {
+  // فتح الـcase study عند الضغط على CTA المشروع (المودال الحالي — يُرقّى لـFLIP overlay في Phase 3)
+  document.querySelectorAll('.exhibit__cta').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var k = a.getAttribute('data-project');
       if (k && PROJECTS[k]) { e.preventDefault(); openProject(k); }
     });
   });
 
-  /* ---------- فلتر الأعمال (الكل / برمجة / تصميم) ---------- */
+  /* ---------- فلتر الأعمال (الكل / برمجة / تصميم) + عدّاد ---------- */
   (function () {
     var btns = document.querySelectorAll('.wf-btn');
-    if (!btns.length) return;
-    var cards = document.querySelectorAll('#work .work-card');
-    // معلومات تحت كل تايل: اسم (يسار) + السنة (يمين) — مع حقن السنة من بيانات المشروع
-    cards.forEach(function (c) {
-      var lnk = c.querySelector('.work-card__link');
-      var k = lnk && lnk.getAttribute('data-project');
-      var body = c.querySelector('.work-card__body');
-      var h3 = body && body.querySelector('h3');
-      if (!body || !h3 || body.querySelector('.work-card__top')) return;
-      var top = document.createElement('div');
-      top.className = 'work-card__top';
-      h3.parentNode.insertBefore(top, h3);
-      top.appendChild(h3);
-      var yr = (k && PROJECTS[k] && PROJECTS[k].year) || '';
-      if (yr) {
-        var ys = document.createElement('span');
-        ys.className = 'work-card__year';
-        ys.textContent = yr;
-        top.appendChild(ys);
-      }
+    var items = document.querySelectorAll('#work .exhibit');
+    // حقن السنة (تحت التصنيف) من بيانات المشروع لو مش جايّة من الـCMS
+    items.forEach(function (it) {
+      var k = it.getAttribute('data-slug');
+      var yr = it.querySelector('.exhibit__year');
+      if (yr && !yr.textContent && k && PROJECTS[k] && PROJECTS[k].year) yr.textContent = PROJECTS[k].year;
     });
     // عدّاد المشاريع فوق الفلتر
-    var grid = document.querySelector('.work-grid');
+    var track = document.querySelector('.exhibit-track');
     var filter = document.querySelector('.work-filter');
-    if (grid && filter) {
+    if (track && filter && !document.querySelector('.work-count')) {
       var lang = curLang();
       var cnt = document.createElement('span');
       cnt.className = 'work-count';
-      cnt.innerHTML = cards.length + ' <span data-i18n="work.projects">' + (((T[lang] || T.en)['work.projects']) || 'Projects') + '</span>';
+      cnt.innerHTML = items.length + ' <span data-i18n="work.projects">' + (((T[lang] || T.en)['work.projects']) || 'Projects') + '</span>';
       filter.parentNode.insertBefore(cnt, filter);
     }
-    // دائرة "View ↗" تتبع الماوس فوق المعرض (ديسكتوب فقط)
-    if (grid && fine && !reduce) {
-      var wc = document.createElement('div');
-      wc.className = 'work-cursor';
-      document.body.appendChild(wc);
-      grid.addEventListener('mousemove', function (e) { wc.style.left = e.clientX + 'px'; wc.style.top = e.clientY + 'px'; });
-      grid.addEventListener('mouseover', function (e) { if (e.target.closest && e.target.closest('.work-card:not(.is-hidden)')) wc.classList.add('is-on'); });
-      grid.addEventListener('mouseout', function (e) { var to = e.relatedTarget; if (!to || !to.closest || !to.closest('.work-card')) wc.classList.remove('is-on'); });
-      grid.addEventListener('mouseleave', function () { wc.classList.remove('is-on'); });
-    }
+    // ملاحظة: الكيرسر المخصّص (.work-cursor) + الحركة السينمائية = تُفعَّل في Phase 2 موصولة بـ.exhibit-track
+    if (!btns.length) return;
     btns.forEach(function (b) {
       b.addEventListener('click', function () {
         var f = b.getAttribute('data-filter');
         btns.forEach(function (x) { x.classList.toggle('is-active', x === b); });
-        cards.forEach(function (c) {
+        items.forEach(function (c) {
           var show = (f === 'all') || (c.getAttribute('data-wtype') === f);
           c.classList.toggle('is-hidden', !show);
         });

@@ -12,17 +12,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/tokens.css?v=20260702z6" />
-  <link rel="stylesheet" href="css/style.css?v=20260702z6" />
-  <link rel="stylesheet" href="css/responsive.css?v=20260702z6" />
+  <link rel="stylesheet" href="css/tokens.css?v=20260702z7" />
+  <link rel="stylesheet" href="css/style.css?v=20260702z7" />
+  <link rel="stylesheet" href="css/responsive.css?v=20260702z7" />
 
   <!-- المكتبات مستضافة محلياً (من سيرفرنا، مش CDN خارجي) + defer لتحميل غير معطِّل -->
   <script src="assets/js/vendor/gsap.min.js" defer></script>
   <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
   <script src="assets/js/vendor/lenis.min.js" defer></script>
   <script src="assets/js/vendor/supabase.min.js" defer></script>
-  <script src="js/portal-config.js?v=20260702z6" defer></script>
-  <script src="js/main.js?v=20260702z6" defer></script>
+  <script src="js/portal-config.js?v=20260702z7" defer></script>
+  <script src="js/main.js?v=20260702z7" defer></script>
 </head>
 <body>
 
@@ -82,8 +82,8 @@
   <section id="hero" class="page hero">
     <div class="hero__inner">
       <h1 class="hero__lockup">
-        <img class="hero__lockup-img hero__lockup-img--ar" src="assets/kareem-ar.png?v=20260702z6" alt="كريم" width="1250" height="444" />
-        <img class="hero__lockup-img hero__lockup-img--en" src="assets/kareem-en.png?v=20260702z6" alt="KAREEM" width="1057" height="152" />
+        <img class="hero__lockup-img hero__lockup-img--ar" src="assets/kareem-ar.png?v=20260702z7" alt="كريم" width="1250" height="444" />
+        <img class="hero__lockup-img hero__lockup-img--en" src="assets/kareem-en.png?v=20260702z7" alt="KAREEM" width="1057" height="152" />
       </h1>
       <span class="hero__divider" aria-hidden="true"></span>
       <p class="hero__role" data-i18n="hero.role">Graphic Designer · Web Developer</p>
@@ -140,12 +140,12 @@
     </div>
   </section>
 
-  <!-- صفحة 4: Featured Projects (تغطّي Services) -->
-  <section id="work" class="page work work--gallery">
+  <!-- صفحة 4: Featured Projects (معرض رقمي) — تغطّي Services -->
+  <section id="work" class="page work work--gallery" aria-labelledby="work-title">
     <div class="container">
       <div class="sec-head">
         <span class="eyebrow" data-reveal data-i18n="work.eyebrow">Selected work</span>
-        <h2 class="sec-title" data-reveal data-i18n="work.title">Featured projects</h2>
+        <h2 class="sec-title" id="work-title" data-reveal data-i18n="work.title">Featured projects</h2>
         <p class="sec-sub" data-reveal data-i18n="work.sub">A few products we designed and engineered.</p>
       </div>
       <div class="work-filter" data-reveal>
@@ -153,174 +153,204 @@
         <button class="wf-btn" data-filter="development" data-i18n="work.fdev">Development</button>
         <button class="wf-btn" data-filter="design" data-i18n="work.fdesign">Design</button>
       </div>
-      <div class="work-grid">
-        <article class="work-card" data-reveal data-cursor data-wtype="development">
-          <a class="work-card__link" href="https://ai-agency-os-one.vercel.app" target="_blank" rel="noopener" data-project="aios" aria-label="AI Agency OS — view project"></a>
-          <div class="work-card__media work-card__media--1">
-            <img class="work-card__img" src="assets/work/aios-2.jpg" alt="AI Agency OS" loading="lazy">
-            <span class="work-card__tag" data-i18n="work.p1tag">Multi‑tenant SaaS</span>
-            <span class="work-card__view" data-i18n="work.view">View project →</span>
-          </div>
-          <div class="work-card__body">
-            <h3 data-i18n="work.p1t">AI Agency OS</h3>
-            <p data-i18n="work.p1d">SaaS for agencies — clients, projects, invoicing & AI.</p>
-            <div class="work-card__tags"><span>SaaS</span><span>Next.js</span><span>Realtime</span></div>
-          </div>
-        </article>
-        <article class="work-card" data-reveal data-cursor data-wtype="development">
-          <a class="work-card__link" href="https://yasin-app.vercel.app" target="_blank" rel="noopener" data-project="yasin" aria-label="Anamil Yasin — view project"></a>
-          <div class="work-card__media work-card__media--2">
-            <img class="work-card__img" src="assets/work/yasin-1.jpg" alt="Anamil Yasin" loading="lazy">
-            <span class="work-card__tag" data-i18n="work.p2tag">Live store</span>
-            <span class="work-card__view" data-i18n="work.view">View project →</span>
-          </div>
-          <div class="work-card__body">
-            <h3 data-i18n="work.p2t">Anamil Yasin</h3>
-            <p data-i18n="work.p2d">Premium handcrafted store with a full dashboard.</p>
-            <div class="work-card__tags"><span>E‑commerce</span><span>Dashboard</span></div>
-          </div>
-        </article>
-        <article class="work-card" data-reveal data-cursor data-wtype="development">
-          <a class="work-card__link" href="https://nexa-digital.vercel.app" target="_blank" rel="noopener" data-project="nexa" aria-label="Nexa Digital — view project"></a>
-          <div class="work-card__media work-card__media--3">
-            <img class="work-card__img" src="assets/work/nexa-1.jpg" alt="Nexa Digital" loading="lazy">
-            <span class="work-card__tag" data-i18n="work.p3tag">Live site</span>
-            <span class="work-card__view" data-i18n="work.view">View project →</span>
-          </div>
-          <div class="work-card__body">
-            <h3 data-i18n="work.p3t">Nexa Digital</h3>
-            <p data-i18n="work.p3d">Agency site with smooth motion & social proof.</p>
-            <div class="work-card__tags"><span>Business</span><span>Motion</span></div>
+      <!--
+        ═══════════════════════════════════════════════════════════════════════
+        Exhibition track — كل مشروع "لوحة" في معرض رقمي (الوسيط media هو البطل)
+        بنية موحّدة قابلة لإعادة الاستخدام:
+          .exhibit                       ← لوحة مشروع واحدة
+            .exhibit__media[data-video]  ← الوسيط المهيمن (سلوت فيديو جاهز: JS يحقن <video> لو فيه data-video)
+              .exhibit__screen > img     ← الغلاف/poster (fallback دايم)
+            .exhibit__info               ← محتوى مساند (رقم · تصنيف · سنة · عنوان · وصف · stack · CTA)
+        تنويع خفيف حسب النوع: [data-type="website|brand|social"] (نفس لغة التصميم)
+        خطّافات مستقبلية بدون إعادة هيكلة:
+          data-video (فيديو لاحقًا) · data-accent (إضاءة محيطة خافتة في Phase 2) ·
+          data-wtype (الفلتر) · data-project (فتح الـcase study) · --i (ترتيب اللوحة)
+          → إضافة award/featured/category لاحقًا = data-attribute جديد فقط.
+        البيانات: النصوص عبر data-i18n · والـCMS (portal_works) يحدّث العنوان/الغلاف/السنة/الرابط عبر applyWorks().
+        Phase 1: ثابت فقط — بدون أنيميشن/تفاعل (الحركة/الكيرسر/الانتقالات في Phase 2/3).
+        ═══════════════════════════════════════════════════════════════════════
+      -->
+      <div class="exhibit-track">
+        <article class="exhibit" data-slug="aios" data-type="website" data-wtype="development" data-accent="216 46% 20%" style="--i:1">
+          <div class="exhibit__inner">
+            <figure class="exhibit__media" data-video="">
+              <div class="exhibit__screen"><img class="exhibit__img" src="assets/work/aios-2.jpg" alt="AI Agency OS" loading="lazy" decoding="async"></div>
+            </figure>
+            <div class="exhibit__info">
+              <p class="exhibit__meta"><span class="exhibit__no" aria-hidden="true">01</span><span class="exhibit__cat" data-i18n="work.p1tag">Multi-tenant SaaS</span><span class="exhibit__year"></span></p>
+              <h3 class="exhibit__title" data-i18n="work.p1t">AI Agency OS</h3>
+              <p class="exhibit__desc" data-i18n="work.p1d">SaaS for agencies — clients, projects, invoicing &amp; AI.</p>
+              <ul class="exhibit__stack" aria-label="Tech stack"><li>SaaS</li><li>Next.js</li><li>Realtime</li></ul>
+              <a class="exhibit__cta" href="https://ai-agency-os-one.vercel.app" target="_blank" rel="noopener" data-project="aios" aria-label="AI Agency OS — view project"><span data-i18n="work.view">View project</span> <i aria-hidden="true">→</i></a>
+            </div>
           </div>
         </article>
-        <article class="work-card" data-reveal data-cursor data-wtype="development">
-          <a class="work-card__link" href="https://gold-skincare.vercel.app" target="_blank" rel="noopener" data-project="gold" aria-label="Gold Skincare — view project"></a>
-          <div class="work-card__media work-card__media--2">
-            <img class="work-card__img" src="assets/work/covers/gold-skincare-store.jpg" alt="Gold Skincare" loading="lazy">
-            <span class="work-card__tag" data-i18n="work.p4tag">Live store</span>
-            <span class="work-card__view" data-i18n="work.view">View project →</span>
-          </div>
-          <div class="work-card__body">
-            <h3 data-i18n="work.p4t">Gold Skincare</h3>
-            <p data-i18n="work.p4d">Skincare e-commerce store with a clean, premium UI.</p>
-            <div class="work-card__tags"><span>E-commerce</span><span>Next.js</span></div>
-          </div>
-        </article>
-        <article class="work-card" data-reveal data-cursor data-wtype="development">
-          <a class="work-card__link" href="https://pizza-height.vercel.app" target="_blank" rel="noopener" data-project="pizza" aria-label="Pizza Height — view project"></a>
-          <div class="work-card__media work-card__media--3">
-            <img class="work-card__img" src="assets/work/covers/pizza-height.jpg" alt="Pizza Height" loading="lazy">
-            <span class="work-card__tag" data-i18n="work.p5tag">Live site</span>
-            <span class="work-card__view" data-i18n="work.view">View project →</span>
-          </div>
-          <div class="work-card__body">
-            <h3 data-i18n="work.p5t">Pizza Height</h3>
-            <p data-i18n="work.p5d">Premium pizza restaurant site with tasty motion.</p>
-            <div class="work-card__tags"><span>Restaurant</span><span>Motion</span></div>
+        <article class="exhibit" data-slug="yasin" data-type="website" data-wtype="development" data-accent="38 44% 24%" style="--i:2">
+          <div class="exhibit__inner">
+            <figure class="exhibit__media" data-video="">
+              <div class="exhibit__screen"><img class="exhibit__img" src="assets/work/yasin-1.jpg" alt="Anamil Yasin" loading="lazy" decoding="async"></div>
+            </figure>
+            <div class="exhibit__info">
+              <p class="exhibit__meta"><span class="exhibit__no" aria-hidden="true">02</span><span class="exhibit__cat" data-i18n="work.p2tag">Live store</span><span class="exhibit__year"></span></p>
+              <h3 class="exhibit__title" data-i18n="work.p2t">Anamil Yasin</h3>
+              <p class="exhibit__desc" data-i18n="work.p2d">Premium handcrafted store with a full dashboard.</p>
+              <ul class="exhibit__stack" aria-label="Tech stack"><li>E-commerce</li><li>Dashboard</li></ul>
+              <a class="exhibit__cta" href="https://yasin-app.vercel.app" target="_blank" rel="noopener" data-project="yasin" aria-label="Anamil Yasin — view project"><span data-i18n="work.view">View project</span> <i aria-hidden="true">→</i></a>
+            </div>
           </div>
         </article>
-        <article class="work-card" data-reveal data-cursor data-wtype="development">
-          <a class="work-card__link" href="https://bright-dental-clinic.vercel.app" target="_blank" rel="noopener" data-project="bright" aria-label="Bright Dental — view project"></a>
-          <div class="work-card__media work-card__media--1">
-            <img class="work-card__img" src="assets/work/covers/bright-dental-clinic.jpg" alt="Bright Dental" loading="lazy">
-            <span class="work-card__tag" data-i18n="work.p6tag">Live site</span>
-            <span class="work-card__view" data-i18n="work.view">View project →</span>
-          </div>
-          <div class="work-card__body">
-            <h3 data-i18n="work.p6t">Bright Dental</h3>
-            <p data-i18n="work.p6d">Dental clinic website with online booking.</p>
-            <div class="work-card__tags"><span>Clinic</span><span>Booking</span></div>
-          </div>
-        </article>
-        <article class="work-card" data-reveal data-cursor data-wtype="design">
-          <a class="work-card__link" href="https://fgdmqhyclnaotgptkbkt.supabase.co/storage/v1/object/public/portfolio-media/projects/fast-round-guidelines.pdf" target="_blank" rel="noopener" data-project="fastround" aria-label="Fast Round — view project"></a>
-          <div class="work-card__media work-card__media--2">
-            <img class="work-card__img" src="assets/work/covers/fast-round-brand-identity.jpg" alt="Fast Round" loading="lazy">
-            <span class="work-card__tag" data-i18n="work.p7tag">Brand identity</span>
-            <span class="work-card__view" data-i18n="work.view">View project →</span>
-          </div>
-          <div class="work-card__body">
-            <h3 data-i18n="work.p7t">Fast Round</h3>
-            <p data-i18n="work.p7d">Full brand identity & guidelines.</p>
-            <div class="work-card__tags"><span>Branding</span><span>Guidelines</span></div>
+        <article class="exhibit" data-slug="nexa" data-type="website" data-wtype="development" data-accent="216 46% 20%" style="--i:3">
+          <div class="exhibit__inner">
+            <figure class="exhibit__media" data-video="">
+              <div class="exhibit__screen"><img class="exhibit__img" src="assets/work/nexa-1.jpg" alt="Nexa Digital" loading="lazy" decoding="async"></div>
+            </figure>
+            <div class="exhibit__info">
+              <p class="exhibit__meta"><span class="exhibit__no" aria-hidden="true">03</span><span class="exhibit__cat" data-i18n="work.p3tag">Live site</span><span class="exhibit__year"></span></p>
+              <h3 class="exhibit__title" data-i18n="work.p3t">Nexa Digital</h3>
+              <p class="exhibit__desc" data-i18n="work.p3d">Agency site with smooth motion &amp; social proof.</p>
+              <ul class="exhibit__stack" aria-label="Tech stack"><li>Business</li><li>Motion</li></ul>
+              <a class="exhibit__cta" href="https://nexa-digital.vercel.app" target="_blank" rel="noopener" data-project="nexa" aria-label="Nexa Digital — view project"><span data-i18n="work.view">View project</span> <i aria-hidden="true">→</i></a>
+            </div>
           </div>
         </article>
-        <article class="work-card" data-reveal data-cursor data-wtype="design">
-          <a class="work-card__link" href="https://fgdmqhyclnaotgptkbkt.supabase.co/storage/v1/object/public/portfolio-media/projects/jun-company-profile.pdf" target="_blank" rel="noopener" data-project="jun" aria-label="JUN Profile — view project"></a>
-          <div class="work-card__media work-card__media--3">
-            <img class="work-card__img" src="assets/work/covers/jun-company-profile.jpg" alt="JUN Profile" loading="lazy">
-            <span class="work-card__tag" data-i18n="work.p8tag">Company profile</span>
-            <span class="work-card__view" data-i18n="work.view">View project →</span>
-          </div>
-          <div class="work-card__body">
-            <h3 data-i18n="work.p8t">JUN Profile</h3>
-            <p data-i18n="work.p8d">Company profile for real estate & contracting.</p>
-            <div class="work-card__tags"><span>Profile</span><span>Print</span></div>
-          </div>
-        </article>
-        <article class="work-card" data-reveal data-cursor data-wtype="design">
-          <a class="work-card__link" href="https://fgdmqhyclnaotgptkbkt.supabase.co/storage/v1/object/public/portfolio-media/projects/yasmina-brochure.pdf" target="_blank" rel="noopener" data-project="yasmina" aria-label="Al-Yasmina — view project"></a>
-          <div class="work-card__media work-card__media--1">
-            <img class="work-card__img" src="assets/work/covers/yasmina-brochure.jpg" alt="Al-Yasmina" loading="lazy">
-            <span class="work-card__tag" data-i18n="work.p9tag">Brochure</span>
-            <span class="work-card__view" data-i18n="work.view">View project →</span>
-          </div>
-          <div class="work-card__body">
-            <h3 data-i18n="work.p9t">Al-Yasmina</h3>
-            <p data-i18n="work.p9d">Real-estate brochure for Ecobuild Developments.</p>
-            <div class="work-card__tags"><span>Brochure</span><span>Real estate</span></div>
+        <article class="exhibit" data-slug="gold" data-type="website" data-wtype="development" data-accent="38 44% 24%" style="--i:4">
+          <div class="exhibit__inner">
+            <figure class="exhibit__media" data-video="">
+              <div class="exhibit__screen"><img class="exhibit__img" src="assets/work/covers/gold-skincare-store.jpg" alt="Gold Skincare" loading="lazy" decoding="async"></div>
+            </figure>
+            <div class="exhibit__info">
+              <p class="exhibit__meta"><span class="exhibit__no" aria-hidden="true">04</span><span class="exhibit__cat" data-i18n="work.p4tag">Live store</span><span class="exhibit__year"></span></p>
+              <h3 class="exhibit__title" data-i18n="work.p4t">Gold Skincare</h3>
+              <p class="exhibit__desc" data-i18n="work.p4d">Skincare e-commerce store with a clean, premium UI.</p>
+              <ul class="exhibit__stack" aria-label="Tech stack"><li>E-commerce</li><li>Next.js</li></ul>
+              <a class="exhibit__cta" href="https://gold-skincare.vercel.app" target="_blank" rel="noopener" data-project="gold" aria-label="Gold Skincare — view project"><span data-i18n="work.view">View project</span> <i aria-hidden="true">→</i></a>
+            </div>
           </div>
         </article>
-        <article class="work-card" data-reveal data-cursor data-wtype="design">
-          <a class="work-card__link" href="#work"  data-project="optima" aria-label="Optima Eye — view project"></a>
-          <div class="work-card__media work-card__media--2">
-            <img class="work-card__img" src="assets/work/covers/optima-eye-clinic-social.jpg" alt="Optima Eye" loading="lazy">
-            <span class="work-card__tag" data-i18n="work.p10tag">Social media</span>
-            <span class="work-card__view" data-i18n="work.view">View project →</span>
-          </div>
-          <div class="work-card__body">
-            <h3 data-i18n="work.p10t">Optima Eye</h3>
-            <p data-i18n="work.p10d">Social media designs for an eye clinic.</p>
-            <div class="work-card__tags"><span>Social</span><span>Design</span></div>
-          </div>
-        </article>
-        <article class="work-card" data-reveal data-cursor data-wtype="design">
-          <a class="work-card__link" href="#work"  data-project="social1" aria-label="Social Designs · I — view project"></a>
-          <div class="work-card__media work-card__media--3">
-            <img class="work-card__img" src="assets/work/covers/social-media-designs-1.jpg" alt="Social Designs · I" loading="lazy">
-            <span class="work-card__tag" data-i18n="work.p11tag">Social media</span>
-            <span class="work-card__view" data-i18n="work.view">View project →</span>
-          </div>
-          <div class="work-card__body">
-            <h3 data-i18n="work.p11t">Social Designs · I</h3>
-            <p data-i18n="work.p11d">A collection of scroll-stopping social posts.</p>
-            <div class="work-card__tags"><span>Social</span><span>Design</span></div>
+        <article class="exhibit" data-slug="pizza" data-type="website" data-wtype="development" data-accent="14 46% 26%" style="--i:5">
+          <div class="exhibit__inner">
+            <figure class="exhibit__media" data-video="">
+              <div class="exhibit__screen"><img class="exhibit__img" src="assets/work/covers/pizza-height.jpg" alt="Pizza Height" loading="lazy" decoding="async"></div>
+            </figure>
+            <div class="exhibit__info">
+              <p class="exhibit__meta"><span class="exhibit__no" aria-hidden="true">05</span><span class="exhibit__cat" data-i18n="work.p5tag">Live site</span><span class="exhibit__year"></span></p>
+              <h3 class="exhibit__title" data-i18n="work.p5t">Pizza Height</h3>
+              <p class="exhibit__desc" data-i18n="work.p5d">Premium pizza restaurant site with tasty motion.</p>
+              <ul class="exhibit__stack" aria-label="Tech stack"><li>Restaurant</li><li>Motion</li></ul>
+              <a class="exhibit__cta" href="https://pizza-height.vercel.app" target="_blank" rel="noopener" data-project="pizza" aria-label="Pizza Height — view project"><span data-i18n="work.view">View project</span> <i aria-hidden="true">→</i></a>
+            </div>
           </div>
         </article>
-        <article class="work-card" data-reveal data-cursor data-wtype="design">
-          <a class="work-card__link" href="#work"  data-project="social2" aria-label="Social Designs · II — view project"></a>
-          <div class="work-card__media work-card__media--1">
-            <img class="work-card__img" src="assets/work/covers/social-media-designs-2.jpg" alt="Social Designs · II" loading="lazy">
-            <span class="work-card__tag" data-i18n="work.p12tag">Social media</span>
-            <span class="work-card__view" data-i18n="work.view">View project →</span>
-          </div>
-          <div class="work-card__body">
-            <h3 data-i18n="work.p12t">Social Designs · II</h3>
-            <p data-i18n="work.p12d">More social designs across brands & niches.</p>
-            <div class="work-card__tags"><span>Social</span><span>Design</span></div>
+        <article class="exhibit" data-slug="bright" data-type="website" data-wtype="development" data-accent="192 44% 24%" style="--i:6">
+          <div class="exhibit__inner">
+            <figure class="exhibit__media" data-video="">
+              <div class="exhibit__screen"><img class="exhibit__img" src="assets/work/covers/bright-dental-clinic.jpg" alt="Bright Dental" loading="lazy" decoding="async"></div>
+            </figure>
+            <div class="exhibit__info">
+              <p class="exhibit__meta"><span class="exhibit__no" aria-hidden="true">06</span><span class="exhibit__cat" data-i18n="work.p6tag">Live site</span><span class="exhibit__year"></span></p>
+              <h3 class="exhibit__title" data-i18n="work.p6t">Bright Dental</h3>
+              <p class="exhibit__desc" data-i18n="work.p6d">Dental clinic website with online booking.</p>
+              <ul class="exhibit__stack" aria-label="Tech stack"><li>Clinic</li><li>Booking</li></ul>
+              <a class="exhibit__cta" href="https://bright-dental-clinic.vercel.app" target="_blank" rel="noopener" data-project="bright" aria-label="Bright Dental — view project"><span data-i18n="work.view">View project</span> <i aria-hidden="true">→</i></a>
+            </div>
           </div>
         </article>
-        <article class="work-card" data-reveal data-cursor data-wtype="design">
-          <a class="work-card__link" href="#work"  data-project="logo" aria-label="Logo Collection — view project"></a>
-          <div class="work-card__media work-card__media--2">
-            <img class="work-card__img" src="assets/work/covers/logo-design-collection.jpg" alt="Logo Collection" loading="lazy">
-            <span class="work-card__tag" data-i18n="work.p13tag">Logos</span>
-            <span class="work-card__view" data-i18n="work.view">View project →</span>
+        <article class="exhibit" data-slug="fastround" data-type="brand" data-wtype="design" data-accent="38 44% 24%" style="--i:7">
+          <div class="exhibit__inner">
+            <figure class="exhibit__media" data-video="">
+              <div class="exhibit__screen"><img class="exhibit__img" src="assets/work/covers/fast-round-brand-identity.jpg" alt="Fast Round" loading="lazy" decoding="async"></div>
+            </figure>
+            <div class="exhibit__info">
+              <p class="exhibit__meta"><span class="exhibit__no" aria-hidden="true">07</span><span class="exhibit__cat" data-i18n="work.p7tag">Brand identity</span><span class="exhibit__year"></span></p>
+              <h3 class="exhibit__title" data-i18n="work.p7t">Fast Round</h3>
+              <p class="exhibit__desc" data-i18n="work.p7d">Full brand identity &amp; guidelines.</p>
+              <ul class="exhibit__stack" aria-label="Tech stack"><li>Branding</li><li>Guidelines</li></ul>
+              <a class="exhibit__cta" href="https://fgdmqhyclnaotgptkbkt.supabase.co/storage/v1/object/public/portfolio-media/projects/fast-round-guidelines.pdf" target="_blank" rel="noopener" data-project="fastround" aria-label="Fast Round — view project"><span data-i18n="work.view">View project</span> <i aria-hidden="true">→</i></a>
+            </div>
           </div>
-          <div class="work-card__body">
-            <h3 data-i18n="work.p13t">Logo Collection</h3>
-            <p data-i18n="work.p13d">A selection of logos & brand marks.</p>
-            <div class="work-card__tags"><span>Logos</span><span>Branding</span></div>
+        </article>
+        <article class="exhibit" data-slug="jun" data-type="brand" data-wtype="design" data-accent="38 44% 24%" style="--i:8">
+          <div class="exhibit__inner">
+            <figure class="exhibit__media" data-video="">
+              <div class="exhibit__screen"><img class="exhibit__img" src="assets/work/covers/jun-company-profile.jpg" alt="JUN Profile" loading="lazy" decoding="async"></div>
+            </figure>
+            <div class="exhibit__info">
+              <p class="exhibit__meta"><span class="exhibit__no" aria-hidden="true">08</span><span class="exhibit__cat" data-i18n="work.p8tag">Company profile</span><span class="exhibit__year"></span></p>
+              <h3 class="exhibit__title" data-i18n="work.p8t">JUN Profile</h3>
+              <p class="exhibit__desc" data-i18n="work.p8d">Company profile for real estate &amp; contracting.</p>
+              <ul class="exhibit__stack" aria-label="Tech stack"><li>Profile</li><li>Print</li></ul>
+              <a class="exhibit__cta" href="https://fgdmqhyclnaotgptkbkt.supabase.co/storage/v1/object/public/portfolio-media/projects/jun-company-profile.pdf" target="_blank" rel="noopener" data-project="jun" aria-label="JUN Profile — view project"><span data-i18n="work.view">View project</span> <i aria-hidden="true">→</i></a>
+            </div>
+          </div>
+        </article>
+        <article class="exhibit" data-slug="yasmina" data-type="brand" data-wtype="design" data-accent="150 34% 22%" style="--i:9">
+          <div class="exhibit__inner">
+            <figure class="exhibit__media" data-video="">
+              <div class="exhibit__screen"><img class="exhibit__img" src="assets/work/covers/yasmina-brochure.jpg" alt="Al-Yasmina" loading="lazy" decoding="async"></div>
+            </figure>
+            <div class="exhibit__info">
+              <p class="exhibit__meta"><span class="exhibit__no" aria-hidden="true">09</span><span class="exhibit__cat" data-i18n="work.p9tag">Brochure</span><span class="exhibit__year"></span></p>
+              <h3 class="exhibit__title" data-i18n="work.p9t">Al-Yasmina</h3>
+              <p class="exhibit__desc" data-i18n="work.p9d">Real-estate brochure for Ecobuild Developments.</p>
+              <ul class="exhibit__stack" aria-label="Tech stack"><li>Brochure</li><li>Real estate</li></ul>
+              <a class="exhibit__cta" href="https://fgdmqhyclnaotgptkbkt.supabase.co/storage/v1/object/public/portfolio-media/projects/yasmina-brochure.pdf" target="_blank" rel="noopener" data-project="yasmina" aria-label="Al-Yasmina — view project"><span data-i18n="work.view">View project</span> <i aria-hidden="true">→</i></a>
+            </div>
+          </div>
+        </article>
+        <article class="exhibit" data-slug="optima" data-type="social" data-wtype="design" data-accent="265 32% 24%" style="--i:10">
+          <div class="exhibit__inner">
+            <figure class="exhibit__media" data-video="">
+              <div class="exhibit__screen"><img class="exhibit__img" src="assets/work/covers/optima-eye-clinic-social.jpg" alt="Optima Eye" loading="lazy" decoding="async"></div>
+            </figure>
+            <div class="exhibit__info">
+              <p class="exhibit__meta"><span class="exhibit__no" aria-hidden="true">10</span><span class="exhibit__cat" data-i18n="work.p10tag">Social media</span><span class="exhibit__year"></span></p>
+              <h3 class="exhibit__title" data-i18n="work.p10t">Optima Eye</h3>
+              <p class="exhibit__desc" data-i18n="work.p10d">Social media designs for an eye clinic.</p>
+              <ul class="exhibit__stack" aria-label="Tech stack"><li>Social</li><li>Design</li></ul>
+              <a class="exhibit__cta" href="#work" data-project="optima" aria-label="Optima Eye — view project"><span data-i18n="work.view">View project</span> <i aria-hidden="true">→</i></a>
+            </div>
+          </div>
+        </article>
+        <article class="exhibit" data-slug="social1" data-type="social" data-wtype="design" data-accent="265 32% 24%" style="--i:11">
+          <div class="exhibit__inner">
+            <figure class="exhibit__media" data-video="">
+              <div class="exhibit__screen"><img class="exhibit__img" src="assets/work/covers/social-media-designs-1.jpg" alt="Social Designs · I" loading="lazy" decoding="async"></div>
+            </figure>
+            <div class="exhibit__info">
+              <p class="exhibit__meta"><span class="exhibit__no" aria-hidden="true">11</span><span class="exhibit__cat" data-i18n="work.p11tag">Social media</span><span class="exhibit__year"></span></p>
+              <h3 class="exhibit__title" data-i18n="work.p11t">Social Designs · I</h3>
+              <p class="exhibit__desc" data-i18n="work.p11d">A collection of scroll-stopping social posts.</p>
+              <ul class="exhibit__stack" aria-label="Tech stack"><li>Social</li><li>Design</li></ul>
+              <a class="exhibit__cta" href="#work" data-project="social1" aria-label="Social Designs · I — view project"><span data-i18n="work.view">View project</span> <i aria-hidden="true">→</i></a>
+            </div>
+          </div>
+        </article>
+        <article class="exhibit" data-slug="social2" data-type="social" data-wtype="design" data-accent="265 32% 24%" style="--i:12">
+          <div class="exhibit__inner">
+            <figure class="exhibit__media" data-video="">
+              <div class="exhibit__screen"><img class="exhibit__img" src="assets/work/covers/social-media-designs-2.jpg" alt="Social Designs · II" loading="lazy" decoding="async"></div>
+            </figure>
+            <div class="exhibit__info">
+              <p class="exhibit__meta"><span class="exhibit__no" aria-hidden="true">12</span><span class="exhibit__cat" data-i18n="work.p12tag">Social media</span><span class="exhibit__year"></span></p>
+              <h3 class="exhibit__title" data-i18n="work.p12t">Social Designs · II</h3>
+              <p class="exhibit__desc" data-i18n="work.p12d">More social designs across brands &amp; niches.</p>
+              <ul class="exhibit__stack" aria-label="Tech stack"><li>Social</li><li>Design</li></ul>
+              <a class="exhibit__cta" href="#work" data-project="social2" aria-label="Social Designs · II — view project"><span data-i18n="work.view">View project</span> <i aria-hidden="true">→</i></a>
+            </div>
+          </div>
+        </article>
+        <article class="exhibit" data-slug="logo" data-type="brand" data-wtype="design" data-accent="38 44% 24%" style="--i:13">
+          <div class="exhibit__inner">
+            <figure class="exhibit__media" data-video="">
+              <div class="exhibit__screen"><img class="exhibit__img" src="assets/work/covers/logo-design-collection.jpg" alt="Logo Collection" loading="lazy" decoding="async"></div>
+            </figure>
+            <div class="exhibit__info">
+              <p class="exhibit__meta"><span class="exhibit__no" aria-hidden="true">13</span><span class="exhibit__cat" data-i18n="work.p13tag">Logos</span><span class="exhibit__year"></span></p>
+              <h3 class="exhibit__title" data-i18n="work.p13t">Logo Collection</h3>
+              <p class="exhibit__desc" data-i18n="work.p13d">A selection of logos &amp; brand marks.</p>
+              <ul class="exhibit__stack" aria-label="Tech stack"><li>Logos</li><li>Branding</li></ul>
+              <a class="exhibit__cta" href="#work" data-project="logo" aria-label="Logo Collection — view project"><span data-i18n="work.view">View project</span> <i aria-hidden="true">→</i></a>
+            </div>
           </div>
         </article>
       </div>
