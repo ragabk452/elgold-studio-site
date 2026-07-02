@@ -76,13 +76,14 @@
           }
         } catch (e) {}
         // 2) الكارت (عنوان/غلاف/سنة/رابط) — تحديث نصّي آمن، من غير إعادة بناء
-        var card = document.querySelector('.exhibit[data-slug="' + w.slug + '"]');
-        if (!card) return;
-        var h3 = card.querySelector('.exhibit__title'), tt = ar ? w.title_ar : w.title_en;
+        var link = document.querySelector('.work-card__link[data-project="' + w.slug + '"]');
+        if (!link) return;
+        var card = link.closest('.work-card'); if (!card) return;
+        var h3 = card.querySelector('.work-card__body h3'), tt = ar ? w.title_ar : w.title_en;
         if (h3 && tt) h3.textContent = tt;
-        var img = card.querySelector('.exhibit__img'); if (img && w.cover) { img.src = w.cover; if (tt) img.alt = tt; }
-        var yr = card.querySelector('.exhibit__year'); if (yr && w.year) yr.textContent = w.year;
-        var cta = card.querySelector('.exhibit__cta'); if (cta && w.live_url) cta.setAttribute('href', w.live_url);
+        var img = card.querySelector('.work-card__img'); if (img && w.cover) { img.src = w.cover; if (tt) img.alt = tt; }
+        var yr = card.querySelector('.work-card__year'); if (yr && w.year) yr.textContent = w.year;
+        if (w.live_url) link.setAttribute('href', w.live_url);
       });
     } catch (e) {}
   }
@@ -425,58 +426,6 @@
       }});
     });
 
-    /* ═══ Phase 2: تفاعلات المعرض — حركة سينمائية · إضاءة محيطة خافتة · كيرسر VIEW ═══
-       راقية ومكتومة (easing زي Apple). تُلغى تلقائيًا مع تقليل الحركة. لا تغيّر الـUI. */
-    (function exhibitionFX() {
-      var exhibits = gsap.utils.toArray('#work .exhibit');
-      if (!exhibits.length) return;
-      var desktop = fine && window.innerWidth > 1024;
-
-      // 1) سكرول سينمائي: لوحة واحدة مسيطرة، السابقة تنحسر والتالية تطلع
-      exhibits.forEach(function (ex) {
-        var inner = ex.querySelector('.exhibit__inner') || ex;
-        if (desktop) {
-          gsap.timeline({ scrollTrigger: { trigger: ex, start: 'top bottom', end: 'bottom top', scrub: 0.6 } })
-            .fromTo(inner, { opacity: 0.3, scale: 0.955, y: 52 }, { opacity: 1, scale: 1, y: 0, ease: 'power2.out', duration: 1 })
-            .to(inner, { duration: 0.5 })                                   // ثبات عند المنتصف
-            .to(inner, { opacity: 0.3, scale: 0.955, y: -46, ease: 'power2.in', duration: 1 });
-        } else {
-          gsap.from(inner, { opacity: 0, y: 36, duration: 0.7, ease: 'power2.out', scrollTrigger: { trigger: ex, start: 'top 82%', once: true } });
-        }
-      });
-
-      // 2) إضاءة محيطة خافتة تتبع اللوحة النشطة (لون من عيلة الكحلي، تدرّج ناعم عبر @property --amb)
-      var section = document.querySelector('.work--gallery');
-      if (section) {
-        var amb = document.createElement('div');
-        amb.className = 'work__ambient'; amb.setAttribute('aria-hidden', 'true');
-        section.insertBefore(amb, section.firstChild);
-        var setAmb = function (acc) { if (acc) amb.style.setProperty('--amb', 'hsl(' + acc + ' / .16)'); };
-        exhibits.forEach(function (ex) {
-          var acc = ex.getAttribute('data-accent');
-          ScrollTrigger.create({ trigger: ex, start: 'top center', end: 'bottom center',
-            onEnter: function () { setAmb(acc); }, onEnterBack: function () { setAmb(acc); } });
-        });
-      }
-
-      // 3) كيرسر "VIEW" فوق وسيط المشاريع (ديسكتوب فقط) — يعيد استخدام .work-cursor الموجود
-      if (desktop && !reduce) {
-        var track = document.querySelector('.exhibit-track');
-        if (track) {
-          var wc = document.createElement('div');
-          wc.className = 'work-cursor'; wc.setAttribute('aria-hidden', 'true');
-          document.body.appendChild(wc);
-          var cx = 0, cy = 0, tX = 0, tY = 0;
-          addEventListener('mousemove', function (e) { tX = e.clientX; tY = e.clientY; }, { passive: true });
-          (function cl() { cx += (tX - cx) * 0.2; cy += (tY - cy) * 0.2; wc.style.left = cx + 'px'; wc.style.top = cy + 'px'; requestAnimationFrame(cl); })();
-          track.querySelectorAll('.exhibit__media').forEach(function (m) {
-            m.addEventListener('mouseenter', function () { wc.classList.add('is-on'); document.documentElement.classList.add('exhibit-hovering'); });
-            m.addEventListener('mouseleave', function () { wc.classList.remove('is-on'); document.documentElement.classList.remove('exhibit-hovering'); });
-          });
-        }
-      }
-    })();
-
     // إعادة حساب مواقع التشغيل بعد ما الصور/الخطوط تحمّل وبعد ما اللودر يخلّص —
     // مهم جداً عشان إزاحة المحتوى ما تخليش أي قسم يفضل مخفي (opacity:0) على أي جهاز
     var doRefresh = function () { ScrollTrigger.refresh(); };
@@ -788,48 +737,62 @@
     document.body.classList.remove('modal-lock'); modalOpen = false;
     if (lenis && lenis.start) lenis.start();
   }
-  // فتح الـcase study عند الضغط على CTA المشروع (المودال الحالي — يُرقّى لـFLIP overlay في Phase 3)
-  document.querySelectorAll('.exhibit__cta').forEach(function (a) {
+  document.querySelectorAll('.work-card__link').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var k = a.getAttribute('data-project');
       if (k && PROJECTS[k]) { e.preventDefault(); openProject(k); }
     });
   });
-  // الضغط على وسيط المشروع نفسه يفتح الـcase study (يطابق كيرسر VIEW)
-  document.querySelectorAll('.exhibit__media').forEach(function (m) {
-    m.addEventListener('click', function () {
-      var ex = m.closest('.exhibit'); var k = ex && ex.getAttribute('data-slug');
-      if (k && PROJECTS[k]) openProject(k);
-    });
-  });
 
-  /* ---------- فلتر الأعمال (الكل / برمجة / تصميم) + عدّاد ---------- */
+  /* ---------- فلتر الأعمال (الكل / برمجة / تصميم) ---------- */
   (function () {
     var btns = document.querySelectorAll('.wf-btn');
-    var items = document.querySelectorAll('#work .exhibit');
-    // حقن السنة (تحت التصنيف) من بيانات المشروع لو مش جايّة من الـCMS
-    items.forEach(function (it) {
-      var k = it.getAttribute('data-slug');
-      var yr = it.querySelector('.exhibit__year');
-      if (yr && !yr.textContent && k && PROJECTS[k] && PROJECTS[k].year) yr.textContent = PROJECTS[k].year;
+    if (!btns.length) return;
+    var cards = document.querySelectorAll('#work .work-card');
+    // معلومات تحت كل تايل: اسم (يسار) + السنة (يمين) — مع حقن السنة من بيانات المشروع
+    cards.forEach(function (c) {
+      var lnk = c.querySelector('.work-card__link');
+      var k = lnk && lnk.getAttribute('data-project');
+      var body = c.querySelector('.work-card__body');
+      var h3 = body && body.querySelector('h3');
+      if (!body || !h3 || body.querySelector('.work-card__top')) return;
+      var top = document.createElement('div');
+      top.className = 'work-card__top';
+      h3.parentNode.insertBefore(top, h3);
+      top.appendChild(h3);
+      var yr = (k && PROJECTS[k] && PROJECTS[k].year) || '';
+      if (yr) {
+        var ys = document.createElement('span');
+        ys.className = 'work-card__year';
+        ys.textContent = yr;
+        top.appendChild(ys);
+      }
     });
     // عدّاد المشاريع فوق الفلتر
-    var track = document.querySelector('.exhibit-track');
+    var grid = document.querySelector('.work-grid');
     var filter = document.querySelector('.work-filter');
-    if (track && filter && !document.querySelector('.work-count')) {
+    if (grid && filter) {
       var lang = curLang();
       var cnt = document.createElement('span');
       cnt.className = 'work-count';
-      cnt.innerHTML = items.length + ' <span data-i18n="work.projects">' + (((T[lang] || T.en)['work.projects']) || 'Projects') + '</span>';
+      cnt.innerHTML = cards.length + ' <span data-i18n="work.projects">' + (((T[lang] || T.en)['work.projects']) || 'Projects') + '</span>';
       filter.parentNode.insertBefore(cnt, filter);
     }
-    // ملاحظة: الكيرسر المخصّص (.work-cursor) + الحركة السينمائية = تُفعَّل في Phase 2 موصولة بـ.exhibit-track
-    if (!btns.length) return;
+    // دائرة "View ↗" تتبع الماوس فوق المعرض (ديسكتوب فقط)
+    if (grid && fine && !reduce) {
+      var wc = document.createElement('div');
+      wc.className = 'work-cursor';
+      document.body.appendChild(wc);
+      grid.addEventListener('mousemove', function (e) { wc.style.left = e.clientX + 'px'; wc.style.top = e.clientY + 'px'; });
+      grid.addEventListener('mouseover', function (e) { if (e.target.closest && e.target.closest('.work-card:not(.is-hidden)')) wc.classList.add('is-on'); });
+      grid.addEventListener('mouseout', function (e) { var to = e.relatedTarget; if (!to || !to.closest || !to.closest('.work-card')) wc.classList.remove('is-on'); });
+      grid.addEventListener('mouseleave', function () { wc.classList.remove('is-on'); });
+    }
     btns.forEach(function (b) {
       b.addEventListener('click', function () {
         var f = b.getAttribute('data-filter');
         btns.forEach(function (x) { x.classList.toggle('is-active', x === b); });
-        items.forEach(function (c) {
+        cards.forEach(function (c) {
           var show = (f === 'all') || (c.getAttribute('data-wtype') === f);
           c.classList.toggle('is-hidden', !show);
         });

@@ -313,73 +313,27 @@ p { max-width: var(--reading); }
 .wf-btn { font-family: var(--font-body); font-size: .9rem; font-weight: 600; padding: 9px 22px; border-radius: var(--r-pill); border: 1px solid rgba(244,238,223,.16); background: rgba(244,238,223,.03); color: rgba(244,238,223,.62); cursor: pointer; transition: color var(--t-fast), background var(--t-fast), border-color var(--t-fast); }
 .wf-btn:hover { color: var(--cream); border-color: rgba(244,238,223,.5); }
 .wf-btn.is-active { background: var(--cream); color: var(--navy-900); border-color: var(--cream); }
-/* ═══════════════════════════════════════════════════════════════════════
-   Exhibition — معرض رقمي: كل مشروع لوحة كاملة، الوسيط (media) هو البطل
-   المكوّنات ومسؤولياتها:
-     .exhibit-track   → حاوية اللوحات (رأسية)
-     .exhibit         → لوحة مشروع واحدة (min-height كبير = لوحة تملى النظر)
-       .exhibit__media/__screen/__img → الوسيط المهيمن (سلوت فيديو جاهز عبر [data-video])
-       .exhibit__info → محتوى مساند (meta · title · desc · stack · cta)
-   تنويع خفيف حسب النوع عبر [data-type] مع الحفاظ على نفس لغة التصميم.
-   ملاحظة: المرحلة ١ ثابتة — لا حركة/تفاعل (تُضاف في Phase 2 عبر GSAP).
-   ═══════════════════════════════════════════════════════════════════════ */
-.exhibit.is-hidden { display: none; }
-.exhibit-track { display: block; }
-.exhibit { min-height: 88vh; display: flex; align-items: center; padding: var(--s-64) 0; }
-.exhibit + .exhibit { border-top: 1px solid rgba(244,238,223,.06); }
-.exhibit__inner { width: 100%; }
-
-/* الوسيط — مهيمن على التكوين */
-.exhibit__media { position: relative; width: 100%; }
-.exhibit__screen { position: relative; aspect-ratio: 16/10; overflow: hidden; border-radius: var(--r-lg); background: #0b1124; border: 1px solid rgba(244,238,223,.08); box-shadow: 0 44px 100px -46px rgba(0,0,0,.75); }
-.exhibit__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-
-/* المعلومات — مساندة، تحت الوسيط */
-.exhibit__info { margin-top: var(--s-32); max-width: 64ch; }
-.exhibit__meta { display: flex; align-items: center; gap: var(--s-16); margin: 0 0 var(--s-16); font-family: var(--font-en); font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
-.exhibit__no { color: rgba(244,238,223,.3); font-variant-numeric: tabular-nums; }
-.exhibit__cat { color: rgba(244,238,223,.62); }
-.exhibit__year { color: rgba(244,238,223,.4); font-variant-numeric: tabular-nums; }
-.exhibit__year:empty { display: none; }
-.exhibit__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 3.6vw, 3.2rem); line-height: 1.04; color: var(--cream); }
-.exhibit__desc { margin-top: var(--s-16); color: rgba(244,238,223,.56); font-size: 1.02rem; line-height: 1.6; }
-.exhibit__stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--s-24); list-style: none; }
-.exhibit__stack li { font-family: var(--font-en); font-size: .74rem; font-weight: 600; letter-spacing: .02em; color: rgba(244,238,223,.7); background: rgba(244,238,223,.04); border: 1px solid rgba(244,238,223,.14); border-radius: var(--r-pill); padding: 6px 14px; }
-.exhibit__cta { display: inline-flex; align-items: center; gap: 8px; margin-top: var(--s-32); font-family: var(--font-en); font-weight: 600; font-size: .95rem; color: var(--cream); border-bottom: 1px solid transparent; padding-bottom: 3px; }
-.exhibit__cta i { font-style: normal; }
-.exhibit__cta:hover { border-bottom-color: rgba(244,238,223,.5); }
-
-/* ── تنويعات النوع (خفيفة، نفس اللغة) ── */
-/* موقع: إطار متصفح بسيط فوق الوسيط */
-.exhibit[data-type="website"] .exhibit__screen::before { content: ""; position: absolute; z-index: 2; top: 0; left: 0; right: 0; height: 34px; background: rgba(10,19,48,.92); border-bottom: 1px solid rgba(244,238,223,.08); }
-.exhibit[data-type="website"] .exhibit__screen::after { content: ""; position: absolute; z-index: 3; top: 13px; left: 16px; width: 8px; height: 8px; border-radius: 50%; background: rgba(244,238,223,.32); box-shadow: 15px 0 0 rgba(244,238,223,.2), 30px 0 0 rgba(244,238,223,.13); }
-.exhibit[data-type="website"] .exhibit__img { top: 34px; height: calc(100% - 34px); }
-/* هوية: نسبة أعرض (لوحة عرض) */
-.exhibit[data-type="brand"] .exhibit__screen { aspect-ratio: 4/3; }
-/* سوشيال: عمودي، أضيق، في المنتصف */
-.exhibit[data-type="social"] .exhibit__media { max-width: 520px; margin-inline: auto; }
-.exhibit[data-type="social"] .exhibit__screen { aspect-ratio: 4/5; }
-
-/* ═══ Phase 2: تفاعلات المعرض (تُضاف بالـJS) — راقية ومكتومة، متوافقة مع اللمس/تقليل الحركة ═══ */
-/* إضاءة محيطة خافتة تتبع اللوحة النشطة (لون من عيلة الكحلي، تدرّج ناعم) */
-@property --amb { syntax: "<color>"; inherits: true; initial-value: hsla(216, 44%, 18%, 0); }
-.work--gallery { position: relative; isolation: isolate; }
-.work--gallery > .container { position: relative; z-index: 1; }
-.work__ambient { position: sticky; top: 0; height: 100vh; margin-bottom: -100vh; z-index: 0; pointer-events: none; background: radial-gradient(58% 46% at 50% 44%, var(--amb), transparent 72%); transition: --amb .9s var(--ease-soft); }
-
-/* hover راقٍ (ديسكتوب + مؤشر دقيق فقط) — الوسيط هو البطل */
-@media (hover: hover) and (pointer: fine) {
-  .exhibit__media { cursor: none; }
-  .exhibit__img { transition: transform .7s var(--ease); }
-  .exhibit:hover .exhibit__img { transform: scale(1.05); }
-  .exhibit__title { transition: transform .5s var(--ease); }
-  .exhibit:hover .exhibit__title { transform: translateY(-6px); }
-  .exhibit__cta i { transition: transform .4s var(--ease); }
-  .exhibit:hover .exhibit__cta { border-bottom-color: rgba(244,238,223,.5); }
-  .exhibit:hover .exhibit__cta i { transform: translateX(5px); }
-  /* فوق وسيط المشروع نُظهر كيرسر VIEW ونخفي الكيرسر العام */
-  .exhibit-hovering .cursor, .exhibit-hovering .cursor-dot { opacity: 0 !important; }
-}
+.work-card.is-hidden { display: none; }
+/* شبكة موحّدة 3 أعمدة، كل تايل 16:9 (زي Maatouk) */
+.work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-48) var(--s-32); }
+/* الكارت = صورة 16:9 + معلومات تحتها (بدون إطار) */
+.work-card { position: relative; display: flex; flex-direction: column; gap: 14px; background: none; border: none; }
+.work-card__link { position: absolute; inset: 0; z-index: 4; }
+.work-card__media { position: relative; aspect-ratio: 16/9; overflow: hidden; border-radius: var(--r-md); background: #0b1124; }
+.work-card__media::after { display: none; }
+/* تعتيم خفيف وقت الراحة يخفّ عند المرور */
+.work-card__media::before { content: ""; display: block; position: absolute; inset: 0; z-index: 1; background: rgba(6,9,22,.22); transition: opacity .5s var(--ease); }
+.work-card:hover .work-card__media::before { opacity: 0; }
+.work-card:hover .work-card__img { transform: scale(1.04); }
+.work-card__tag { position: absolute; top: 12px; inset-inline-start: 12px; z-index: 2; font-size: .7rem; font-weight: 600; letter-spacing: .02em; color: var(--cream); background: rgba(7,12,32,.5); border: 1px solid rgba(244,238,223,.18); border-radius: var(--r-pill); padding: 5px 12px; backdrop-filter: blur(8px); }
+.work-card__view { display: none; }
+/* المعلومات تحت الصورة: اسم (serif) يسار + السنة يمين، ووصف تحت */
+.work-card__body { display: flex; flex-direction: column; gap: 4px; padding: 0 2px; }
+.work-card__top { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+.work-card__body h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; line-height: 1.2; color: var(--cream); }
+.work-card__year { flex-shrink: 0; color: rgba(244,238,223,.4); font-size: .85rem; font-variant-numeric: tabular-nums; }
+.work-card__body p { color: rgba(244,238,223,.5); font-size: .88rem; line-height: 1.5; }
+.work-card__tags { display: none; }
 /* دائرة "View ↗" تتبع الماوس فوق المعرض */
 .work-cursor { position: fixed; top: 0; left: 0; z-index: 60; width: 92px; height: 92px; border-radius: 50%; background: var(--cream); color: var(--navy-900); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .85rem; pointer-events: none; opacity: 0; transform: translate(-50%, -50%) scale(.3); transition: opacity .3s var(--ease), transform .35s var(--ease); box-shadow: 0 18px 44px -12px rgba(0,0,0,.5); }
 .work-cursor::after { content: "View ↗"; }
@@ -514,6 +468,12 @@ html[lang="ar"] .work-cursor::after { content: "عرض ↗"; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
+
+/* =========================================================
+   صور المشاريع الحقيقية داخل الكروت
+   ========================================================= */
+.work-card__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform .7s var(--ease); }
+.work-card:hover .work-card__img { transform: scale(1.06); }
 
 /* =========================================================
    قسم الاستوديو / عن كريم
