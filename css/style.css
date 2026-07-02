@@ -161,7 +161,7 @@ p { max-width: var(--reading); }
 /* أيقونة المربع بحرف G — نسخة مصغّرة من مربع اللودر (نفس الحسّ: حدود كريمي + خلفية كحلي زجاجية + توهّج خفيف) */
 .brand__mark {
   flex: none; display: inline-grid; place-items: center; font-style: normal; vertical-align: middle;
-  width: 34px; height: 34px; margin-inline-end: 10px;
+  width: 34px; height: 34px;
   font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; line-height: 1; color: var(--cream);
   border: 1.5px solid rgba(244,238,223,.45); border-radius: 9px;
   background: rgba(10,19,48,.55);
