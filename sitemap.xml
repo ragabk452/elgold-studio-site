@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://elgold-1.vercel.app/</loc>
     <lastmod>2026-07-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image><image:loc>https://elgold-1.vercel.app/assets/work/aios-2.jpg</image:loc><image:title>AI Agency OS — SaaS platform</image:title></image:image>
+    <image:image><image:loc>https://elgold-1.vercel.app/assets/work/yasin-1.jpg</image:loc><image:title>Anamil Yasin — e-commerce store</image:title></image:image>
+    <image:image><image:loc>https://elgold-1.vercel.app/assets/work/nexa-1.jpg</image:loc><image:title>Nexa Digital — agency website</image:title></image:image>
   </url>
   <url>
     <loc>https://elgold-1.vercel.app/work.html</loc>
     <lastmod>2026-07-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image><image:loc>https://elgold-1.vercel.app/assets/work/aios-2.jpg</image:loc><image:title>AI Agency OS — SaaS platform</image:title></image:image>
+    <image:image><image:loc>https://elgold-1.vercel.app/assets/work/yasin-1.jpg</image:loc><image:title>Anamil Yasin — e-commerce store</image:title></image:image>
+    <image:image><image:loc>https://elgold-1.vercel.app/assets/work/nexa-1.jpg</image:loc><image:title>Nexa Digital — agency website</image:title></image:image>
+    <image:image><image:loc>https://elgold-1.vercel.app/assets/work/covers/gold-skincare-store.jpg</image:loc><image:title>Gold Skincare — e-commerce</image:title></image:image>
+    <image:image><image:loc>https://elgold-1.vercel.app/assets/work/covers/pizza-height.jpg</image:loc><image:title>Pizza Height — restaurant website</image:title></image:image>
+    <image:image><image:loc>https://elgold-1.vercel.app/assets/work/covers/bright-dental-clinic.jpg</image:loc><image:title>Bright Dental — clinic website</image:title></image:image>
+    <image:image><image:loc>https://elgold-1.vercel.app/assets/work/covers/fast-round-brand-identity.jpg</image:loc><image:title>Fast Round — brand identity</image:title></image:image>
+    <image:image><image:loc>https://elgold-1.vercel.app/assets/work/covers/jun-company-profile.jpg</image:loc><image:title>JUN — company profile</image:title></image:image>
+    <image:image><image:loc>https://elgold-1.vercel.app/assets/work/covers/yasmina-brochure.jpg</image:loc><image:title>Al-Yasmina — real-estate brochure</image:title></image:image>
+    <image:image><image:loc>https://elgold-1.vercel.app/assets/work/covers/optima-eye-clinic-social.jpg</image:loc><image:title>Optima Eye — social media design</image:title></image:image>
+    <image:image><image:loc>https://elgold-1.vercel.app/assets/work/covers/social-media-designs-1.jpg</image:loc><image:title>Social media designs I</image:title></image:image>
+    <image:image><image:loc>https://elgold-1.vercel.app/assets/work/covers/social-media-designs-2.jpg</image:loc><image:title>Social media designs II</image:title></image:image>
+    <image:image><image:loc>https://elgold-1.vercel.app/assets/work/covers/logo-design-collection.jpg</image:loc><image:title>Logo &amp; brand mark collection</image:title></image:image>
   </url>
 </urlset>
