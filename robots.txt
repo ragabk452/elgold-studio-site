@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /portal.html
+
+Sitemap: https://elgold-1.vercel.app/sitemap.xml
