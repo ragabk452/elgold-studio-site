@@ -425,6 +425,58 @@
       }});
     });
 
+    /* ═══ Phase 2: تفاعلات المعرض — حركة سينمائية · إضاءة محيطة خافتة · كيرسر VIEW ═══
+       راقية ومكتومة (easing زي Apple). تُلغى تلقائيًا مع تقليل الحركة. لا تغيّر الـUI. */
+    (function exhibitionFX() {
+      var exhibits = gsap.utils.toArray('#work .exhibit');
+      if (!exhibits.length) return;
+      var desktop = fine && window.innerWidth > 1024;
+
+      // 1) سكرول سينمائي: لوحة واحدة مسيطرة، السابقة تنحسر والتالية تطلع
+      exhibits.forEach(function (ex) {
+        var inner = ex.querySelector('.exhibit__inner') || ex;
+        if (desktop) {
+          gsap.timeline({ scrollTrigger: { trigger: ex, start: 'top bottom', end: 'bottom top', scrub: 0.6 } })
+            .fromTo(inner, { opacity: 0.3, scale: 0.955, y: 52 }, { opacity: 1, scale: 1, y: 0, ease: 'power2.out', duration: 1 })
+            .to(inner, { duration: 0.5 })                                   // ثبات عند المنتصف
+            .to(inner, { opacity: 0.3, scale: 0.955, y: -46, ease: 'power2.in', duration: 1 });
+        } else {
+          gsap.from(inner, { opacity: 0, y: 36, duration: 0.7, ease: 'power2.out', scrollTrigger: { trigger: ex, start: 'top 82%', once: true } });
+        }
+      });
+
+      // 2) إضاءة محيطة خافتة تتبع اللوحة النشطة (لون من عيلة الكحلي، تدرّج ناعم عبر @property --amb)
+      var section = document.querySelector('.work--gallery');
+      if (section) {
+        var amb = document.createElement('div');
+        amb.className = 'work__ambient'; amb.setAttribute('aria-hidden', 'true');
+        section.insertBefore(amb, section.firstChild);
+        var setAmb = function (acc) { if (acc) amb.style.setProperty('--amb', 'hsl(' + acc + ' / .16)'); };
+        exhibits.forEach(function (ex) {
+          var acc = ex.getAttribute('data-accent');
+          ScrollTrigger.create({ trigger: ex, start: 'top center', end: 'bottom center',
+            onEnter: function () { setAmb(acc); }, onEnterBack: function () { setAmb(acc); } });
+        });
+      }
+
+      // 3) كيرسر "VIEW" فوق وسيط المشاريع (ديسكتوب فقط) — يعيد استخدام .work-cursor الموجود
+      if (desktop && !reduce) {
+        var track = document.querySelector('.exhibit-track');
+        if (track) {
+          var wc = document.createElement('div');
+          wc.className = 'work-cursor'; wc.setAttribute('aria-hidden', 'true');
+          document.body.appendChild(wc);
+          var cx = 0, cy = 0, tX = 0, tY = 0;
+          addEventListener('mousemove', function (e) { tX = e.clientX; tY = e.clientY; }, { passive: true });
+          (function cl() { cx += (tX - cx) * 0.2; cy += (tY - cy) * 0.2; wc.style.left = cx + 'px'; wc.style.top = cy + 'px'; requestAnimationFrame(cl); })();
+          track.querySelectorAll('.exhibit__media').forEach(function (m) {
+            m.addEventListener('mouseenter', function () { wc.classList.add('is-on'); document.documentElement.classList.add('exhibit-hovering'); });
+            m.addEventListener('mouseleave', function () { wc.classList.remove('is-on'); document.documentElement.classList.remove('exhibit-hovering'); });
+          });
+        }
+      }
+    })();
+
     // إعادة حساب مواقع التشغيل بعد ما الصور/الخطوط تحمّل وبعد ما اللودر يخلّص —
     // مهم جداً عشان إزاحة المحتوى ما تخليش أي قسم يفضل مخفي (opacity:0) على أي جهاز
     var doRefresh = function () { ScrollTrigger.refresh(); };
@@ -741,6 +793,13 @@
     a.addEventListener('click', function (e) {
       var k = a.getAttribute('data-project');
       if (k && PROJECTS[k]) { e.preventDefault(); openProject(k); }
+    });
+  });
+  // الضغط على وسيط المشروع نفسه يفتح الـcase study (يطابق كيرسر VIEW)
+  document.querySelectorAll('.exhibit__media').forEach(function (m) {
+    m.addEventListener('click', function () {
+      var ex = m.closest('.exhibit'); var k = ex && ex.getAttribute('data-slug');
+      if (k && PROJECTS[k]) openProject(k);
     });
   });
 

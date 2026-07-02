@@ -359,6 +359,27 @@ p { max-width: var(--reading); }
 /* سوشيال: عمودي، أضيق، في المنتصف */
 .exhibit[data-type="social"] .exhibit__media { max-width: 520px; margin-inline: auto; }
 .exhibit[data-type="social"] .exhibit__screen { aspect-ratio: 4/5; }
+
+/* ═══ Phase 2: تفاعلات المعرض (تُضاف بالـJS) — راقية ومكتومة، متوافقة مع اللمس/تقليل الحركة ═══ */
+/* إضاءة محيطة خافتة تتبع اللوحة النشطة (لون من عيلة الكحلي، تدرّج ناعم) */
+@property --amb { syntax: "<color>"; inherits: true; initial-value: hsla(216, 44%, 18%, 0); }
+.work--gallery { position: relative; isolation: isolate; }
+.work--gallery > .container { position: relative; z-index: 1; }
+.work__ambient { position: sticky; top: 0; height: 100vh; margin-bottom: -100vh; z-index: 0; pointer-events: none; background: radial-gradient(58% 46% at 50% 44%, var(--amb), transparent 72%); transition: --amb .9s var(--ease-soft); }
+
+/* hover راقٍ (ديسكتوب + مؤشر دقيق فقط) — الوسيط هو البطل */
+@media (hover: hover) and (pointer: fine) {
+  .exhibit__media { cursor: none; }
+  .exhibit__img { transition: transform .7s var(--ease); }
+  .exhibit:hover .exhibit__img { transform: scale(1.05); }
+  .exhibit__title { transition: transform .5s var(--ease); }
+  .exhibit:hover .exhibit__title { transform: translateY(-6px); }
+  .exhibit__cta i { transition: transform .4s var(--ease); }
+  .exhibit:hover .exhibit__cta { border-bottom-color: rgba(244,238,223,.5); }
+  .exhibit:hover .exhibit__cta i { transform: translateX(5px); }
+  /* فوق وسيط المشروع نُظهر كيرسر VIEW ونخفي الكيرسر العام */
+  .exhibit-hovering .cursor, .exhibit-hovering .cursor-dot { opacity: 0 !important; }
+}
 /* دائرة "View ↗" تتبع الماوس فوق المعرض */
 .work-cursor { position: fixed; top: 0; left: 0; z-index: 60; width: 92px; height: 92px; border-radius: 50%; background: var(--cream); color: var(--navy-900); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .85rem; pointer-events: none; opacity: 0; transform: translate(-50%, -50%) scale(.3); transition: opacity .3s var(--ease), transform .35s var(--ease); box-shadow: 0 18px 44px -12px rgba(0,0,0,.5); }
 .work-cursor::after { content: "View ↗"; }
