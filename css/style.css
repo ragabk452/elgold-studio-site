@@ -144,9 +144,9 @@ p { max-width: var(--reading); }
 }
 .nav__inner {
   pointer-events: auto;
-  display: inline-flex; align-items: center; gap: var(--s-20);
+  display: inline-flex; align-items: center; gap: var(--s-16);
   max-width: calc(100% - 2 * var(--pad));
-  padding: 9px 10px 9px 22px;
+  padding: 7px 7px 7px 12px;
   border-radius: var(--r-pill);
   background: rgba(10, 19, 48, .6);
   border: 1px solid var(--border);
@@ -155,16 +155,27 @@ p { max-width: var(--reading); }
   transition: background var(--t-normal) var(--ease), box-shadow var(--t-normal) var(--ease);
 }
 .nav.is-scrolled .nav__inner { background: rgba(10, 19, 48, .82); box-shadow: 0 16px 46px -14px rgba(0,0,0,.6), inset 0 1px 0 rgba(244,238,223,.08); }
-.brand { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; letter-spacing: .02em; color: var(--cream); }
+.brand { display: inline-block; font-family: var(--font-display); font-weight: 800; font-size: 1.08rem; letter-spacing: .02em; color: var(--cream); white-space: nowrap; line-height: 1; }
 .brand b { font-weight: 800; }
 .brand span { opacity: .55; }
-.nav__links { display: flex; align-items: center; gap: var(--s-32); list-style: none; }
-.nav__links a { font-family: var(--font-body); font-size: .95rem; color: var(--muted); font-weight: 500; position: relative; transition: color var(--t-fast); }
+/* أيقونة المربع بحرف G — نسخة مصغّرة من مربع اللودر (نفس الحسّ: حدود كريمي + خلفية كحلي زجاجية + توهّج خفيف) */
+.brand__mark {
+  flex: none; display: inline-grid; place-items: center; font-style: normal; vertical-align: middle;
+  width: 34px; height: 34px; margin-inline-end: 10px;
+  font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; line-height: 1; color: var(--cream);
+  border: 1.5px solid rgba(244,238,223,.45); border-radius: 9px;
+  background: rgba(10,19,48,.55);
+  box-shadow: 0 0 0 3px rgba(42,71,192,.10), inset 0 0 14px rgba(244,238,223,.07);
+}
+.nav__links { display: flex; align-items: center; gap: var(--s-24); list-style: none; }
+.nav__links a { font-family: var(--font-body); font-size: .92rem; color: var(--muted); font-weight: 500; position: relative; transition: color var(--t-fast); }
 .nav__links a::after { content: ""; position: absolute; inset-inline-start: 0; bottom: -6px; height: 1px; width: 0; background: var(--cream); transition: width var(--t-normal) var(--ease); }
 .nav__links a:hover { color: var(--text); }
 .nav__links a:hover::after { width: 100%; }
-.nav__right { display: flex; align-items: center; gap: var(--s-16); }
-.lang { font-family: var(--font-body); font-weight: 600; font-size: .85rem; color: var(--text); background: var(--glass); border: 1px solid var(--border); border-radius: var(--r-pill); padding: 8px 14px; min-width: 44px; }
+.nav__right { display: flex; align-items: center; gap: var(--s-12); }
+/* زرار الـCTA جوّه الحبّة أصغر عشان تفضل نحيفة زي المرجع */
+.nav .btn--primary { padding: 9px 20px; font-size: .9rem; }
+.lang { font-family: var(--font-body); font-weight: 600; font-size: .82rem; color: var(--text); background: var(--glass); border: 1px solid var(--border); border-radius: var(--r-pill); padding: 7px 12px; min-width: 40px; }
 .lang:hover { border-color: rgba(244,238,223,.4); }
 .burger { display: none; width: 44px; height: 44px; flex-direction: column; gap: 5px; align-items: center; justify-content: center; background: var(--glass); border: 1px solid var(--border); border-radius: var(--r-md); }
 .burger span { width: 18px; height: 1.5px; background: var(--text); transition: transform .3s, opacity .3s; }
