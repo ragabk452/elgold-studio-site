@@ -186,6 +186,31 @@ p { max-width: var(--reading); }
 .menu.is-open { opacity: 1; visibility: visible; }
 .menu a { font-family: var(--font-display); font-size: 2rem; color: var(--text); }
 
+/* ═══════════════════════════════════════════════════════════════════════
+   الهيدر + الماوس يتباينوا عكس لون القسم الحالي (ألوان فقط — بدون أي تغيير تاني)
+   .sec-dark  = القسم تحت الهيدر كحلي  → هيدر فاتح (كريمي) + ماوس فاتح (الافتراضي)
+   .sec-light = القسم تحت الهيدر بيج    → هيدر كحلي (الافتراضي) + ماوس كحلي
+   ═══════════════════════════════════════════════════════════════════════ */
+.nav__inner, .nav__links a, .brand__mark, .lang, .nav .btn--primary, .burger span,
+.cursor, .cursor-dot { transition: background var(--t-normal) var(--ease), color var(--t-normal) var(--ease), border-color var(--t-normal) var(--ease), box-shadow var(--t-normal) var(--ease); }
+
+/* فوق قسم كحلي → حبّة فاتحة كريمية بنص كحلي */
+html.sec-dark .nav__inner { background: rgba(244,238,223,.9); border-color: rgba(10,19,48,.14); box-shadow: 0 14px 40px -14px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.45); }
+html.sec-dark .nav.is-scrolled .nav__inner { background: rgba(244,238,223,.96); }
+html.sec-dark .nav__links a { color: rgba(10,19,48,.66); }
+html.sec-dark .nav__links a:hover { color: var(--navy-900); }
+html.sec-dark .nav__links a::after { background: var(--navy-800); }
+html.sec-dark .brand__mark { color: var(--navy-900); border-color: rgba(10,19,48,.38); background: rgba(10,19,48,.05); }
+html.sec-dark .lang { color: var(--navy-900); border-color: rgba(10,19,48,.24); background: rgba(10,19,48,.04); }
+html.sec-dark .lang:hover { border-color: rgba(10,19,48,.5); }
+html.sec-dark .nav .btn--primary { background: var(--navy-800); color: var(--cream); }
+html.sec-dark .burger span { background: var(--navy-900); }
+
+/* الماوس عكس القسم: فوق قسم بيج → ماوس كحلي (فوق الكحلي يفضل فاتح الافتراضي) */
+html.sec-light .cursor { border-color: rgba(10,19,48,.5); }
+html.sec-light .cursor.is-hover { background: rgba(10,19,48,.08); border-color: transparent; }
+html.sec-light .cursor-dot { background: var(--navy-900); }
+
 /* =========================================================
    الهيرو
    ========================================================= */

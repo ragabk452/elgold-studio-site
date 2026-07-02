@@ -811,6 +811,28 @@
   /* ---------- النافبار + القائمة ---------- */
   var nav = document.getElementById('nav');
   addEventListener('scroll', function () { if (nav) nav.classList.toggle('is-scrolled', scrollY > 20); }, { passive: true });
+
+  /* ---------- تباين الهيدر + الماوس عكس لون القسم الحالي (ألوان فقط) ----------
+     قسم كحلي → هيدر/ماوس فاتح · قسم بيج → هيدر/ماوس كحلي — عشان يفضلوا بارزين وواضحين */
+  (function adaptiveTheme() {
+    var root = document.documentElement, last = '';
+    function themeAt() {
+      var y = 84;   // نقطة تحت الحبّة على يسار الشاشة (بعيد عن الحبّة الموسّطة)
+      var el = document.elementFromPoint(16, y) || document.elementFromPoint(window.innerWidth - 16, y);
+      var sec = el && el.closest ? el.closest('section, footer') : null;
+      if (!sec) return '';
+      return sec.classList.contains('theme-light') ? 'light' : 'dark';
+    }
+    function update() {
+      var t = themeAt(); if (!t || t === last) return; last = t;
+      root.classList.toggle('sec-light', t === 'light');
+      root.classList.toggle('sec-dark', t === 'dark');
+    }
+    var ticking = false;
+    addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { update(); ticking = false; }); } }, { passive: true });
+    addEventListener('resize', update, { passive: true });
+    update(); setTimeout(update, 400); setTimeout(update, 1400);
+  })();
   var burger = document.getElementById('burger'), menu = document.getElementById('menu');
   if (burger) burger.addEventListener('click', function () {
     var open = menu.classList.toggle('is-open'); nav.classList.toggle('menu-open', open);
