@@ -52,7 +52,7 @@
   .services, .work, .why, .process, .techstack, .contact, .cta, .faq, .testi { padding: var(--s-80) 0; }
   .field-row { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: 1fr; }
-  .footer__bottom { flex-direction: column; text-align: center; }
+  .footer__bottom { flex-direction: column; text-align: center; padding-bottom: 76px; }
   .testi-card { flex-basis: 300px; width: 300px; }
 
   .scroll-hint { display: none; }
