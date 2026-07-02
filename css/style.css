@@ -191,8 +191,8 @@ p { max-width: var(--reading); }
    .sec-dark  = القسم تحت الهيدر كحلي  → هيدر فاتح (كريمي) + ماوس فاتح (الافتراضي)
    .sec-light = القسم تحت الهيدر بيج    → هيدر كحلي (الافتراضي) + ماوس كحلي
    ═══════════════════════════════════════════════════════════════════════ */
-.nav__inner, .nav__links a, .brand__mark, .lang, .nav .btn--primary, .burger span,
-.cursor, .cursor-dot { transition: background var(--t-normal) var(--ease), color var(--t-normal) var(--ease), border-color var(--t-normal) var(--ease), box-shadow var(--t-normal) var(--ease); }
+.nav__inner, .nav__links a, .brand__mark, .lang, .nav .btn--primary, .burger span { transition: background var(--t-normal) var(--ease), color var(--t-normal) var(--ease), border-color var(--t-normal) var(--ease), box-shadow var(--t-normal) var(--ease); }
+/* الكيرسر عنده transition خاص بيه (width/height/bg/border) — نسيبه زي ما هو عشان تكبيره يفضل سلس */
 
 /* فوق قسم كحلي → حبّة فاتحة كريمية بنص كحلي */
 html.sec-dark .nav__inner { background: rgba(244,238,223,.9); border-color: rgba(10,19,48,.14); box-shadow: 0 14px 40px -14px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.45); }
