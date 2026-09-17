@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/",
+      "destination": "https://elgold.site/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "destination": "https://elgold.site/:path*",
       "permanent": true
