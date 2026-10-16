@@ -1,6 +1,39 @@
 {
   "redirects": [
     {
+      "source": "/start-project",
+      "has": [
+        {
+          "type": "host",
+          "value": "elgold-studio.vercel.app"
+        }
+      ],
+      "destination": "https://elgold.site/ar/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "elgold-studio.vercel.app"
+        }
+      ],
+      "destination": "https://elgold.site/ar/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "elgold-studio.vercel.app"
+        }
+      ],
+      "destination": "https://elgold.site/ar/",
+      "permanent": true
+    },
+    {
       "source": "/",
       "destination": "https://elgold.site/",
       "permanent": true
